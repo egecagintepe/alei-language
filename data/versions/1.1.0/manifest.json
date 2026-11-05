@@ -5,7 +5,7 @@
     "lexemes": 273,
     "roots": 270
   },
-  "decisions_sha256": "486f5cb9d96f8ffcff9930974a35bd6e0d201eecec519be9d29acb070cfcc50b",
+  "decisions_sha256": "a59e16c63df5cccc56ba28b0bfe92e625a1a0425f429e1611f6b096b4b4352f5",
   "files": {
     "compatibility.jsonl": "a84c7ea9521b9090122539695adaa76869269af74a956ab7758df23557a33cc0",
     "lexemes.jsonl": "26a16b53eb1c307c9db65dad4c12a7301f69a9ed5f9a4ffcb0e8d2f11860bbc4",
