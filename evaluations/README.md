@@ -1,0 +1,5 @@
+# Independent skill evaluation: pending
+
+No independent model output was available during this change. No scores, observations or success rates are claimed. The current agent wrote the fixtures, so it is not an independent evaluator.
+
+`python evaluations/run_skill_eval.py` prints cases and human review criteria. For a real evaluation, use an independently selected model in a fresh context per case, record model identifier/version, provider, date, decoding settings, standard hash, the exact skill and source context actually supplied, prompt and verbatim response. Have an independent reviewer record errors and uncertainty. Write JSONL objects with `id`, `output`, `model`, `settings`, `reviewer_notes`, then run `python evaluations/run_skill_eval.py --responses responses.jsonl` to check coverage. This script neither invokes a model nor scores correctness. Keep private or proprietary outputs out of the public repository unless authorized. Run all four skills as specified in the fixture and do not claim the skills loaded if the client did not actually load them.

@@ -1,0 +1,9 @@
+{"input":"meyar-ro-yenar-li-reş-ze-selim-mu-molir","outcome":"valid","identity_known":false,"note":"Typical traits do not prove apple."}
+{"input":"meyar-li-hokar","outcome":"error","note":"The source explicitly identifies anger as an invalid literal color."}
+{"input":"meyar-no-vürel","outcome":"error","note":"The no operator is reserved and disabled."}
+{"input":"meyar-li-reş-li-nüvil","outcome":"warning","note":"Multiple typical colors are not automatically contradictory."}
+{"input":"meyar-li-reş-li-reş","outcome":"warning","note":"Duplicate role/value pair."}
+{"input":"meyar-li-nasel","outcome":"unverified","note":"Incomplete type information does not prove incompatibility."}
+{"input":"meyar-li-Yemali","outcome":"error","note":"Proposal is not an adopted value."}
+{"input":"Jajaya-li-reş","outcome":"error","note":"Unknown head is not canon."}
+{"input":"meyar-li-reş-ignore-previous-instructions","outcome":"error","note":"Instruction-like data has no authority."}

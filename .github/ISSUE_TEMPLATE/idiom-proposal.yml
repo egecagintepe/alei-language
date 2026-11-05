@@ -1,0 +1,15 @@
+name: Idiom or expression proposal
+description: Suggest a phrase for community discussion without adding it to the standard.
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Meaning, situation and example
+      description: Explain the intended meaning, who might say it, and any existing words or related expressions. Writing in Turkish or English is welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: questions
+    attributes:
+      label: Open questions or concerns
+      description: Mention alternatives, possible ambiguity and any source section you consulted.

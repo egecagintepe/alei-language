@@ -30,3 +30,6 @@ Anyone can read, discuss a name, propose a word or report a grammar problem with
 ## Licenses
 
 Code, scripts and Agent Skills are licensed under [Apache-2.0](LICENSE). Original language prose, specifications, examples, and derived lexical data are licensed under [CC BY 4.0](LICENSE-DOCS); give appropriate credit, link the license, and indicate changes. Third-party materials retain their own terms. The language standard's original author and project contributors should be credited.
+## Participate without programming
+
+Use an [issue form](https://github.com/egecagintepe/alei-language/issues/new/choose) to report a problem or suggest a word or idiom. Describe your example, intended meaning and source section if known; Turkish or English is welcome. Join the [language naming discussion](https://github.com/egecagintepe/alei-language/discussions/6). Proposals are not part of the standard until an explicit owner decision is recorded.
