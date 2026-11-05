@@ -1,3 +1,5 @@
+> Historical report: statements about the then-open name/help decision describe the time of this report. See [owner decisions](../../governance/decisions/README.md) for the adopted v1.1.0 status.
+
 # Phase 2.1 linguistic integrity review
 
 The v1.0 archive remains unchanged and its SHA-256 is pinned by `standard/manifest.json`. No correction in this report is adopted. The [machine-readable review](../../audits/sentence-audit.jsonl) contains all 101 source IDs and lines; [role annotations](../../audits/sentence-roles.tsv) and [individual review assessments](../../audits/sentence-review.tsv) are inputs to `python scripts/build_sentence_audit.py`. Each assessment is authored by the project assistant against v1.0; it is not an independent human or speaker evaluation.

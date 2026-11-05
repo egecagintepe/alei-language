@@ -2,11 +2,17 @@ from .lexicon import lookup, records, normalize
 from .orthography import VOWELS
 def plural(stem): return stem+'na'
 def object_form(stem): return stem+('n' if normalize(stem)[-1:] in VOWELS else 'an')
-def analyze(word):
-    exact=lookup(word)
-    if exact: return {'status':'attested','matches':exact,'candidates':[]}
+def analyze(word, version='1.0'):
+    exact=lookup(word, version=version)
+    if exact:
+        statuses={r.get('status') for r in exact}
+        status='legacy_alias' if statuses=={'legacy_alias'} else 'historical_v1_pending' if statuses=={'historical_v1_pending'} else 'attested'
+        return {'status':status,'matches':exact,'candidates':[]}
+
     s=normalize(word); candidates=[]
-    for record in records():
+    for record in records(version, include_compatibility=True):
+        if record.get('status')=='historical_v1_pending': continue
+        before=len(candidates)
         stem=record['canonical_spelling']; base=normalize(stem)
         if not base: continue
         for label,form in [('plural',plural(base)),('object',object_form(base)),('plural_object',object_form(plural(base)))]:
@@ -16,7 +22,11 @@ def analyze(word):
             suffix=('v' if len(base)>1 and base[-1] in VOWELS and base[-2] in VOWELS else '')+'en'
             if base+suffix==s: candidates.append({'base':stem,'operation':'verb_derivation','status':'candidate'})
             if base[-1] not in VOWELS and base+'i'==s: candidates.append({'base':stem,'operation':'quality_derivation','status':'candidate'})
-    roots=[r for r in records() if r['part_of_speech']=='root']
+        if record.get('status')=='legacy_alias':
+            for candidate in candidates[before:]:
+                candidate.update({'status':'legacy_candidate','preferred_base':record['preferred_form'],
+                                  'warning':'Possible inflection or derivation of a legacy v1.0 form; candidate only.'})
+    roots=[r for r in records(version) if r['part_of_speech']=='root']
     for left in roots:
         a=normalize(left['canonical_spelling'])
         if s.startswith(a) and len(a)<len(s):

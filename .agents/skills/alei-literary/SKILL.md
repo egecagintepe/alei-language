@@ -9,3 +9,5 @@ Read [the pinned standard](../../../standard/README.md), [governance](../../../G
 
 1. Ask for or infer genre and audience; use attested vocabulary and optional `ael` where appropriate.
 2. Provide a short passage and a translation, distinguish metaphor from literal semantic relations, and label any invented wording as a proposal.
+
+For language v1.1.0, follow owner decisions AD-2026-001/002: Alei is the official name, Mirav/Miraven are preferred and Mivav/Mivaven are legacy with warnings. Pin the requested version; unqualified CLI/API calls remain v1.0. Do not adopt Miravar. See [version guidance](../../../docs/migration-v1.0-v1.1.md).

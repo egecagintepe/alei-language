@@ -1,4 +1,6 @@
-# Help-root correction proposal: Mirav (not adopted)
+> **Decision update — AD-2026-002, 2026-11-05:** Mirav and Miraven are owner-adopted preferred v1.1.0 forms; Mivav/Mivaven are legacy aliases. Miravar and Mivavar’s v1.1 treatment remain undecided. The material below is preserved as a **historical proposal**, not the current status. [Decision](../governance/decisions/README.md) · [Migration](../docs/migration-v1.0-v1.1.md).
+
+# Help-root correction: owner decision and historical proposal
 
 **Status:** proposal, language target **v1.1-proposed**; software version is separate. This is a recommendation and migration design, not an owner decision to adopt it. The original v1.0 archive and its hash remain unchanged.
 

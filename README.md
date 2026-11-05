@@ -1,6 +1,6 @@
-# Alei Language Project (working title)
+# Alei Language Project
 
-An open, human-first constructed language with transparent semantics and Agent Skills for speaking, learning, and carefully governed evolution. **Alei** is a greeting, not the language's official name; naming is open. The source v1.0 is a working standard, not proof of natural fluency or CEFR certification. [Türkçe giriş](README.tr.md) · [Start here](docs/start-here.md) · [Standard](standard/README.md)
+An open, human-first constructed language with transparent semantics and Agent Skills for speaking, learning, and carefully governed evolution. **Alei** is the official name of the human language (AD-2026-001); `Alei!` remains its greeting. The separate AleiFlow project is an experimental programming-language track. The source v1.0 is a working standard, not proof of natural fluency or CEFR certification. [Türkçe giriş](README.tr.md) · [Start here](docs/start-here.md) · [Standard](standard/README.md)
 
 A: **Alei!** — Hello!  
 B: **Sai süli le?** — Are you well?  
@@ -25,11 +25,15 @@ python -m unittest discover -s tests
 
 The tools are intentionally partial: a candidate parse is not an adopted word, and a successful type example does not verify the world. The checkout is required for source data. [Agent Skills](docs/how-agent-skills-work.md) describes how to use the seven procedural skills; they neither change model weights nor run on their own. Independent model and speaker evaluations remain future work.
 
-Anyone can read, discuss a name, propose a word or report a grammar problem without coding. Once Issues and Discussions are available, use the appropriate form and give an example and source section. See [contributing](CONTRIBUTING.md), [governance](GOVERNANCE.md), [roadmap](ROADMAP.md) and [audit](docs/audits/bootstrap-audit.md). Human owner and community contributions are credited in project history; canonical changes require owner adoption.
+Anyone can read, propose a word or report a grammar problem without coding. Once Issues and Discussions are available, use the appropriate form and give an example and source section. See [contributing](CONTRIBUTING.md), [governance](GOVERNANCE.md), [roadmap](ROADMAP.md) and [audit](docs/audits/bootstrap-audit.md). Human owner and community contributions are credited in project history; canonical changes require owner adoption.
 
 ## Licenses
 
 Code, scripts and Agent Skills are licensed under [Apache-2.0](LICENSE). Original language prose, specifications, examples, and derived lexical data are licensed under [CC BY 4.0](LICENSE-DOCS); give appropriate credit, link the license, and indicate changes. Third-party materials retain their own terms. The language standard's original author and project contributors should be credited.
 ## Participate without programming
 
-Use an [issue form](https://github.com/egecagintepe/alei-language/issues/new/choose) to report a problem or suggest a word or idiom. Describe your example, intended meaning and source section if known; Turkish or English is welcome. Join the [language naming discussion](https://github.com/egecagintepe/alei-language/discussions/6). Proposals are not part of the standard until an explicit owner decision is recorded.
+Use an [issue form](https://github.com/egecagintepe/alei-language/issues/new/choose) to report a problem or suggest a word or idiom. Describe your example, intended meaning and source section if known; Turkish or English is welcome. Read the historical [language naming discussion](https://github.com/egecagintepe/alei-language/discussions/6). Proposals are not part of the standard until an explicit owner decision is recorded.
+
+## Language versions
+
+The owner-adopted v1.1.0 release candidate uses **Mirav** and **Miraven**; v1.0 `Mivav` and `Mivaven` remain recognizable legacy aliases when 1.1.0 is selected. The unqualified API/CLI remains on v1.0 for compatibility. See [release notes](docs/release-v1.1.0.md) and [migration guide](docs/migration-v1.0-v1.1.md).

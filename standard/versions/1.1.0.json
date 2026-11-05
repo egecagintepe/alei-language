@@ -1,0 +1,13 @@
+{
+  "language_name": "Alei",
+  "language_version": "1.1.0",
+  "software_version_unchanged": "0.1.0",
+  "base_version": "1.0",
+  "base_sha256": "265fcc0dd0fcaf4bd23a062d631855463201be4ac12e42bf2501f30628ee8504",
+  "owner_decisions": ["AD-2026-001", "AD-2026-002"],
+  "preferred_help_root": "Mirav",
+  "preferred_help_verb": "Miraven",
+  "legacy_aliases": {"Mivav": "Mirav", "Mivaven": "Miraven"},
+  "historical_pending": ["Mivavar"],
+  "unadopted_candidates": ["Miravar"]
+}

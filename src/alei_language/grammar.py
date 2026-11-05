@@ -1,12 +1,12 @@
 """A deliberately narrow recognizer, not a complete grammar checker."""
 import re
-from .lexicon import normalize, lookup
-from .morphology import object_form
+from .lexicon import normalize, lookup, resolve_version
+from .morphology import object_form, analyze
 
 PRONOUNS = ('mei','sai','eli','meina','saina','elina','elar','elarna')
 PATTERN = re.compile(r'^(?:(ne) )?(?:(da|va) )?(?:(du|fa|su) )?([^ ]+)$')
 
-def parse_clause(text):
+def _parse_clause(text, version='1.0'):
     """Parse pronoun subject + marked pronoun object + attested verb.
 
     Either SVO or SOV is accepted. A successful structural parse does not
@@ -43,19 +43,19 @@ from functools import lru_cache
 from .lexicon import records
 
 @lru_cache(maxsize=1)
-def _inventory():
-    nominal={normalize(r['canonical_spelling']) for r in records()
+def _inventory(version='1.0'):
+    nominal={normalize(r['canonical_spelling']) for r in records(version,include_compatibility=True)
              if r['part_of_speech'] in {'root','compound','pron','interrogative'}}
-    qualities={normalize(r['canonical_spelling']) for r in records()
+    qualities={normalize(r['canonical_spelling']) for r in records(version,include_compatibility=True)
                if r['part_of_speech']=='quality'}
-    verbs={normalize(r['canonical_spelling']) for r in records()
+    verbs={normalize(r['canonical_spelling']) for r in records(version,include_compatibility=True)
            if r['part_of_speech']=='verb'}
     objects={}
     for stem in nominal:
         objects.setdefault(object_form(stem),set()).add(stem)
     return nominal,qualities,verbs,objects
 
-def parse_sentence(text):
+def _parse_sentence(text, version='1.0'):
     """Recognize a small documented grammar; unrecognized does not mean invalid."""
     if not isinstance(text,str) or not text.strip():
         return {'status':'unsupported','reason':'Expected a sentence'}
@@ -64,7 +64,7 @@ def parse_sentence(text):
     if any(c in s for c in ',;:[]-'):
         return {'status':'unsupported','reason':'Clause boundaries or vocatives are not supported'}
     words=s.rstrip('.!?').split()
-    nominal,qualities,verbs,objects=_inventory()
+    nominal,qualities,verbs,objects=_inventory(version)
     if len(words)<2 or words[0] not in (*PRONOUNS,'keli'):
         return {'status':'unsupported','reason':'Unsupported subject or fragment'}
     subject=words[0]; tail=words[1:]
@@ -146,3 +146,29 @@ def parse_sentence(text):
     if len(candidates)==1: return parsed(candidates[0])
     if candidates: return {'status':'ambiguous','candidates':candidates,'semantic_correctness':'not_evaluated'}
     return {'status':'unsupported','reason':'Outside documented recognizer patterns'}
+
+
+def _with_compatibility_warnings(result, text, version):
+    if isinstance(text,str) and version=='1.1.0':
+        warnings=[]
+        for word in re.findall(r"[^\W\d_]+",text,re.UNICODE):
+            exact=lookup(word,version=version)
+            if not exact:
+                for candidate in analyze(word,version=version).get('candidates',[]):
+                    warning=candidate.get('warning')
+                    if warning and warning not in warnings: warnings.append(warning)
+            for record in exact:
+                if record.get('warning') and record['warning'] not in warnings:
+                    warnings.append(record['warning'])
+        if warnings: result['warnings']=warnings
+    return result
+
+def parse_clause(text, version='1.0'):
+    """Original narrow parser with optional language-version selection."""
+    version=resolve_version(version)
+    return _with_compatibility_warnings(_parse_clause(text,version),text,version)
+
+def parse_sentence(text, version='1.0'):
+    """Version-aware parser; report legacy spelling without rewriting input."""
+    version=resolve_version(version)
+    return _with_compatibility_warnings(_parse_sentence(text,version),text,version)
