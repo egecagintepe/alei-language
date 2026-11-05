@@ -1,0 +1,5 @@
+# Preserve the supplied source bytes on every platform.
+/adsiz_dil_acik_anlam_standardi_v1_0.md -text
+/standard/adsiz_dil_acik_anlam_standardi_v1_0.md -text
+/adsiz_dil_agent_skills_mimari_onerisi_v0_1.md -text
+/docs/architecture/adsiz_dil_agent_skills_mimari_onerisi_v0_1.md -text
