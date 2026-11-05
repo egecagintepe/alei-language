@@ -80,6 +80,9 @@ class AuditRegression(unittest.TestCase):
         self.assertEqual(rows[63]['predicate'],'mivaven')
         self.assertIn('embedded',rows[57]['notes'][0])
         self.assertEqual(rows[65]['status'],'ambiguous')
+        self.assertEqual(rows[7]['status'],'unsupported')
+        self.assertEqual(rows[10]['status'],'valid')
+        self.assertEqual(rows[10]['deterministic_structure']['semantic_correctness'],'not_evaluated')
         subprocess.run([sys.executable,str(ROOT/'scripts/build_sentence_audit.py'),'--check'],check=True)
     def test_fixture_coverage(self):
         cases=[json.loads(x) for x in (ROOT/'evaluations/skill-cases.jsonl').read_text(encoding='utf-8-sig').splitlines()]

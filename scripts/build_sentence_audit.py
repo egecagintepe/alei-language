@@ -4,6 +4,7 @@ from functools import lru_cache
 from pathlib import Path
 from alei_language.lexicon import lookup, normalize
 from alei_language.morphology import analyze
+from alei_language.grammar import parse_clause
 ROOT=Path(__file__).resolve().parents[1]
 @lru_cache(None)
 def segmentation(token):
@@ -48,7 +49,11 @@ def audit():
         segments=[segmentation(t) for t in tokens]
         unknown=[s['form'] for s in segments if s['certainty']=='unknown']
         if unknown: warnings.append('Unresolved token analysis: '+', '.join(unknown))
-        status='unsupported' if unknown else ('ambiguous' if row['number'] in (19,35,44,66) else 'valid')
+        # Do not infer grammatical validity merely from attested tokens or manual labels.
+        # The bounded parser supports only a few clauses; all others need full review.
+        structural=parse_clause(row['canonical_spelling'])
+        status=('ambiguous' if row['number'] in (19,35,44,66) else
+                'valid' if not unknown and structural['status']=='parsed' else 'unsupported')
         output.append({'source_id':row['id'],'number':row['number'],'source_line':row['provenance']['line'],
           'original':row['canonical_spelling'],'tokens':segments,'subject':subject,'predicate':predicate,
           'objects':obj,'other_roles':other,'word_order':order,
@@ -56,7 +61,7 @@ def audit():
           'aspect': next(({'du':'progressive','fa':'completed','su':'habitual'}[w] for w in words if w in ('du','fa','su')),'unmarked'),
           'negation': 'ne' in words,'turkish_gloss':row['gloss_tr'],
           'literal_interpretation': [{'token':s['form'], 'glosses_tr':[a.get('gloss_tr', a.get('base_glosses_tr', [])) for a in s.get('analyses', [])]} for s in segments],
-          'status':status,'evidence':f"v1.0 §{row['provenance']['section']} line {row['provenance']['line']}; grammar §§3–4",
+          'status':status,'deterministic_structure':structural,'evidence':f"v1.0 §{row['provenance']['section']} line {row['provenance']['line']}; grammar §§3–4",
           'proposed_correction':None,'notes':warnings,
           'review_scope':'initial manual role review; literal gloss is a word-by-word aid, candidates and context remain uncertain'})
     return output
