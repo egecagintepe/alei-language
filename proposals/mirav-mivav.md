@@ -1,11 +1,24 @@
-# Historical help root: decision proposal (not adopted)
+# Help-root correction proposal: Mirav (not adopted)
 
-Status: proposal; no spelling change or synonym has been adopted. The user reports that historical design conversations favored `Mirav`. The earlier conversation is not present in the repository, so this is a report of history rather than independently verified approval. Architecture proposal §1.7 also reports an apparent `Mirav` → `Mivav` discrepancy. The supplied v1.0 standard is the only available authoritative snapshot and records `Mivav` as owner_accepted_working at §7.2, line 520. It records `Mivaven` (§8.1, line 800), `Mivavar` (§8.3, line 929), and explicitly permits direct-person objects in §4.5, line 180. Examples 64 and 65 (lines 1208–1209) use `mivaven`. Derived data IDs are `roots:520`, `lexemes:800`, `lexemes:929`, `example-sentences:1208`, and `example-sentences:1209`. The existing regression `tests/test_project.py::test_attested_words` checks Mivav; no source-attested Mirav form is currently registered.
+**Status:** proposal, language target **v1.1-proposed**; software version is separate. This is a recommendation and migration design, not an owner decision to adopt it. The original v1.0 archive and its hash remain unchanged.
 
-## Options for owner decision
+## Evidence
 
-1. Retain Mivav in a future standard; record the historical evidence and rationale.
-2. Adopt Mirav in a separately versioned standard with an explicit compatibility and migration policy for Mivav, Mivaven, Mivavar, examples, source-derived data, references, search and tests. Whether an old form remains accepted or deprecated must be separately decided; neither is assumed.
-3. Adopt both only if the owner specifies whether they are synonyms or distinct senses and how lookup and translation distinguish them.
+On 5 November 2026 the owner reported from the original language-design conversation that the originally proposed help root was **Mirav**, its derived verb **Miraven**, that the owner positively accepted the original vocabulary group, and that **Mivav** apparently appeared later during consolidation. This is owner-reported conversation evidence; the archived transcript has not been supplied, so its wording and chronology cannot be independently checked. The architectural proposal also reports a Mirav/Mivav discrepancy. v1.0 §7.2 line 520 records `Mivav` as `owner_accepted_working`, §8.1 line 800 records `Mivaven`, and §8.3 line 929 records `Mivavar`. §4.5 line 180 and examples 64–65, lines 1208–1209, attest `mivaven` with a direct person object.
 
-All options preserve the immutable v1.0 snapshot. Request the historical primary source and explicit owner decision before updating any canonical language record. Existing conversations and models using Mivav could otherwise fail exact lookup or lose meaning; a new form cannot silently replace it. Candidate derived forms based on Mirav require separate linguistic validation, and are not adopted by this proposal.
+## Recommendation
+
+Prefer **Mirav** and the owner-reported derived **Miraven** in a prospective v1.1 correction, subject to explicit owner approval, source evidence and tests. Do not silently present either as adopted in the v1.0 registry. This recommendation is not acceptance. A candidate agent noun `Miravar` follows the existing derivational pattern but is a *new proposal*, not an attested or automatically accepted form. Check the near form `Mürav` (storage, v1.0 §7.10) and `Mir` (smallness, §7.2) for listening and spelling confusion; resemblance alone neither changes their meanings nor proves a collision.
+
+## Proposed compatibility contract, subject to owner approval
+
+1. Keep v1.0 `Mivav`, `Mivaven`, `Mivavar`, all v1.0 examples and derived JSONL intact in the pinned archive. Existing v1.0 lookup and translation remain reproducible.
+2. In a separate v1.1 registry, propose Mirav and Miraven as preferred forms. Preserve Mivav and Mivaven as explicitly labeled **legacy aliases** with versioned provenance, rather than silently redirecting or deleting them. Alias status, meaning, display warnings and the end of any transition require owner approval; they do not apply yet.
+3. Record v1.0 `Mivavar` unchanged. Propose whether it should remain a legacy agent noun and whether `Miravar` should be adopted as its replacement. Do not mark Miravar canonical solely by derivation.
+4. Prepare new-version examples equivalent to v1.0 #64–65 using the approved future form; retain source quotations unchanged and cite their version. Review each glossary, documentation, agent skill, search index, source-derived record, example, schema, test fixture and translation mentioning either form. Preserve historical IDs and attach new versioned IDs instead of mutating old ones.
+5. Before any adoption, test v1.0 exact lookups and existing `Mivav` regressions, v1.1 preferred and legacy lookup behavior, case/object inflection, both example translations, search results and provenance. Never treat an alias as an owner-locked root or fabricate agreement from CI.
+6. If backward-compatible alias behavior is approved, v1.1 is a proposed compatible version. If the owner instead removes old forms or changes their accepted meaning, treat this as potentially breaking and choose a major version and migration schedule through a separate owner decision. No automatic deprecation or removal deadline is proposed.
+
+## Decision and alternatives
+
+Ask the owner to approve or reject the preferred spelling, Miraven, alias policy, proposed Miravar, version and transition separately in a recorded decision. Alternatives remain retaining the v1.0 spelling or accepting both as distinct/synonymous forms with explicit sense records. Until then only the unchanged v1.0 data is authoritative for that snapshot.

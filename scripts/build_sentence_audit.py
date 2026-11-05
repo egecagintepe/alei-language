@@ -4,7 +4,7 @@ from functools import lru_cache
 from pathlib import Path
 from alei_language.lexicon import lookup, normalize
 from alei_language.morphology import analyze
-from alei_language.grammar import parse_clause
+from alei_language.grammar import parse_clause, parse_sentence
 ROOT=Path(__file__).resolve().parents[1]
 @lru_cache(None)
 def segmentation(token):
@@ -27,9 +27,11 @@ def segmentation(token):
 def audit():
     rows=[json.loads(line) for line in (ROOT/'data/example-sentences.jsonl').read_text(encoding='utf-8').splitlines()]
     annotations=(ROOT/'audits/sentence-roles.tsv').read_text(encoding='utf-8').splitlines()
-    if len(rows)!=len(annotations): raise ValueError('source/annotation count mismatch')
+    reviews=(ROOT/'audits/sentence-review.tsv').read_text(encoding='utf-8-sig').splitlines()
+    if len(rows)!=len(annotations) or len(rows)!=len(reviews): raise ValueError('source/annotation/review count mismatch')
     output=[]
-    for row,line in zip(rows,annotations):
+    for row,line,review in zip(rows,annotations,reviews):
+        linguistic_status,translation_status,review_note=review.split('|')
         subject,predicate,obj,other,order=line.split('|')
         tokens=re.findall(r'[^\W\d_]+',row['canonical_spelling'],re.UNICODE)
         words=[normalize(x) for x in tokens]
@@ -52,6 +54,7 @@ def audit():
         # Do not infer grammatical validity merely from attested tokens or manual labels.
         # The bounded parser supports only a few clauses; all others need full review.
         structural=parse_clause(row['canonical_spelling'])
+        extended=parse_sentence(row['canonical_spelling'])
         status=('ambiguous' if row['number'] in (19,35,44,66) else
                 'valid' if not unknown and structural['status']=='parsed' else 'unsupported')
         output.append({'source_id':row['id'],'number':row['number'],'source_line':row['provenance']['line'],
@@ -61,9 +64,17 @@ def audit():
           'aspect': next(({'du':'progressive','fa':'completed','su':'habitual'}[w] for w in words if w in ('du','fa','su')),'unmarked'),
           'negation': 'ne' in words,'turkish_gloss':row['gloss_tr'],
           'literal_interpretation': [{'token':s['form'], 'glosses_tr':[a.get('gloss_tr', a.get('base_glosses_tr', [])) for a in s.get('analyses', [])]} for s in segments],
-          'status':status,'deterministic_structure':structural,'evidence':f"v1.0 §{row['provenance']['section']} line {row['provenance']['line']}; grammar §§3–4",
+          'status':status,'deterministic_structure':structural,
+          'parser_status':extended['status'],'extended_structure':extended,
+          'linguistic_review_status':linguistic_status,'translation_review_status':translation_status,
+          'linguistic_review':{'reviewer':'project assistant, not independent human', 'assessment':review_note,
+            'morphology':'reviewed against §3 and token analyses; unresolved candidates remain labeled',
+            'syntax':'reviewed against §4 and source examples; see roles and assessment',
+            'semantic_interpretation':'source Turkish gloss reviewed in context; see assessment',
+            'translation':'reviewed source gloss; context-dependent where marked',
+            'consistency':'checked against cited v1.0 rules and examples; no independent speaker validation'},'evidence':f"v1.0 §{row['provenance']['section']} line {row['provenance']['line']}; grammar §§3–4",
           'proposed_correction':None,'notes':warnings,
-          'review_scope':'initial manual role review; literal gloss is a word-by-word aid, candidates and context remain uncertain'})
+          'review_scope':'assistant-authored sentence review, not independent model or human; literal gloss is a word-by-word aid'})
     return output
 
 def main():
