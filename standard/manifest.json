@@ -1,0 +1,9 @@
+{
+  "language_version": "1.0",
+  "software_version": "0.1.0",
+  "standard": {
+    "file": "adsiz_dil_acik_anlam_standardi_v1_0.md",
+    "sha256": "265fcc0dd0fcaf4bd23a062d631855463201be4ac12e42bf2501f30628ee8504"
+  },
+  "architecture_proposal_sha256": "1a00a751e6a0c6d6385df75ed5c77755667bf7ea20f7fd8fdf56dbe7501e053f"
+}

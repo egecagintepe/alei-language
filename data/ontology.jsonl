@@ -1,0 +1,3 @@
+{"subject": "Yenar", "relation": "is-a", "object": "Savel", "version": "1.0", "provenance": "standard/adsiz_dil_acik_anlam_standardi_v1_0.md §5.3"}
+{"subject": "Savel", "relation": "is-a", "object": "Famel", "version": "1.0", "provenance": "standard/adsiz_dil_acik_anlam_standardi_v1_0.md §5.3"}
+{"subject": "Meyar", "relation": "source_from", "object": "Yenar", "status": "example_assertion", "version": "1.0", "provenance": "standard/adsiz_dil_acik_anlam_standardi_v1_0.md §5.3"}

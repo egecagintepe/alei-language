@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "id",
+    "canonical_spelling",
+    "gloss_tr",
+    "part_of_speech",
+    "status",
+    "version",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "canonical_spelling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gloss_tr": {
+      "type": "string"
+    },
+    "part_of_speech": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "version": {
+      "const": "1.0"
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "file",
+        "line",
+        "section"
+      ],
+      "properties": {
+        "file": {
+          "type": "string"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "section": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

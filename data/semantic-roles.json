@@ -1,0 +1,26 @@
+{
+  "source": "standard/adsiz_dil_acik_anlam_standardi_v1_0.md §5.4",
+  "language_version": "1.0",
+  "roles": {
+    "ro": "source_from",
+    "li": "typical_color",
+    "ze": "typical_taste",
+    "mu": "typical_shape",
+    "ku": "typical_texture",
+    "su": "typical_size",
+    "ge": "associated_location",
+    "pe": "purpose",
+    "di": "material_of",
+    "sa": "subtype_kind"
+  },
+  "typical": [
+    "li",
+    "ze",
+    "mu",
+    "ku",
+    "su"
+  ],
+  "disabled": [
+    "no"
+  ]
+}

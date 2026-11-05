@@ -1,0 +1,10 @@
+name: Tool bug
+description: Submit a tool bug for human review.
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description, evidence and source section
+      description: Include examples, expected behavior, alternatives and unresolved questions.
+    validations:
+      required: true

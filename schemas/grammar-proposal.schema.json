@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "status",
+    "description",
+    "evidence",
+    "source_version",
+    "approved_by_owner"
+  ],
+  "properties": {
+    "status": {
+      "const": "proposal"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_version": {
+      "type": "string"
+    },
+    "approved_by_owner": {
+      "const": false
+    }
+  }
+}

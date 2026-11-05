@@ -1,0 +1,5 @@
+# Governance
+
+The language has no official name yet; Alei is a greeting and project working title. Existing v1.0 is a working standard, with owner-locked, owner-accepted-working and delegated entries distinguished in the source. No new proposal is canon merely because an agent or community discusses it.
+
+Proposals move from **proposal** to **reviewed** when evidence, collisions, examples and compatibility are examined. Only the language owner can adopt a change: record the decision, date, evidence, approver, affected records and version. The owner may reject or request revision, with reasons recorded. Preserve old forms and document migration when changes break compatibility. Software and language versions are separate; language major versions signal breaking changes, minor versions compatible additions, patch versions corrections. A fork may choose its own governance, subject to applicable rights and attribution; it cannot claim its changes were adopted here. Credit contributors and record decisions. CI cannot approve language changes.

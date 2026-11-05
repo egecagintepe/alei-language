@@ -1,0 +1,3 @@
+# Validation limitations
+
+The CLI verifies source checksum and deterministic re-extraction, not all grammar or the scientific truth of descriptions. Morphological candidates are not attested forms; exact matches take precedence. Segmentation handles only two-root candidates; full syntactic parsing and automated validation of all 101 sentences are not implemented. Type coverage is deliberately incomplete. The skill metadata checker is local when `skills-ref` is missing; no independent model execution or human speaker trial has been conducted. Counts: 270 roots (34/56/180), 204 derivatives + 70 compounds, 63 function rows, 101 sentence rows. Source-derived IDs include source line and are stable only within this pinned snapshot.
