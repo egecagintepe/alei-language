@@ -1,0 +1,40 @@
+{
+  "manifest_id": "ALEI-MANIFEST-BLIND-EXP-01",
+  "created_at": "2026-11-06T21:24:00+03:00",
+  "experiment_name": "ChatGPT-to-Gemini Blind Translation Stanzas K1-K5",
+  "status": "partial_fragments_preserved",
+  "preserved_artifacts": {
+    "stanzas_available": ["K1", "K2", "K3", "K4", "K5"],
+    "observed_cases_count": 12,
+    "agent_a_model": "ChatGPT (temporary chat session)",
+    "agent_b_model": "Gemini (independent chat session)",
+    "agent_a_vocabulary_constraint": "Strictly limited to canonical v1.1.0 vocabulary (no free coinage)"
+  },
+  "pending_uncommitted_sources": [
+    {
+      "source_id": "ORIGINAL_POEM_FULL_TR",
+      "description": "Original 10-stanza Turkish poem written by language owner",
+      "status": "not_in_repo",
+      "stanzas_lost": ["K6", "K7", "K8", "K9", "K10"],
+      "stanzas_partially_recorded_in_evidence": ["K1", "K2", "K3", "K4", "K5"],
+      "action_required": "Do not fabricate missing stanzas. Awaiting owner check-in."
+    },
+    {
+      "source_id": "RAW_AGENT_A_TRANSCRIPT",
+      "description": "Full verbatim prompt and response transcript of ChatGPT translation session",
+      "status": "temporary_session_expired",
+      "action_required": "Do not synthesize simulated chat logs. Treat fragment quotes as owner-reported evidence."
+    },
+    {
+      "source_id": "RAW_AGENT_B_TRANSCRIPT",
+      "description": "Full verbatim prompt, output, and token logprobs of Gemini back-translation session",
+      "status": "partially_reported_by_owner",
+      "reported_metrics": {
+        "subjective_confidence_claim": "95-99%",
+        "calibration_status": "uncalibrated_self_report"
+      },
+      "action_required": "Record observed back-translation strings and qualitative comments without inventing synthetic token metrics."
+    }
+  ],
+  "fabrication_prohibition_notice": "In accordance with CODEX Rule 5, no lost stanzas (K6-K10), synthetic model transcripts, or fictional validation scores may be created."
+}

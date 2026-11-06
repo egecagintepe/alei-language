@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alei — An Open Human-First Constructed Language</title>
+  <meta name="description" content="Alei is an open, human-first constructed literary language with transparent semantics, root economy, and governed evolution.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" stroke="#0284c7" stroke-width="8"/>
+        <path d="M50 20 L76 75 L24 75 Z" stroke="#0d9488" stroke-width="6" stroke-linejoin="round"/>
+        <circle cx="50" cy="46" r="10" fill="#0284c7"/>
+      </svg>
+      <h1>Alei</h1>
+    </div>
+    <div class="badge">Official Language Standard: v1.1.0-RC (AD-2026-001)</div>
+    <p class="subtitle">An open, human-first constructed literary language engineered for clear expression, transparent semantics, and poetic elegance.</p>
+  </header>
+
+  <main>
+    <!-- Section 1: Introduction & Dialogue -->
+    <section id="overview">
+      <h2>1. The Language at a Glance</h2>
+      <p><strong>Alei</strong> is created for human speakers, writers, and learners. It balances a productive root inventory with an analytical attribute layer, allowing speakers to describe novel or intricate concepts without opaque jargon.</p>
+      
+      <div class="dialogue-box">
+        <div class="dialogue-turn">
+          <span class="speaker">Speaker A:</span> <span class="alei-text">Alei! Sai süli le?</span>
+          <div class="ipa-text">[aˈlei̯ | sai̯ ˈsy.li le]</div>
+          <div class="trans-text">"Hello! Are you well?" / "Merhaba! İyi misin?"</div>
+        </div>
+        <div class="dialogue-turn">
+          <span class="speaker">Speaker B:</span> <span class="alei-text">Alei! Mei süli. Sai yelen ke miraven Meian le?</span>
+          <div class="ipa-text">[aˈlei̯ | mei̯ ˈsy.li || sai̯ ˈje.len ke miˈra.ven ˈmei̯.an le]</div>
+          <div class="trans-text">"Hello! I am well. Can you help me?" / "Merhaba! Ben iyiyim. Bana yardım edebilir misin?"</div>
+        </div>
+        <div class="dialogue-turn">
+          <span class="speaker">Speaker A:</span> <span class="alei-text">Ei, Mei yelen ke miraven Saian. Süli vel!</span>
+          <div class="ipa-text">[ei̯ | mei̯ ˈje.len ke miˈra.ven ˈsai̯.an || ˈsy.li vel]</div>
+          <div class="trans-text">"Yes, I can help you. Have a safe journey!" / "Evet, sana yardım edebilirim. Yolun açık olsun!"</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Core Principles -->
+    <section id="principles">
+      <h2>2. What Makes Alei Unique?</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Human First</h3>
+          <p>Children, novelists, and everyday conversationalists can use Alei naturally. It is not an artificial AI-only protocol.</p>
+        </div>
+        <div class="card">
+          <h3>Transparent Semantics</h3>
+          <p>Describe objects analytically: <code>meyar-ro-yenar-li-reş-ze-selim</code> (tree-fruit, typically red and sweet) communicates clear perceptual features.</p>
+        </div>
+        <div class="card">
+          <h3>Governed Evolution</h3>
+          <p>Language rules evolve through transparent RFCs and owner decisions. No invented roots pass silently into the canon.</p>
+        </div>
+        <div class="card">
+          <h3>Epistemic Honesty</h3>
+          <p>Alei tools reject hallucinated deductions. Unknown names like <code>Jajaya</code> require explicit definitions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Interactive Lexicon Explorer -->
+    <section id="explorer">
+      <h2>3. Interactive Lexicon Explorer</h2>
+      <p>Search verified Alei v1.1.0 roots and owner-approved terms directly in your browser:</p>
+      <input type="text" id="lex-search" class="search-input" placeholder="Type an Alei word or Turkish/English gloss (e.g. mirav, door, su, yıldız)...">
+      <div id="lex-results" class="search-results"></div>
+    </section>
+
+    <!-- Section 4: Quickstart -->
+    <section id="quickstart">
+      <h2>4. Get Started in 60 Seconds</h2>
+      <p>Clone the open source repository and test the command-line interface:</p>
+      <pre><code># Clone and install in editable mode
+git clone https://github.com/egecagintepe/alei-language.git
+cd alei-language
+python -m pip install -e .
+
+# Look up the approved help root Mirav in v1.1.0
+python -m alei_language.cli lookup mirav --version 1.1.0
+
+# Parse a full sentence with valency checking
+python -m alei_language.cli parse-ast "Mei da sileven tüvanan." --version 1.1.0</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>Alei Language Project &copy; 2026. Code licensed under <a href="../../LICENSE">Apache-2.0</a>; Documentation under <a href="../../LICENSE-DOCS">CC BY 4.0</a>.</p>
+    <p><a href="https://github.com/egecagintepe/alei-language">GitHub Repository</a> &middot; <a href="../../README.md">English README</a> &middot; <a href="../../README.tr.md">Türkçe Giriş</a> &middot; <a href="../../docs/start-here.md">Start Here</a></p>
+  </footer>
+
+  <script>
+    const LEXICON = [
+      { alei: "Alei", pos: "greeting / proper", en: "hello / official language name", tr: "merhaba / dilin resmî adı", status: "owner_approved" },
+      { alei: "Mirav", pos: "root", en: "help / aid", tr: "yardım", status: "owner_approved (v1.1)" },
+      { alei: "Miraven", pos: "verb", en: "to help / assist", tr: "yardım etmek", status: "owner_approved (v1.1)" },
+      { alei: "Mivav", pos: "root (legacy)", en: "help (v1.0 alias)", tr: "yardım (eski biçim)", status: "legacy_alias" },
+      { alei: "Lüra", pos: "root", en: "door / portal", tr: "kapı", status: "canonical_v1.0" },
+      { alei: "Vel", pos: "root", en: "path / way", tr: "yol", status: "canonical_v1.0" },
+      { alei: "Vümar", pos: "root", en: "bridge / crossing", tr: "köprü", status: "canonical_v1.0" },
+      { alei: "Dei", pos: "root", en: "star", tr: "yıldız", status: "canonical_v1.0" },
+      { alei: "Pemar", pos: "root", en: "light / brightness", tr: "ışık / aydınlık", status: "canonical_v1.0" },
+      { alei: "Liman", pos: "root", en: "stone / rock", tr: "taş", status: "canonical_v1.0" },
+      { alei: "Sel", pos: "root", en: "water / fluid", tr: "su", status: "canonical_v1.0" },
+      { alei: "Meyar", pos: "root", en: "fruit", tr: "meyve", status: "canonical_v1.0" },
+      { alei: "Tüvan", pos: "root", en: "tool / instrument", tr: "alet / gereç", status: "canonical_v1.0" },
+      { alei: "Ena", pos: "root", en: "person / human entity", tr: "insan / kişi", status: "canonical_v1.0" },
+      { alei: "Sül", pos: "root", en: "goodness / wellness", tr: "iyilik", status: "canonical_v1.0" },
+      { alei: "Süli", pos: "quality", en: "good / well", tr: "iyi", status: "canonical_v1.0" },
+      { alei: "Sülar", pos: "root", en: "surprise / awe", tr: "şaşkınlık", status: "canonical_v1.0" },
+      { alei: "Sülari", pos: "quality", en: "surprised / astonished", tr: "şaşkın", status: "canonical_v1.0" },
+      { alei: "Nesal", pos: "root", en: "losing action", tr: "kaybetme", status: "canonical_v1.0" },
+      { alei: "Nesalen", pos: "verb", en: "to lose (transitive)", tr: "kaybetmek", status: "canonical_v1.0" },
+      { alei: "Hüvar", pos: "root", en: "search / pursuit", tr: "arama", status: "canonical_v1.0" },
+      { alei: "Hüvaren", pos: "verb", en: "to search / seek", tr: "aramak", status: "canonical_v1.0" },
+      { alei: "Fal", pos: "root", en: "opening action", tr: "açılma", status: "canonical_v1.0" },
+      { alei: "Fali", pos: "quality (prop)", en: "open (stative property)", tr: "açık (durum)", status: "proposed_vnext" },
+      { alei: "Pol", pos: "root (prop)", en: "opposite / contrary", tr: "karşıt / zıt", status: "proposed_vnext" },
+      { alei: "Gor", pos: "root (prop)", en: "direction / vector", tr: "yön / istikamet", status: "proposed_vnext" },
+      { alei: "Bav", pos: "root (prop)", en: "dawn / daybreak", tr: "şafak / seher", status: "proposed_vnext" },
+      { alei: "Tem", pos: "root (prop)", en: "moment / instant", tr: "an / lahza", status: "proposed_vnext" },
+      { alei: "Şul", pos: "root (prop)", en: "silence / quietness", tr: "sessizlik", status: "proposed_vnext" },
+      { alei: "Kan", pos: "root (prop)", en: "song / melody", tr: "ezgi / şarkı", status: "proposed_vnext" },
+      { alei: "Yan", pos: "root (prop)", en: "error / mistake", tr: "yanılgı / hata", status: "proposed_vnext" }
+    ];
+
+    const input = document.getElementById('lex-search');
+    const results = document.getElementById('lex-results');
+
+    function render(items) {
+      if (!items.length) {
+        results.innerHTML = '<div style="padding: 1rem; color: var(--text-muted); text-align: center;">No matching words found.</div>';
+        return;
+      }
+      results.innerHTML = items.map(item => `
+        <div class="result-item">
+          <div>
+            <span class="result-word">${item.alei}</span>
+            <small style="color: var(--accent); margin-left: 0.5rem;">(${item.pos})</small>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">${item.tr} &middot; <em>${item.en}</em></div>
+          </div>
+          <span style="font-size: 0.75rem; padding: 0.2rem 0.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 4px;">${item.status}</span>
+        </div>
+      `).join('');
+    }
+
+    render(LEXICON.slice(0, 8));
+
+    input.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      if (!q) {
+        render(LEXICON.slice(0, 8));
+        return;
+      }
+      const matches = LEXICON.filter(item =>
+        item.alei.toLowerCase().includes(q) ||
+        item.en.toLowerCase().includes(q) ||
+        item.tr.toLowerCase().includes(q)
+      );
+      render(matches);
+    });
+  </script>
+</body>
+</html>

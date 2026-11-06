@@ -172,3 +172,251 @@ def parse_sentence(text, version='1.0'):
     """Version-aware parser; report legacy spelling without rewriting input."""
     version=resolve_version(version)
     return _with_compatibility_warnings(_parse_sentence(text,version),text,version)
+
+from .ast import SentenceAST, TokenNode, PredicateFrame, ArgumentRole
+from .valency import evaluate_valency, get_valency_frame
+
+def parse_alei(text, version='1.0', mode='standard'):
+    """Principled, typed AST analysis of Alei expressions.
+
+    Returns a SentenceAST with explicit status:
+    - 'supported': fully recognized within the grammar model and argument frames
+    - 'ambiguous': multiple syntactically valid parses exist
+    - 'unsupported': outside recognized sentence patterns or ungrammatical
+    - 'contradictory': mutually exclusive markers or contradictory semantic assertions
+    - 'unknown_lexeme': contains roots/stems unrecorded in standard or legal derivations
+
+    mode='standard' enforces canonical rules only.
+    mode='experimental' enables RFC-2026-001 candidates (middle voice particle 'se',
+    concessive 'şe-el', subjectless imperatives, quotatives).
+    """
+    version = resolve_version(version)
+    if not isinstance(text, str) or not text.strip():
+        return SentenceAST(
+            status='unsupported',
+            construction='empty',
+            raw_text=str(text),
+            version=version,
+            diagnostics=['Expected non-empty text input.']
+        )
+
+    s = normalize(text).strip()
+
+    # Step 1: Lexical verification and unknown lexeme detection
+    words_clean = re.findall(r"[^\W\d_]+", s, re.UNICODE)
+    recognized_particles = {
+        'mei','sai','eli','meina','saina','elina','elar','elarna',
+        'keli','vena','miva','orai','vela','hiva','vera','mivan','veran',
+        'le','ke','ve','lo','ta','ra','şe','el','lia','da','va','ne','du','fa','su','se','şe-el','teli'
+    }
+    unknowns = []
+    for w in words_clean:
+        if w in recognized_particles:
+            continue
+        rec = lookup(w, version=version)
+        if not rec:
+            an = analyze(w, version=version)
+            if an.get('status') == 'unknown':
+                unknowns.append(w)
+    if unknowns:
+        return SentenceAST(
+            status='unknown_lexeme',
+            construction='unrecognized_lexemes',
+            raw_text=text,
+            version=version,
+            diagnostics=[f"Unregistered or unrecognizable lexeme(s): {', '.join(unknowns)}."],
+            warnings=["Alei grammar does not guess arbitrary unrecorded words without shared definitions."]
+        )
+
+    # Step 2: Experimental Quotative direct speech
+    if mode == 'experimental' and (':' in text and any(q in text for q in ('"', '“', '”'))):
+        match = re.match(r'^(.*?)\s*:\s*["“](.*?)["”][.!?]?\s*$', text.strip())
+        if match:
+            matrix_clause, quote_clause = match.groups()
+            m_words = normalize(matrix_clause).split()
+            if len(m_words) >= 2 and any(w in ('vesen', 'ves') for w in m_words):
+                sub_ast = parse_alei(quote_clause, version=version, mode=mode)
+                subj = m_words[0] if m_words[0] in PRONOUNS else 'unmarked_speaker'
+                return SentenceAST(
+                    status='supported' if sub_ast.status in ('supported', 'ambiguous') else 'unsupported',
+                    construction='quotative',
+                    speech_act='quotation',
+                    subject=subj,
+                    raw_text=text,
+                    version=version,
+                    is_experimental=True,
+                    diagnostics=[f"Quotative frame with speech verb '{m_words[-1]}'; embedded quote status: {sub_ast.status}."],
+                    predicate=PredicateFrame(
+                        verb_lemma='vesen',
+                        valency_class='communicative',
+                        arguments=[
+                            ArgumentRole(role='Agent', value=subj, is_overt=True),
+                            ArgumentRole(role='Message', value=quote_clause, is_overt=True)
+                        ],
+                        valency_satisfied=True
+                    )
+                )
+
+    # Step 3: Experimental Concessive conditional (şe-el)
+    if mode == 'experimental' and (s.startswith('şe-el ') or s.startswith('se-el ')):
+        body = s[len('şe-el '):].strip()
+        parts = [p.strip() for p in re.split(r'[,;]', body) if p.strip()]
+        if len(parts) >= 2:
+            cond_ast = parse_alei(parts[0], version=version, mode=mode)
+            main_ast = parse_alei(parts[1], version=version, mode=mode)
+            status = 'supported' if cond_ast.status in ('supported', 'ambiguous') and main_ast.status in ('supported', 'ambiguous') else 'unsupported'
+            return SentenceAST(
+                status=status,
+                construction='concessive_conditional',
+                speech_act=main_ast.speech_act,
+                mood='concessive',
+                subject=main_ast.subject,
+                raw_text=text,
+                version=version,
+                is_experimental=True,
+                diagnostics=["Concessive conditional compound 'şe-el' ('even if / olsa bile')."]
+            )
+
+    # Step 4: Experimental Imperative / Hortative
+    if mode == 'experimental' and (text.strip().endswith('!') or text.strip().endswith('.')):
+        s_clean = s.rstrip('.! ')
+        w = s_clean.split()
+        neg = False
+        if w and w[0] == 'ne':
+            neg = True
+            w = w[1:]
+        if len(w) == 1 and any(r['part_of_speech'] == 'verb' for r in lookup(w[0], version=version)):
+            verb = w[0]
+            val = evaluate_valency(verb, {'Agent': 'implied_2nd_person'})
+            return SentenceAST(
+                status='supported',
+                construction='imperative',
+                speech_act='imperative',
+                polarity=not neg,
+                mood='imperative',
+                subject='implied_2nd_person',
+                raw_text=text,
+                version=version,
+                is_experimental=True,
+                predicate=PredicateFrame(
+                    verb_lemma=verb,
+                    voice='active',
+                    valency_class=val.get('frame_class', 'transitive'),
+                    arguments=[ArgumentRole(role='Agent', value='implied_2nd_person', is_overt=False, is_implied=True)],
+                    valency_satisfied=True
+                ),
+                diagnostics=["Subjectless imperative speech act; addressee implied (2nd person)."]
+            )
+
+    # Step 5: Experimental Middle Voice (se)
+    if mode == 'experimental' and ' se ' in (' ' + s + ' '):
+        raw_mod = re.sub(r'\bse\b', '', s)
+        raw_mod = re.sub(r'\s+', ' ', raw_mod).strip()
+        w_mod = raw_mod.rstrip('.!?').split()
+        if len(w_mod) >= 2:
+            subj = w_mod[0]
+            verb = w_mod[-1]
+            if any(r['part_of_speech'] == 'verb' for r in lookup(verb, version=version)):
+                val = evaluate_valency(verb, {'Patient': subj}, voice='middle')
+                neg = 'ne' in w_mod
+                tense = 'past' if 'da' in w_mod else ('future' if 'va' in w_mod else 'unmarked')
+                aspect = 'progressive' if 'du' in w_mod else ('completed' if 'fa' in w_mod else ('habitual' if 'su' in w_mod else 'unmarked'))
+                return SentenceAST(
+                    status='supported' if val['valency_satisfied'] else 'unsupported',
+                    construction='verbal',
+                    speech_act='assertion',
+                    polarity=not neg,
+                    tense=tense,
+                    aspect=aspect,
+                    mood='indicative',
+                    subject=subj,
+                    raw_text=text,
+                    version=version,
+                    is_experimental=True,
+                    predicate=PredicateFrame(
+                        verb_lemma=verb,
+                        voice='middle',
+                        valency_class=val.get('frame_class', 'transitive'),
+                        arguments=[ArgumentRole(role='Patient', value=subj, is_overt=True)],
+                        valency_satisfied=val['valency_satisfied'],
+                        valency_notes=val['notes']
+                    ),
+                    diagnostics=["Experimental middle voice particle 'se' promoting Patient to subject position."] + val['notes']
+                )
+
+    # Step 6: Standard sentence parsing
+    raw_res = _with_compatibility_warnings(_parse_sentence(text, version=version), text, version)
+    status_raw = raw_res.get('status')
+    warnings = raw_res.get('warnings', [])
+
+    if status_raw == 'parsed':
+        an = raw_res['analysis']
+        const = an.get('construction', 'verbal')
+        subj = an.get('subject')
+        neg = an.get('negation', False)
+        tense = an.get('tense', 'unmarked')
+        aspect = an.get('aspect', 'unmarked')
+        is_q = an.get('question', False)
+
+        ast = SentenceAST(
+            status='supported',
+            construction=const,
+            speech_act='question' if is_q else 'assertion',
+            polarity=not neg,
+            tense=tense,
+            aspect=aspect,
+            subject=subj,
+            raw_text=text,
+            version=version,
+            warnings=warnings,
+            diagnostics=[f"Standard recognized construction '{const}'."]
+        )
+
+        if const == 'verbal' and an.get('verb'):
+            verb = an['verb']
+            obj = an.get('object')
+            overt_roles = {}
+            if subj:
+                overt_roles['Agent'] = subj
+            if obj:
+                overt_roles['Patient'] = obj
+            val = evaluate_valency(verb, overt_roles)
+            ast.predicate = PredicateFrame(
+                verb_lemma=verb,
+                voice='active',
+                valency_class=val.get('frame_class', 'transitive'),
+                arguments=[
+                    ArgumentRole(role=val.get('subject_role', 'Agent'), value=subj, is_overt=bool(subj)),
+                    ArgumentRole(role='Patient', value=obj, is_overt=bool(obj), is_omitted=not bool(obj))
+                ],
+                valency_satisfied=val['valency_satisfied'],
+                valency_notes=val['notes']
+            )
+            if val['status'] == 'valency_clash':
+                ast.status = 'unsupported'
+                ast.diagnostics.append("Valency defect: Obligatory patient omitted in transitive clause without middle voice.")
+            elif not val['valency_satisfied']:
+                ast.diagnostics.extend(val['notes'])
+
+        return ast
+
+    elif status_raw == 'ambiguous':
+        return SentenceAST(
+            status='ambiguous',
+            construction='ambiguous',
+            raw_text=text,
+            version=version,
+            warnings=warnings,
+            ambiguities=raw_res.get('candidates', []),
+            diagnostics=[raw_res.get('reason', 'Multiple syntactic analyses exist for this surface string.')]
+        )
+    else:
+        return SentenceAST(
+            status='unsupported',
+            construction='unsupported',
+            raw_text=text,
+            version=version,
+            warnings=warnings,
+            diagnostics=[raw_res.get('reason', 'Input string falls outside supported grammatical constructions.')]
+        )
+

@@ -1,0 +1,54 @@
+name: Grammar Gap Report
+description: Report a grammatical friction point, missing voice/aspect distinction, or scope ambiguity in Alei.
+title: "[Grammar Gap]: "
+labels: ["grammar", "linguistics", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve Alei's expressiveness and precision.
+        All proposals remain experimental until explicitly approved by the language owner.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Grammatical Problem Description
+      description: What linguistic concept or structural contrast cannot currently be expressed cleanly in Alei?
+      placeholder: e.g. Transitive verbs cannot express an inchoative middle state (getting lost vs losing something).
+    validations:
+      required: true
+  - type: textarea
+    id: example_sentence
+    attributes:
+      label: Observed or Proposed Alei Sentence
+      description: The sentence illustrating the issue or friction.
+      placeholder: e.g. Vel ne va nesalen.
+    validations:
+      required: true
+  - type: textarea
+    id: intended_meaning
+    attributes:
+      label: Intended Meaning (Turkish & English)
+      description: What did the speaker or author want to communicate?
+      placeholder: "TR: Yol kaybolmayacak.\nEN: The path will not be lost / will not disappear."
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Grammatical Mechanism Category
+      options:
+        - Valency & Voice (transitive, intransitive, middle, passive, causative)
+        - Negation & Scope (never vs did not, coordination scope)
+        - Aspect, Tense & Modality (state vs event, progressive, habitual, counterfactual)
+        - Condition & Contrast (concessive even-if, conditional if, adversative but)
+        - Quantification & Reference (number agreement, partitives, focus scope)
+        - Spatial & Event Relations (opposite vectors, surfaces vs containment)
+        - Speech Acts & Pragmatics (imperatives, quotations, politeness)
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Minimal Viable Remedy (Optional)
+      description: Do you have a proposed candidate particle, derivation, or compound using existing roots?
