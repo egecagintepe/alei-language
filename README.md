@@ -48,6 +48,45 @@ A: Ei, Mei yelen ke miraven Saian. Süli vel!
 
 ## 2. What Makes Alei Interesting?
 
+```text
+┌────────────────────────────────────────────────────────────────────────┐
+│                      Alei Architecture Overview                        │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │
+    ┌───────────────────────────────┴───────────────────────────────┐
+    │                                                               │
+    ▼                                                               ▼
+┌───────────────────────────────┐       ┌───────────────────────────────┐
+│     Human Literary Core       │       │  Transparent Semantics Layer  │
+│  - 270 attested roots         │       │  - Analytical descriptions    │
+│  - 28-letter Latin alphabet   │       │  - HEAD-ROLE-VALUE structure  │
+│  - Penultimate syllable stress│       │  - Ontological type safety    │
+│  - Regular -en, -i, -na, -an  │       │  - Rejects unknown guessing   │
+└───────────────┬───────────────┘       └───────────────┬───────────────┘
+                │                                       │
+                └───────────────────┬───────────────────┘
+                                    │
+                                    ▼
+┌───────────────────────────────────────────────────────────────────────┐
+│                      Alei Analysis & AST Engine                       │
+│  - Typed SentenceAST (IR) with explicit ambiguity classification      │
+│  - Machine-readable verbal valency frames and voice checking          │
+│  - Deterministic 58-test verification suite                           │
+└───────────────────────────────────┬───────────────────────────────────┘
+                                    │
+                    ┌───────────────┴───────────────┐
+                    ▼                               ▼
+┌───────────────────────────────────────┐   ┌───────────────────────────┐
+│      Human Writing & Agent Skills     │   │   Academic Research Lab   │
+│  - 7 procedural skills                │   │  - Alei-Bench (6 tasks)   │
+│  - Poetry, dialogue, and prose        │   │  - Blind transmission v2  │
+│  - RFC-based owner governance         │   │  - Epistemic calibration  │
+└───────────────────────────────────────┘   └───────────────────────────┘
+                    │
+                    ▼
+    [AleiFlow is an isolated experimental programming-language track]
+```
+
 1. **Root Economy with Productive Morphology:** A carefully conserved vocabulary of 270 attested roots forms the foundation for regular noun, verb (`-en`), adjective (`-i`), and plural (`-na`) inflections.
 2. **Transparent Open Semantics:** Beyond everyday vocabulary, complex or unfamiliar concepts can be composed analytically using hyphenated `HEAD-ROLE-VALUE` expressions. For instance:
    - `meyar` = fruit
@@ -55,6 +94,7 @@ A: Ei, Mei yelen ke miraven Saian. Süli vel!
    *This does not magically claim to define every real-world apple, but it transparently communicates key perceptual properties.*
 3. **Epistemic Discipline:** Alei tools explicitly reject arbitrary name deduction. An unknown term like `Jajaya` cannot be inferred without a shared definition.
 4. **Governed Human Language Evolution:** Language rules, roots, and official decisions follow a strict, public human-governed RFC process.
+5. **Academic Research Foundation:** Explore our [Research Workspace](research/README.md) including the [Literature Survey](research/literature-survey.md), [Alei-Bench Specification](research/benchmark-design.md), and [2026–2027 Publication Roadmap](research/roadmap.md).
 
 ---
 

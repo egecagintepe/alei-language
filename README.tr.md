@@ -48,6 +48,45 @@ A: Ei, Mei yelen ke miraven Saian. Süli vel!
 
 ## 2. Alei'yi İlginç Kılan Nedir?
 
+```text
+┌────────────────────────────────────────────────────────────────────────┐
+│                        Alei Mimari Genel Bakışı                        │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │
+    ┌───────────────────────────────┴───────────────────────────────┐
+    │                                                               │
+    ▼                                                               ▼
+┌───────────────────────────────┐       ┌───────────────────────────────┐
+│       İnsan Edebi Çekirdeği   │       │   Şeffaf Anlambilim Katmanı   │
+│  - 270 onaylı kök             │       │  - Analitik tanımlar          │
+│  - 28 harfli Latin alfabesi   │       │  - BAŞ-ROL-DEĞER yapısı       │
+│  - Sondan bir önceki hece vurgusu│    │  - Ontolojik tip güvenliği    │
+│  - Düzenli -en, -i, -na, -an  │       │  - Ezbere tahmini reddeder    │
+└───────────────┬───────────────┘       └───────────────┬───────────────┘
+                │                                       │
+                └───────────────────┬───────────────────┘
+                                    │
+                                    ▼
+┌───────────────────────────────────────────────────────────────────────┐
+│                     Alei Analiz ve AST Motoru                         │
+│  - Belirsizlik sınıflandırmalı tipli SentenceAST (IR)                 │
+│  - Makinece okunur fiil valans çerçeveleri ve çatı denetimi           │
+│  - 58 testlik deterministik doğrulama paketi                          │
+└───────────────────────────────────┬───────────────────────────────────┘
+                                    │
+                    ┌───────────────┴───────────────┐
+                    ▼                               ▼
+┌───────────────────────────────────────┐   ┌───────────────────────────┐
+│     İnsan Yazımı ve Agent Skills      │   │    Akademik Araştırma Lab │
+│  - 7 prosedürel beceri                │   │  - Alei-Bench (6 görev)   │
+│  - Şiir, diyalog ve düzyazı           │   │  - Kör çeviri paketi v2   │
+│  - RFC tabanlı sahip yönetişimi       │   │  - Epistemik kalibrasyon  │
+└───────────────────────────────────────┘   └───────────────────────────┘
+                    │
+                    ▼
+     [AleiFlow ayrı, deneysel bir programlama dili çalışma hattıdır]
+```
+
 1. **Kök Ekonomisi ve Üretken Morfoloji:** Özenle korunan 270 onaylı kök; düzenli isim, fiil (`-en`), sıfat (`-i`) ve çoğul (`-na`) çekimleriyle geniş bir anlatım alanı sağlar.
 2. **Şeffaf Açık Anlambilim:** Gündelik sözcüklerin ötesinde, karmaşık veya yeni kavramlar tireli `BAŞ-ROL-DEĞER` kalıplarıyla çözümlenebilir:
    - `meyar` = meyve
@@ -55,6 +94,7 @@ A: Ei, Mei yelen ke miraven Saian. Süli vel!
    *Bu dizilim dünyadaki her elmayı kesin olarak tek başına karşıladığını iddia etmez; ancak nesnenin temel algısal özelliklerini berrak biçimde aktarır.*
 3. **Epistemik Disiplin:** Alei araçları, tanımlanmamış kökler hakkında dayanaksız tahmin yürütmeyi (`Jajaya` gibi) reddeder. Paylaşılan bir tanım yoksa sistem zorlama anlam uydurmaz.
 4. **Yönetişimli Dil Gelişimi:** Dilin kuralları ve yeni kökleri, insan dil sahibinin resmî karar mekanizmasıyla (RFC ve AD kararları) güvenle ilerler.
+5. **Akademik Araştırma Altyapısı:** [Araştırma Çalışma Alanı](research/README.md), [Literatür Taraması](research/literature-survey.md), [Alei-Bench Spesifikasyonu](research/benchmark-design.md) ve [2026–2027 Yayın Yol Haritası](research/roadmap.md) incelenebilir.
 
 ---
 
