@@ -26,13 +26,13 @@ A: Alei! Sai süli le?
    "Merhaba! İyi misin?"
    (merhaba | sen iyi-SIFAT SORU)
 
-B: Alei! Mei süli. Sai yelen ke miraven Meian le?
-   [aˈlei̯ | mei̯ ˈsy.li || sai̯ ˈje.len ke miˈra.ven ˈmei̯.an le]
+B: Alei! Mei süli. Sai yelen ke miraven mein le?
+   [aˈlei̯ | mei̯ ˈsy.li || sai̯ ˈje.len ke miˈra.ven mei̯n le]
    "Merhaba! Ben iyiyim. Bana yardım edebilir misin?"
    (merhaba | ben iyi-SIFAT || sen yapabilmek-FİİL Kİ yardım-etmek-FİİL ben-BELİRTME SORU)
 
-A: Ei, Mei yelen ke miraven Saian. Süli vel!
-   [ei̯ | mei̯ ˈje.len ke miˈra.ven ˈsai̯.an || ˈsy.li vel]
+A: Ei, Mei yelen ke miraven sain. Süli vel!
+   [ei̯ | mei̯ ˈje.len ke miˈra.ven sai̯n || ˈsy.li vel]
    "Evet, sana yardım edebilirim. Yolun açık olsun!"
    (evet | ben yapabilmek-FİİL Kİ yardım-etmek-FİİL sen-BELİRTME || iyi-SIFAT yol)
 ```

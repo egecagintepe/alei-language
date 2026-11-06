@@ -29,23 +29,26 @@ The previous L5.1 report conjectured interpretations without the original test s
    - The models did NOT engage in a mutual hallucinatory echo chamber regarding canonical vocabulary. Both ChatGPT and Gemini correctly understood and translated canonical roots: `Nave` (city), `vürelen` (fear), `aremen` (think), and `nivaren` (learn).
 
 ### 1.2 Genuine Observed Shortcomings in the Pilot Trial
-While basic lexical recognition succeeded for attested roots, the pilot revealed four severe structural and communicative failures:
+While basic lexical recognition succeeded for attested roots, the pilot revealed critical structural and communicative challenges:
 
 1. **Catastrophic Encoder Information Omission (The Lexical Bottleneck):**
    Because Alei v1.1 lacked words for common literary, relational, and adverbial concepts, Agent A dropped entire clauses and modifiers rather than explaining them:
    - In K1.3, the entire patient ("yıldızları saymadım; sönmüş olanı") was omitted (`Mei ne da belemen. Mei da hüvaren.`), leaving Gemini with unexpressed objects.
    - In K1.4, four critical elements ("kaybolan", "bazen", "yön", "göstermek") were dropped (`Sira pemar el da yelen ke miraven.`).
-   - In K5.4, an entire complex antithetical clause (*"Bir harita doğruydu, fakat yanlış bir yeri gösteriyordu"*) was reduced to `Ena nerav.` (A model), discarding over 85% of the proposition!
-2. **Uncanonical Vocabulary Inventions by Agent A:**
-   When unable to find words, Agent A coined unapproved terms directly in the test output:
-   - `miŋ` (sound/voice) in K4 (`Sira miŋ ne Meina ri miŋ.`).
-   - `dumen` (extinguish/close) in K5 (`Şe Sai dumen...`).
+   - In K5.4, the entire antithetical subordinate clause (*"Bir harita doğruydu, fakat yanlış bir yeri gösteriyordu"*) was reduced to `Ena nerav.` (A model), discarding the essential proposition and truth condition.
+2. **Lexical Overextension of Canonical Roots by Agent A:**
+   When faced with vocabulary gaps, Agent A utilized attested roots beyond their precise canonical definitions:
+   - In K4.4, Agent A used canonical `Miŋ` (roots:448, "ses titreşimi" / sound vibration) directly for voice/inner speech (`Sira miŋ ne Meina ri miŋ.`). `Miŋ` is an attested canonical root, not an invented word, but its canonical anchor is physical vibration rather than personal utterance.
+   - In K5.1, Agent A used canonical `Dumen` (roots:517 `Dum`, lexemes:797 "kapatmak" / to close) for extinguishing a lamp (`Şe Sai dumen...`). `Dumen` is an attested canonical verb, not an invented word, but closing a device/portal and extinguishing a flame are distinct concepts.
 3. **Grammatical Underspecification & Valency Clash:**
    - In K5.1, `vel ne va nesalen` placed the Theme/Patient in subject position with transitive verb `nesalen`, producing a valency clash. Gemini detected this ambiguity, noting *"yol kaybolmayacak (kaybetmeyecek)"*.
    - In K1.1 and K4.3, stative predicates were expressed via action noun + postposition (`lüra fal ve`), obscuring aspectual distinctions.
    - In K4.1, concessive "Korksan da" was collapsed into simple conditional `şe` ("Eğer korkarsan").
-4. **Poorly Calibrated Model Confidence:**
-   Gemini reported subjective self-confidence of 95–99% while translating strings that had lost massive portions of the source poem's semantic content.
+4. **Disentangling Encoder Information Loss from Decoder Capability:**
+   - Gemini was supplied *strictly* with the Alei output of Agent A, completely blinded to the original Turkish source.
+   - Relative to the degraded Alei strings it received, Gemini's interpretations were predominantly accurate decodings of the explicit surface tokens (e.g., `Meina da nivaren.` -> "Biz öğrendik", `Nave ri növi lürana. Teli lüra fal ve.` -> "Şehrin yedi kapısı. Üç kapı açık.").
+   - Gemini cannot be judged poorly calibrated for omitting source propositions (e.g., "yıldızları saymadım") that Agent A never encoded into the input Alei text.
+   - Gemini demonstrated valid linguistic discrimination: detecting the transitive valency clash on `vel ne va nesalen`, noting both readings: *"yol kaybolmayacak (kaybetmeyecek)"*.
 
 ---
 
@@ -63,18 +66,18 @@ The following table documents every observed line across the pilot trial, aligni
 | **K2.2** | Oysa sözün sahibi ben değil, onu duyanlardı. | `Lia Mei ne mehaven vesan. Elina da tiren vesan.` | Ama söz elimde değil (söze sahip değilim). Onlar sözü duydu. | Sözün sahibi konuşucu değil, dinleyenler. | `Lia` (ama), `Mei ne mehaven` (sahip değilim), `Elina da tiren` (onlar duydu). | "Ama söz elimde değil. Onlar sözü duydu." | `lia` (functions:1073), `mehaven` (roots:438, sahip olmak), `tiren` (roots:449, duymak). | Başarılı anlamsal aktarım. |
 | **K2.3** | Bir taşın üstüne adımı değil, hatamı yazdım, | `Mei ne da yelaren Mei ri siman liman lo. Mei da yelaren liman lo.` | Benim adımı taşa yazmadım. Taşa yazdım. | Taşa adını değil, hatasını yazma eylemi. | `Mei ne da yelaren Mei ri siman` (adımı yazmadım). **"Hata" sözcüğü atıldı!** İkinci cümlede sadece taşa yazdım dendi. | "Benim adımı taşa yazmadım. Taşa yazdım." | `yelaren` (roots:509, yazmak), `siman` (roots:457, işaret/ad), `liman` (roots:456, taş). | "Hata" kökü v1.1'de olmadığı için Encoder nesneyi düşürdü. |
 | **K2.4** | Yağmur adı sildi; hata taşta kaldı. | `Nuşa da nüselen siman. Liman lo.` | Yağmur adı temizledi. Taşta. | Yağmurun adı silmesi; hatanın taşta kalması. | `Nuşa da nüselen siman` (yağmur adı sildi), `Liman lo` (taşta). "Hata kaldı" önermesi atıldı. | "Yağmur adı temizledi. Taşta." | `nuşa` (roots:517, yağmur), `nüselen` (roots:538, temizlemek). | `Liman lo.` eksiltili parça. |
-| **K3.1** | İki dost, aynı köprüye ayrı uçlardan vardı; | `Davi samel da pürelen vümar ta.` | İki dost köprüye geldi. | İki dostun aynı köprüye zıt uçlardan ulaşması. | `davi samel` (iki dost/aynı), `pürelen vümar ta` (köprüye vardı). **"ayrı uçlardan" vektörü atıldı.** | "İki dost köprüye geldi." | `davi` (functions:1101), `samel` (roots:440), `pürelen` (roots:431), `vümar` (roots:501). | Karşıtlık kökü eksikliği sebebiyle yön vektörü kayboldu. |
+| **K3.1** | İki dost, aynı köprüye ayrı uçlardan vardı; | `Davi samel da pürelen vümar ta.` | İki dost köprüye geldi. | İki dostun aynı köprüye zıt uçlardan ulaşması. | `davi samel` (iki dost), `pürelen vümar ta` (köprüye vardı). **"aynı" ve "ayrı uçlardan" vektörü atıldı.** | "İki dost köprüye geldi." | `davi` (functions:1101), `samel` (roots:471, dost/arkadaş), `pürelen` (roots:431), `vümar` (roots:501). | `samel` kanonik olarak "dost/arkadaş"tır; "aynı" veya dönüşlülük anlamı taşımaz. |
 | **K3.2** | Biri geçmek istedi, öteki köprüyü onarmak. | `Ena samel da naelen ke avelen; ena samel da naelen ke lümalen vümaran.` | Bir dost gitmek istedi; bir dost köprüyü onarmak istedi. | Biri geçmek istedi; diğeri köprüyü onarmak. | `avelen` (gitmek), `lümalen vümaran` (köprüyü onarmak) tam korundu. | "Bir dost gitmek istedi; bir dost köprüyü onarmak istedi." | `naelen` (roots:439, istemek), `avelen` (roots:432), `lümalen` (roots:667, onarmak). | Yüksek doğruluk; `lümalen` tam çözüldü. |
 | **K3.3** | “Önce beni dinle,” dedi en sessiz kalan, | `“Tiren Mein!” Eli da vesen.` | “Beni duy (dinle)!” dedi o. | En sessiz olanın "Önce beni dinle" demesi. | `Tiren Mein!` (Beni dinle!), `Eli da vesen` (dedi o). "Önce" ve "en sessiz kalan" atıldı. | "“Beni duy (dinle)!” dedi o." | `tiren` (roots:449, duymak/dinlemek), `mein` (1SG.ACC), `vesen` (söylemek). | Üstünlük derecesi ve zaman zarfı atıldı. |
 | **K3.4** | Ve ikisi de ilk kez cevap vermeden durdu. | `Elina da şürelen. Elina ne da revalen.` | Onlar ayakta durdu (ayağa kalktı). Onlar yanıtlamadı. | İkisinin de ilk kez yanıt vermeden durması. | `şürelen` (ayakta durdu), `ne da revalen` (yanıtlamadı). "İlk kez" ve "ikisi de" atıldı. | "Onlar ayakta durdu. Onlar yanıtlamadı." | `şürelen` (roots:659, ayakta durmak), `revalen` (roots:443, yanıtlamak). | Kanonik kökler tam eşleşti. |
 | **K4.1** | Bize “Korkma,” demediler; “Korksan da düşün,” dediler. | `Elina ne da vesen: “Ne vürelen!” Elina da vesen: “Şe Sai vürelen, aremen!”` | Onlar “Korkma!” demedi. Onlar “Eğer korkarsan, düşün!” dedi. | "Korkma" denmediği; "Korksan bile düşün" dendiği. | `vürelen` (korkmak) ve `aremen` (düşünmek) tam korundu. Ödünleyici "korksan da" koşula (`şe`) indirgendi. | "Onlar 'Korkma!' demedi. Onlar 'Eğer korkarsan, düşün!' dedi." | `vürelen` (roots:502, korkmak), `aremen` (roots:434, düşünmek). | **Kanonik anlamlar korundu.** Şart/ödünleme ayrımı belirsizleşti. |
 | **K4.2** | Cesaretin, korkunun yokluğu olmadığını öğrendik. | `Meina da nivaren.` | Biz öğrendik. | Cesaretin korkunun yokluğu olmadığının öğrenilmesi. | `Meina da nivaren` (öğrendik). **Tüm nesne yan tümcesi ("cesaretin...") atıldı!** | "Biz öğrendik." | `nivaren` (roots:721, öğrenmek). | **Gemini doğru çevirdi ("öğrendik").** Aşırı içerik kaybı. |
 | **K4.3** | Üçüncü gece kapı açıldı, fakat içeri girmedik, | `Lüra fal ve. Lia Meina ne da avelen.` | Kapı açık. Ama biz gitmedik. | 3. gece kapının açılması ama içeri girilmemesi. | `Lüra fal ve` (kapı açık), `Lia... ne da avelen` (ama girmedik). "Üçüncü gece" zamanı atıldı. | "Kapı açık. Ama biz gitmedik." | `lüra` (kapı), `fal` (açılma), `ve` (ile), `avelen` (gitmek). | Zamansal çapa eksikliği; `fal ve` durum calque'ı. |
-| **K4.4** | Çünkü içerideki ses bize ait değildi. | `Sira miŋ ne Meina ri miŋ.` | Çünkü ses, bizim sesimiz değil. | İçerideki sesin konuşuculara ait olmaması. | `sira` (çünkü), `miŋ` (uydurma: ses), `ne Meina ri miŋ` (bizim sesimiz değil). "İçerideki" atıldı. | "Çünkü ses, bizim sesimiz değil." | `miŋ` kanonda yoktur (Agent A tarafından uyduruldu). | Kanon dışı sözcük sızıntısı. |
-| **K5.1** | Eğer son lambayı söndürürsen, yol yine kalır; | `Şe Sai dumen, vel ne va nesalen.` | Eğer kapatırsan, yol kaybolmayacak (kaybetmeyecek). | Son lamba söndürülse bile yolun kalacağı. | `şe Sai dumen` (kapatırsan), `vel ne va nesalen` (yol kaybetmeyecek/kaybolmayacak). "Son lamba" atıldı. | "Eğer kapatırsan, yol kaybolmayacak (kaybetmeyecek)." | `dumen` (kanon dışı/karanlık kökünden), `nesalen` (roots:525, geçişli). | **Gemini valans çatışmasını tespit etti: "(kaybetmeyecek)".** |
+| **K4.4** | Çünkü içerideki ses bize ait değildi. | `Sira miŋ ne Meina ri miŋ.` | Çünkü ses, bizim sesimiz değil. | İçerideki sesin konuşuculara ait olmaması. | `sira` (çünkü), `miŋ` (ses), `ne Meina ri miŋ` (bizim sesimiz değil). "İçerideki" atıldı. | "Çünkü ses, bizim sesimiz değil." | `miŋ` (roots:448, ses titreşimi / sound vibration). | Kanonik köktür (uydurma değildir); iç ses/konuşma için genişletilmiştir. |
+| **K5.1** | Eğer son lambayı söndürürsen, yol yine kalır; | `Şe Sai dumen, vel ne va nesalen.` | Eğer kapatırsan, yol kaybolmayacak (kaybetmeyecek). | Son lamba söndürülse bile yolun kalacağı. | `şe Sai dumen` (kapatırsan), `vel ne va nesalen` (yol kaybetmeyecek/kaybolmayacak). "Son lamba" atıldı. | "Eğer kapatırsan, yol kaybolmayacak (kaybetmeyecek)." | `dumen` (roots:517 Dum, lexemes:797 kapatmak), `nesalen` (roots:525, geçişli). | Kanonik Dumen "kapatmak"tır; lamba söndürmede kullanılmıştır. Gemini valans çatışmasını tespit etti: "(kaybetmeyecek)". |
 | **K5.2** | Ama kimse birbirinin yüzünü seçemeyebilir. | `Lia Elina ne yelen ke liren.` | Ama onlar göremiyor. | Kimsenin diğerinin yüzünü seçememe olasılığı. | `Lia Elina ne yelen ke liren` (ama onlar göremiyor). "Kimse", "birbirinin yüzü" atıldı. | "Ama onlar göremiyor." | `lia` (ama), `elina` (3PL), `yelen` (ebilmek), `liren` (görmek). | Ağır basitleştirme. |
 | **K5.3** | Yol kaybolduğunda değil, adı değiştiğinde şaşırdık; | `Vel ri sima da yümalen. Meina da sülari.` | Yolun adı değişti. Biz şaşkındık (şaşırdık). | Şaşkınlığın yol kaybolunca değil, adı değişince yaşanması. | `Vel ri sima da yümalen` (yolun adı değişti), `Meina da sülari` (şaşırdık). "Yol kaybolduğunda değil" atıldı. | "Yolun adı değişti. Biz şaşkındık (şaşırdık)." | `siman` (ad), `yümalen` (düzeltilmek/değişmek), `sülari` (roots:482, şaşkın). | Zıtlık yan tümcesi atıldı; `sima` imla kusuru. |
-| **K5.4** | Bir harita doğruydu, fakat yanlış bir yeri gösteriyordu. | `Ena nerav.` | Bir model (temsil). | Haritanın doğru olduğu ama yanlış bir yeri gösterdiği. | `Ena nerav.` (Bir model/temsil). **Cümlenin %85'i ("doğruydu, fakat yanlış yeri gösteriyordu") atıldı!** | "Bir model (temsil)." | `ena` (functions:1100), `nerav` (roots:681, model/yapı). | **En vahim encoder kaybı.** Harita ve mekansal doğruluk terimleri eksik. |
+| **K5.4** | Bir harita doğruydu, fakat yanlış bir yeri gösteriyordu. | `Ena nerav.` | Bir model (temsil). | Haritanın doğru olduğu ama yanlış bir yeri gösterdiği. | `Ena nerav.` (Bir model/temsil). **Karşıt yan tümce ve doğruluk koşulu tamamen atıldı!** | "Bir model (temsil)." | `ena` (functions:1100), `nerav` (roots:681, model/yapı). | **En ağır encoder bilgi kaybı.** Harita ve doğruluk yüklemleri eksik olduğu için Encoder tümceyi yalın ad öbeğine indirgedi. |
 
 ---
 
@@ -92,37 +95,42 @@ The following table documents every observed line across the pilot trial, aligni
 - Bütün v1.0 standardı, `roots.jsonl`, `lexemes.jsonl` ve `functions.jsonl` tarandığında:
   - `Sümei` (`roots:496`): Güneş (Sun)
   - `Nüra` (`roots:497`): Ay (Moon)
-  - `Siril` (`roots:549`): Gökyüzü (Sky)
+  - `Siril` (`roots:549`): Gökyüzü (Sky). `Siril` doğrudan yıldız veya gök ışıltısı demek değildir; `siril-pemar` (gök ışığı / gök aydınlığı) betimsel bir tamlama olup garantili tekil bir "yıldız" tanımlayıcısı değildir.
   - `Pemar` (`roots:589`): Parlaklık / Işık (Brightness / Light)
   - **Yıldız (Star) için kanonik bir kök BULUNMAMAKTADIR.**
 - Bu durum resmi olarak **`GAP-LEX-STAR`** sözlük açığı olarak kayda geçirilmiştir.
-- Kanonu bozmadan yıldız kavramını karşılamak için iki meşru yol vardır:
-  1. **Şeffaf Kanonik Bileşik:** `siril-pemar` (gökyüzü ışığı) veya `siril-nüra` (gökyüzü gök cismi).
-  2. **Aday Kök Önerisi:** Dil sahibinin onayına sunulmak üzere candidate root önerisi (örn. `Sir` veya `Pik`).
+- Kanonu bozmadan yıldız kavramını karşılamak için meşru yollar:
+  1. **Şeffaf Kanonik Bileşik:** `siril-pemar` (gök aydınlığı) veya `siril-nüra` (gökyüzü gök cismi).
+  2. **Aday Kök Önerisi:** Dil sahibinin onayına sunulmak üzere bağımsız candidate root önerisi (örn. `Sir` veya `Nur`).
 
 ---
 
 ## 4. Dönüşlü/Edilgen Çatı Stratejilerinin Kapsamlı Karşılaştırması
 
-### 4.1 Çakışma Analizi: `se` ve `ro` Parçacıklarının Durumu
-Önceki taslaklarda dönüşlü çatı için önerilen parçacıkların ikisi de mevcut dilde çakışma üretmiştir:
-1. **`se` Çakışması:** `functions:1080` (§8.6) gereği `se`, kanonik **vasıta/araç edatıdır** (`tüvan se` = aletle). Fiil önünde çatı parçacığı olarak kullanılması yapısal çakışma yaratır.
-2. **`ro` Çakışması:** Standart v1.0 §5.4 ve `data/semantic-roles.json` gereği `ro`, Şeffaf Anlambilim (AAK) katmanında **`source_from` (kaynak)** rolüdür (`meyar-ro-nasel` = ormandan gelen meyve). Bu morfemin dilbilgisi parçacığı yapılması katmanlar arası çakışma üretir.
+### 4.1 Çakışma Analizi ve Dilbilgisel Ayrım
+Önceki taslaklarda çatı kategorileri birbirine karıştırılmış ve çakışmalı morfemler önerilmiştir:
+1. **İşlevsel Ayrım:**
+   - **Orta/Edilgen (Middle/Passive):** Nesne/Tema özneye yükseltilir, dış fail baskılanır (`lüra da falen` = kapı açıldı).
+   - **Dönüşlü (Reflexive):** Fail ile nesne özdeştir (Fail = Nesne).
+   - **Kendi Kendine Oluş (Inchoative/Decausative):** Dış etki olmaksızın durum değişimi (`fali avelen` = açık hale gelmek).
+2. **`se` Çakışması:** `functions:1080` (§8.6) gereği `se`, kanonik **vasıta/araç edatıdır** (`tüvan se` = aletle). Fiil önünde çatı parçacığı yapılması çakışma üretir.
+3. **`ro` Çakışması:** Standart v1.0 §5.4 ve `data/semantic-roles.json` gereği `ro`, Şeffaf Anlambilim katmanında **`source_from` (kaynak)** rolüdür (`meyar-ro-nasel` = ormandan gelen meyve). Gramer katmanında kullanılamaz.
+4. **`Samel` Hatasının Reddi:** Kanonik `roots:471` `Samel`, kesin olarak **"dost, arkadaş" (friend)** demektir. İngilizce "same/self" ses benzerliğine dayalı dönüşlü/özdeşlik kullanımı tamamen yanlıştır ve reddedilmiştir.
 
 ### 4.2 Dört Alternatif Çatı Stratejisinin Değerlendirme Matrisi
 
-| Kriter | Strateji 1: Yeni Analitik Parçacık (örn. `vo` / `ko`) | Strateji 2: Özel Çatı Eki (örn. `-il-` / `-in-`) | Strateji 3: Çevresel/Dönüşlü Yapı (`samel` / `avelen`) | Strateji 4: Bağlamsal Valans Geçişliliği (Ergatif/Akuzatif Değişimi) |
+| Kriter | Strateji 1: Yeni Analitik Parçacık (örn. `vo`) | Strateji 2: Özel Çatı Eki (örn. `-il-` / `-in-`) | Strateji 3: Açık Çevresel Yapı (Kanonik Fiillerle) | Strateji 4: Bağlamsal Valans Alternasyonu |
 |---|---|---|---|---|
-| **Tanım** | Fiilden önce gelen yeni bir CV parçacığı (`Vel ne va vo nesalen`). | Fiil kökü ile mastar eki arasına gelen çatı eki (`nesal-il-en`). | Dönüşlü zamir veya yardımcı fiil ile analitik ifade (`vel da nesalen samel lo`). | Cansız özne ve nesnesiz kullanımda fiilin otomatik dönüşlü yorumlanması. |
+| **Tanım** | Fiilden önce gelen yeni bağımsız parçacık (`Vel ne va vo nesalen`). | Fiil kökü ile mastar eki arasına gelen çatı eki (`nesal-il-en`). | Yardımcı eylem veya sıfatla analitik ifade (`vel da avelen fali`). | Cansız özne ve nesnesiz kullanımda fiilin otomatik orta çatılı yorumlanması. |
 | **Öğrenilebilirlik** | Yüksek (ayrık morfem). | Çok Yüksek (Türkçe -il/-in mantığına benzer). | Yüksek (mevcut sözcükleri kullanır). | Orta (örtük kural yükü). |
-| **Çakışma Riski** | Düşük (boşta kalan `vo` gibi bir hece seçilirse). | **SIFIR (Kök ve ek yapısı tamamen yalıtılmış).** | **SIFIR (Sıfır yeni sözcük).** | **SIFIR (Morfolojik değişiklik yok).** |
-| **Bileşik Saydamlığı** | Orta | Yüksek | Çok Yüksek | Düşük (belirsizlik riski). |
-| **Geriye Uyumluluk** | v1.0 gramerine yeni fonksiyon sözcüğü ekler. | Morfoloji ayrıştırıcısına ek kuralı ekler. | **%100 Geriye Uyumlu (Hiçbir ek/kök gerektirmez).** | **%100 Geriye Uyumlu.** |
+| **Çakışma Riski** | Düşük (`vo` gibi boş bir hece seçilirse). | **SIFIR (Kök ve ek yapısı tamamen yalıtılmış).** | **SIFIR (Sıfır yeni sözcük).** | **SIFIR (Morfolojik değişiklik yok).** |
+| **Bileşik Saydamlığı** | Orta | Yüksek | Yüksek | Düşük (belirsizlik riski). |
+| **Geriye Uyumluluk** | v1.0 gramerine yeni fonksiyon sözcüğü ekler. | Morfoloji ayrıştırıcısına ek kuralı ekler. | **%100 Geriye Uyumlu.** | **%100 Geriye Uyumlu.** |
 | **Ayrıştırıcı Karmaşıklığı** | Düşük | Orta | Çok Düşük | Yüksek (özne anlambilimini denetlemeli). |
-| **Öneri ve Statü** | RFC Adayı | **En Güçlü Morfolojik Aday (RFC-2026-001)** | **Mevcut Kanonla Hemen Kullanılabilir** | Kural Belirsizliği Yaratır |
+| **Öneri ve Statü** | Unadopted RFC Adayı | **Unadopted RFC Adayı (RFC-2026-001)** | **Mevcut Kanonla Hemen Uygulanabilir** | Kural Belirsizliği Yaratır |
 
 > [!IMPORTANT]
-> Hiçbir yeni çatı eki veya parçacığı otomatik olarak kanonlaştırılmamıştır. Dil sahibi kararına kadar `src/alei_language/grammar.py` ve `valency.py` dosyalarında bu yapılar deneysel modda tutulmaktadır.
+> Hiçbir yeni çatı eki (`-il-`), parçacığı (`vo`), sıfat türetimi (`fali`) veya bağlacı (`şe-el`) otomatik olarak kanonlaştırılmamıştır. Hepsi dil sahibinin onayına sunulan unadopted RFC teklifleridir.
 
 ---
 

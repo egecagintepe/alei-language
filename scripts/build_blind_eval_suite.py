@@ -14,17 +14,17 @@ def main():
     # Track 1: Fixed-Lexicon Encoding (12 cases)
     t1_data = [
         ("BLIND-T1-001", "literal", "Mei da liren püsel meharan.", "I saw the sweet fruit.", "Gördüm tatlı meyveyi.", "Direct perception transitive clause."),
-        ("BLIND-T1-002", "literal", "Sai tüvanan va sileven.", "You will make the tool.", "Sen aleti yapacaksın.", "SOV object-focus transitive."),
+        ("BLIND-T1-002", "literal", "Sai tüvanan va sileven.", "You will read the book/tool.", "Sen kitabı/aracı okuyacaksın.", "SOV object-focus transitive reading verb sileven."),
         ("BLIND-T1-003", "logical", "Mei ne da belemen tüvanan.", "I did not count the tools.", "Aletleri saymadım.", "Simple past negation with overt patient."),
-        ("BLIND-T1-004", "logical", "Şe Sai avelen, Mei va aremen.", "If you come, I will return.", "Eğer sen gelirsen, ben döneceğim.", "Pure conditional sentence."),
+        ("BLIND-T1-004", "logical", "Şe Sai avelen, Mei va aremen.", "If you come, I will think.", "Eğer sen gelirsen, ben düşüneceğim.", "Pure conditional sentence with canonical thinking verb aremen."),
         ("BLIND-T1-005", "spatial", "Eli lem lo.", "He is in the dwelling.", "O evin içindedir / yerindedir.", "Locative postposition lo."),
         ("BLIND-T1-006", "spatial", "Meina da avelen vümar ta.", "We arrived at the bridge.", "Köprüye vardık.", "Directional postposition ta."),
         ("BLIND-T1-007", "aspectual", "Mei du yelaren liman lo.", "I am writing on stone.", "Taşın üzerine yazmaktayım.", "Progressive aspect du."),
         ("BLIND-T1-008", "aspectual", "Eli fa avelen lem ta.", "He has arrived at the dwelling.", "Eve varmış bulunuyor.", "Completed aspect fa."),
         ("BLIND-T1-009", "social", "Alei, Sai süli le?", "Hello, are you well?", "Merhaba, iyi misin?", "Greeting and polar question."),
-        ("BLIND-T1-010", "social", "Mei naelen ke miraven Saian.", "I want to help you.", "Sana yardım etmek istiyorum.", "Volition verb + ke + miraven."),
-        ("BLIND-T1-011", "minimal_pair_a", "Mei da sileven tüvanan.", "I made the tool.", "Aleti yaptım.", "Affirmative past."),
-        ("BLIND-T1-012", "minimal_pair_b", "Mei ne da sileven tüvanan.", "I did not make the tool.", "Aleti yapmadım.", "Negative past.")
+        ("BLIND-T1-010", "social", "Mei naelen ke miraven sain.", "I want to help you.", "Sana yardım etmek istiyorum.", "Volition verb + ke + miraven with canonical object pronoun sain."),
+        ("BLIND-T1-011", "minimal_pair_a", "Mei da sileven tüvanan.", "I read the book/tool.", "Kitabı okudum.", "Affirmative past reading verb sileven."),
+        ("BLIND-T1-012", "minimal_pair_b", "Mei ne da sileven tüvanan.", "I did not read the book/tool.", "Kitabı okumadım.", "Negative past reading verb sileven.")
     ]
 
     for cid, ctype, alei, gold_en, gold_tr, notes in t1_data:
@@ -52,8 +52,8 @@ def main():
     # Track 2: Productive Form Decoding (10 cases)
     t2_data = [
         ("BLIND-T2-001", "transparent_compound", "orai-el", "sometimes / occasionally", "bazen / kimi zaman", "orai (time) + el (also)"),
-        ("BLIND-T2-002", "transparent_compound", "nasel-nerav", "map / place-model", "harita / mekan temsili", "nasel (place) + nerav (model)"),
-        ("BLIND-T2-003", "transparent_compound", "dei-pemar", "starlight", "yıldız ışığı", "dei (star) + pemar (light)"),
+        ("BLIND-T2-002", "transparent_compound", "nasel-nerav", "forest map / forest chart", "orman haritası / orman temsili", "nasel (forest) + nerav (model)"),
+        ("BLIND-T2-003", "transparent_compound", "siril-pemar", "sky-light / starlight candidate", "gök ışığı / yıldız ışığı adayı", "siril (sky) + pemar (light)"),
         ("BLIND-T2-004", "derived_quality", "fali", "open (stative)", "açık (durum)", "fal (open action) + -i (quality)"),
         ("BLIND-T2-005", "transparent_compound", "lüra-vel", "threshold / doorway", "kapı eşiği / giriş yolu", "lüra (door) + vel (path)"),
         ("BLIND-T2-006", "transparent_compound", "pira-vesen", "whisper / murmur", "fısıldamak / alçak sesle konuşmak", "pira (small) + vesen (say)"),
@@ -113,16 +113,16 @@ def main():
 
     # Track 4: Definition Learning and Transfer (10 cases)
     t4_data = [
-        ("BLIND-T4-001", "transfer_pol", "Pol", "Davi ena da pürelen pol-ra.", "Two people arrived from opposite sides.", "İki kişi zıt yönlerden ulaştı."),
+        ("BLIND-T4-001", "transfer_pol", "Pol", "Davi ena da pürelen pol fi.", "Two people arrived from the opposite side.", "İki kişi karşı yönden ulaştı."),
         ("BLIND-T4-002", "transfer_pol", "Pol", "Mei da liren pol velan.", "I saw the opposite/contrary path.", "Karşıt yolu gördüm."),
         ("BLIND-T4-003", "transfer_gor", "Gor", "Sai da yelaren goran.", "You wrote the direction.", "Yönü yazdın."),
-        ("BLIND-T4-004", "transfer_gor", "Gor", "Eli va avelen samel gor ta.", "He will come to the same direction.", "Aynı istikamete gelecek."),
-        ("BLIND-T4-005", "transfer_bav", "Bav", "Bav da avelen nasel lo.", "Dawn arrived at the place.", "Şafak mekana vardı."),
-        ("BLIND-T4-006", "transfer_tem", "Tem", "Eli da nivaren tem mora.", "He waited for a single moment.", "Tek bir an bekledi."),
-        ("BLIND-T4-007", "transfer_şul", "Şul", "Nasel da şuli nivar lo.", "The place was silent at night.", "Mekan geceleyin sessizdi."),
+        ("BLIND-T4-004", "transfer_gor", "Gor", "Eli va avelen gor ta.", "He will come to the direction.", "İstikamete gelecek."),
+        ("BLIND-T4-005", "transfer_bav", "Bav", "Bav da avelen nasel lo.", "Dawn arrived in the forest.", "Şafak ormana vardı."),
+        ("BLIND-T4-006", "transfer_tem", "Tem", "Eli da varen tem mora lo.", "He waited for a moment in the night.", "Geceleyin bir an bekledi."),
+        ("BLIND-T4-007", "transfer_şul", "Şul", "Nasel da şuli mora lo.", "The forest was silent at night.", "Orman geceleyin sessizdi."),
         ("BLIND-T4-008", "transfer_kan", "Kan", "Ena pira da kanen.", "The child sang.", "Çocuk şarkı söyledi."),
         ("BLIND-T4-009", "transfer_yan", "Yan", "Mei da yelaren yanan liman lo.", "I wrote the error on stone.", "Hatayı taşa yazdım."),
-        ("BLIND-T4-010", "transfer_morv", "Morv", "Eli da sileven morvan.", "He tied the knot.", "Düğümü bağladı.")
+        ("BLIND-T4-010", "transfer_morv", "Morv", "Eli da morven morvan.", "He tied the knot.", "Düğümü bağladı.")
     ]
 
     definitions_block = (

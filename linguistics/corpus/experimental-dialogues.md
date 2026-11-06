@@ -37,16 +37,16 @@
 
 ### Section B: Practical Needs (Shelter, Nourishment, Water)
 5. **Turn 05:**
-   - *Alei:* `Mei naelen selan.`
+   - *Alei:* `Mei naelen nemin.`
    - *Gloss:* `1SG want-VB water-ACC`
    - *Turkish:* Su istiyorum.
    - *English:* I want water.
-   - *Status:* Strictly v1.1.0 canonical (`sel` root + `-an` object form).
+   - *Status:* Strictly v1.1.0 canonical (`nemi` root roots:438 + `-n` object form).
 6. **Turn 06:**
-   - *Alei:* `Sel lem lo ve.`
+   - *Alei:* `Nemi lem lo ve.`
    - *Gloss:* `water dwelling LOC with`
-   - *Turkish:* Su evin içindedir / mevcuttur.
-   - *English:* Water is available at the dwelling.
+   - *Turkish:* Su yerdedir / barınaktadır.
+   - *English:* Water is at the dwelling.
    - *Status:* Strictly v1.1.0 canonical.
 7. **Turn 07:**
    - *Alei:* `Sai naelen seliman le?`
@@ -288,8 +288,8 @@
 - **Turn 3 (Tüvan):** `Mei ne da belemen nüra-peman.`  
   *(Ay ışığını saymadım / hesaplamadım. / I did not count the moonlight.)*  
   [Canonical `nüra` = moon, `roots:497` + `pemar` = light]
-- **Turn 4 (Liman):** `Nüra samel orai lo da pemaren.`  
-  *(Ay aynı vakitte parladı. / The moon shone at the same time.)*
+- **Turn 4 (Liman):** `Nüra mora lo da pemaren.`  
+  *(Ay geceleyin parladı. / The moon shone in the night.)*
 - **Turn 5 (Tüvan):** `Liman lo siman da nelaren.`  
   *(Taştaki işaret geri döndü / kaldı. / The mark returned on the stone.)*  
   [Canonical return `nelaren`, `roots:656`]
@@ -310,7 +310,7 @@
 - **Turn 2 (Pürel):** `Alei. Mei yelen ke miraven sain.`  
   *(Merhaba. Sana yardım edebilirim. / Hello. I can help you.)*  
   [Canonical `sain`]
-- **Turn 3 (Sava):** `Mei naelen ke avelen sel ta.`  
+- **Turn 3 (Sava):** `Mei naelen ke avelen nemi ta.`  
   *(Suya / nehire doğru gitmek istiyorum. / I want to go to the water.)*
 - **Turn 4 (Pürel):** `Vümar pol lem lo ve.`  
   *(Köprü karşı mekandadır / kıyıdadır. / The bridge is at the opposite place.)*  

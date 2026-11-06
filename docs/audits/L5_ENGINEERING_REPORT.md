@@ -57,16 +57,18 @@ Sözlük kökleri doğru tanınmış olsa da deney şu kritik yapısal sorunlar�
    Alei v1.1'deki sözcük kısıtları sebebiyle Encoder (ChatGPT), aktaramadığı kavramları çevresel olarak açıklamak yerine tümce ve sıfatları tamamen metinden atmıştır:
    - K1.3'te nesne ("yıldızları saymadım; sönmüş olanı") tamamen atılmış (`Mei ne da belemen. Mei da hüvaren.`), Decoder nesnesiz bırakılmıştır.
    - K1.4'te dört temel öge ("kaybolan", "bazen", "yön", "göstermek") atılmıştır.
-   - K5.4'te *"Bir harita doğruydu, fakat yanlış bir yeri gösteriyordu"* önermesi `Ena nerav.` (Bir model) düzeyine indirgenerek bilginin %85'i yok edilmiştir.
-2. **Kanon Dışı Sözcük İcadı:**
-   Sözlükte bulamadığı kavramlar için ChatGPT kanonda olmayan kelimeler türetmiştir:
-   - K4'te `miŋ` (ses): `Sira miŋ ne Meina ri miŋ.`
-   - K5'te `dumen` (söndürmek/kapatmak): `Şe Sai dumen...`
+   - K5.4'te *"Bir harita doğruydu, fakat yanlış bir yeri gösteriyordu"* önermesi `Ena nerav.` (Bir model) düzeyine indirgenerek ana karşıt yan tümce ve doğruluk koşulu atılmıştır.
+2. **Kanonik Köklerin Bağlam Dışı Genişletilmesi:**
+   Sözlükte bulamadığı kavramlar karşısında ChatGPT, mevcut kanonik kökleri aşırı genişleterek kullanmıştır:
+   - K4'te `Miŋ` (roots:448, "ses titreşimi" / sound vibration): Uydurma değil kanoniktir; ancak fiziksel titreşimden iç insan sesine genişletilmiştir (`Sira miŋ ne Meina ri miŋ.`).
+   - K5'te `Dumen` (roots:517 `Dum`, lexemes:797 "kapatmak" / to close): Uydurma değil kanoniktir; ancak cihaz/kapı kapatma eylemi lamba söndürme için kullanılmıştır (`Şe Sai dumen...`).
 3. **Gramer ve Valans Uyuşmazlığı:**
-   - K5.1'de `vel ne va nesalen` ifadesinde geçişli fiil olan `nesalen` nesnesiz ve yönsüz bırakılmış, Gemini yolun mu kaybolduğu yoksa bir şeyi mi kaybettiği konusunda tereddüt etmiştir (*"yol kaybolmayacak (kaybetmeyecek)"*).
+   - K5.1'de `vel ne va nesalen` ifadesinde geçişli fiil olan `nesalen` nesnesiz ve yönsüz bırakılmış, Gemini yolun mu kaybolduğu yoksa bir şeyi mi kaybettiği konusundaki ikilemi doğru tespit etmiştir (*"yol kaybolmayacak (kaybetmeyecek)"*).
    - K4.1'de "Korksan da" ödünleyici yapısı (concessive) `şe` şart edatına indirgenmiş ve Gemini tarafından "Eğer korkarsan" olarak anlaşılmıştır.
-4. **Kusurlu Güven Kalibrasyonu:**
-   Gemini, orijinal metnin devasa parçalarının kaybolduğu ve kanon dışı unsurlar içeren cümlelere %95–99 öznel güven skoru raporlamıştır.
+4. **Encoder ve Decoder Sorumluluklarının Ayrıştırılması:**
+   - Gemini (Ajan B), Türkçe kaynak metinden tamamen habersiz olup sadece Ajan A'nın Alei çıktısını almıştır.
+   - Gemini'nin yüzeydeki Alei metnini çözme başarısı yüksektir (`Meina da nivaren.` -> "Biz öğrendik").
+   - Ajan A'nın kaynak metinden attığı bilgileri (örn. yıldızlar, haritanın doğruluğu) Gemini'nin bilmesi beklenemez; dolayısıyla Gemini'nin öznel güven skoru, görmediği kaynak metin üzerinden kusurlu olarak nitelendirilemez.
 
 ### 2.3 Metodolojik Sınırlılık Notu
 Bu çalışma, çok merkezli, istatistiksel genelleme iddiası taşıyan bir bilimsel makale deneyi değil; sistemin eksiklerini gösteren **tekil bir pilot denemedir (single pilot trial)**. Gelecek akademik yayınlar bu sınır gözetilerek kurgulanmalıdır. Ayrıca orijinal Türkçe altın kaynak (`01_SOURCE_ORIGINAL_TURKISH.md`), test güvenliği ve telif gereği git deposu dışında güvenli yerel alanda tutulmuştur.
@@ -82,32 +84,42 @@ Bu çalışma, çok merkezli, istatistiksel genelleme iddiası taşıyan bir bil
 | **3** | **`Vürel / Vürelen`** | `roots:502`: "korku"; `lexemes:787`: **"korkmak"**. | "Geçmek / aşmak". | Edebiyat, diyaloglar, RFC | Kanonik anlam "korkmak" olarak sabitlendi. |
 | **4** | **`Mora`** | `roots:455`: **"gece"** (night). Bir (1) sayısı: `functions:1100` **`Ena`**. | "Bir sayısı / tekil an". | Edebiyat, diyaloglar, sözlük | Gece anlamı korundu; sayı için `ena` getirildi. |
 | **5** | **`Dei`** | `roots:454`: **"gün"** (day). | "Yıldız" (Star). | Edebiyat, diyaloglar, testler | Kanonik anlam gün olarak sabitlendi. |
-| **6** | **`Nüra` ve Yıldız Boşluğu** | `roots:497`: **"ay, gök cismi"** (moon). Kanonda yıldız kelimesi **YOKTUR**. | "Nüra yıldızdır" iddiası. | `concept-priority.jsonl`, `proposed-lexemes.jsonl`, testler | `Nüra` kesin olarak "ay" (moon) olarak sabitlendi. Yıldız kavramı **`GAP-LEX-STAR`** olarak tescillendi; geçici aday `siril-pemar` (gök ışığı) önerildi. |
+| **6** | **`Nüra`, `Siril` ve Yıldız Boşluğu** | `roots:497`: **"ay, gök cismi"** (moon). `roots:549` `Siril`: **"gökyüzü"** (sky). Kanonda yıldız kökü **YOKTUR**. | "Nüra yıldızdır" veya "Siril yıldız parıltısıdır" iddiaları. | `concept-priority.jsonl`, `proposed-lexemes.jsonl`, testler | `Nüra` "ay", `Siril` "gökyüzü" olarak sabitlendi. Yıldız kavramı **`GAP-LEX-STAR`** olarak tescillendi; `siril-pemar` (gök ışığı) betimsel bileşiktir. |
 | **7** | **`ro` ve Şeffaf Semantik Katmanı** | Standart §5.4 (`data/semantic-roles.json`): `ro` kökü zaten **`source_from`** rolüdür. | Dönüşlü çatı için `ro` parçacığının önerilmesi. | RFC, sözlük, semantik katmanı | `ro`'nun anlamsal rolde kullanıldığı belgelendi; çatı için çakışmasız 4 strateji matrisi hazırlandı. |
-| **8** | **Nesne Zamirleri** | Standart §4.1/§4.2: Ünlüyle biten zamirler nesnede `-n` alır: **`mein`, `sain`, `elin`**. | `Meian`, `Saian` formları. | Diyaloglar, `cases.jsonl` | Hatalı biçimler elendi; kanonik `mein/sain` getirildi. |
-| **9** | **`Nasel`** | `roots:548`: **"orman"** (forest). | "Genel mekan / yer". | Edebiyat, diyaloglar | Mekan için `lem lo` getirildi; `nasel` orman olarak korundu. |
-| **10** | **`Nivar / Nivaren`** | `roots:721`: "öğrenme"; `lexemes:921`: **"öğrenmek"**. | "Gece beklemek / gecelemek". | Edebiyat, diyaloglar | Öğrenmek anlamı sabitlendi. |
-| **11** | **`Silev / Sileven`** | `roots:508`: "okuma"; `lexemes:793`: **"okumak"**. Yapmak: `roots:447` `Jav`. | "Yapmak / kapı/düğüm üretmek". | Altın cevaplar, diyaloglar | Okuma anlamı korundu; yapma için `javen` kullanıldı. |
-| **12** | **`-ra` Durum Eki** | Standart §8.6: Ayrılma hali edatla yapılır (**`fi`** edatı). | `-ra` uydurma durum eki. | Gramer motoru, edebiyat | `-ra` kaldırıldı; kanonik `fi` getirildi. |
-| **13** | **Aday Kök `Gor`** | `roots:444`: **`Vel`** yön ve yolu karşılar. | Yön kavramı eksik iddiasıyla `Gor` teklifi. | `proposed-lexemes.jsonl` | `Gor`'un mükerrer olduğu belgelendi; `Vel` önceliklendirildi. |
-| **14** | **`fal -> fali` Türetimi** | `-i` durum sıfatı eki sadece fiziksel durum / konfigürasyon köklerine uygulanabilir. | Bilişsel/süreç köklerine kontrolsüz statif sıfat türetme. | RFC, sözdizim motoru | Semantik sınır kuralı getirildi: Yalnızca fiziksel konfigürasyon kökleri durum sıfatı lisanslar. |
+| **8** | **`Samel` Reddi** | `roots:471`: **"dost, arkadaş"** (friend). | "Aynı / kendi (self/same)" iddiası ve dönüşlü yapı önerisi. | RFC, edebiyat, diyaloglar, sözlük | `samel`'in arkadaş olduğu sabitlendi. Dönüşlü ve özdeşlik kullanımları tamamen iptal edildi. |
+| **9** | **Nesne Zamirleri** | Standart §4.1/§4.2: Ünlüyle biten zamirler nesnede `-n` alır: **`mein`, `sain`, `elin`**. | `Meian`, `Saian` formları. | README, README.tr, site, diyaloglar | README dosyalarındaki ve belgelerdeki tüm `Meian`/`Saian` kullanımları `mein`/`sain` olarak düzeltildi. |
+| **10** | **`Nasel`** | `roots:548`: **"orman"** (forest). Mekan: `lem`. | "Genel mekan / yer". | Edebiyat, diyaloglar, sözlük | Mekan için `lem lo` getirildi; `nasel` orman olarak korundu. |
+| **11** | **`Nemi` ve Su** | `roots:438`: **"su"** (water). | Kanon dışı `sel` sözcüğü. | Edebiyat, diyaloglar, sözlük | Su kavramı kanonik `nemi` köküne iade edildi. |
+| **12** | **`Nivar / Nivaren`** | `roots:721`: "öğrenme"; `lexemes:921`: **"öğrenmek"**. | "Gece beklemek / gecelemek". | Edebiyat, diyaloglar | Öğrenmek anlamı sabitlendi. |
+| **13** | **`Silev / Sileven`** | `roots:508`: "okuma"; `lexemes:793`: **"okumak"**. Yapmak: `roots:447` `Jav`. | "Yapmak / kapı/düğüm üretmek". | Altın cevaplar, diyaloglar, sözlük | Okuma anlamı korundu; yapma için `javen` kullanıldı. |
+| **14** | **`-ra` Durum Eki** | Standart §8.6: Ayrılma hali edatla yapılır (**`fi`** edatı). | `-ra` uydurma durum eki. | Gramer motoru, edebiyat | `-ra` kaldırıldı; kanonik `fi` getirildi. |
+| **15** | **`fal -> fali` Türetimi** | `-i` durum sıfatı eki sadece fiziksel durum / konfigürasyon köklerine uygulanabilir. | Bilişsel/süreç köklerine kontrolsüz statif sıfat türetme. | RFC, sözdizim motoru | Semantik sınır kuralı getirildi: Yalnızca fiziksel konfigürasyon kökleri durum sıfatı lisanslar. |
 
 ---
 
-## 4. Dönüşlü Çatı İçin 4 Stratejili Değerlendirme Matrisi (Voice Strategies Matrix)
+## 4. Çatı Kategorileri ve 4 Stratejili Değerlendirme Matrisi (Voice Strategies Matrix)
 
-Kanonik `se` (vasıta edatı) ve şeffaf semantik katmanındaki `ro` (`source_from`) çakışmaları ışığında 4 strateji geliştirilmiştir:
+Gramer mimarisinde üç temel işlev kesin olarak ayrıştırılmıştır:
+1. **Orta/Edilgen (Middle/Passive):** Nesne/Tema özneye yükseltilir, fail geri plana itilir (`lüra da falen` = kapı açıldı).
+2. **Dönüşlü (Reflexive):** Fail ile nesne özdeştir (`Mei miraven mein`).
+3. **Kendi Kendine Oluş (Inchoative/Decausative):** Dış etki olmaksızın durum değişimi (`fali avelen` = açık hale gelmek).
+
+Kanonik `se` (vasıta edatı), semantik roldeki `ro` (`source_from`) ve `samel` (dost/arkadaş) durumları ışığında 4 strateji değerlendirilmiştir:
 
 1. **Strateji A (Ayrık Analitik Parçacık, örn. `vo`):**
-   - *Tanım:* Fiilden önce bağımsız bir parçacık (`Mei vo nesalen`).
-   - *Değerlendirme:* Öğrenilebilirliği çok yüksek, v1.0 kökleriyle %100 uyumlu, fonolojisi temiz. Ancak yeni bir fonksiyonel morfem gerektirir.
+   - *Tanım:* Fiilden önce bağımsız bir parçacık (`Vel ne va vo nesalen`).
+   - *Değerlendirme:* Öğrenilebilirliği çok yüksek, v1.0 kökleriyle uyumlu, fonolojisi temiz. Ancak yeni bir fonksiyonel morfem gerektirir (Unadopted RFC Adayı).
 2. **Strateji B (Bağlı Morfolojik Ek, örn. `-il-`):**
    - *Tanım:* Kök ile mastar arasına ekleme (`nes-il-en`).
-   - *Değerlendirme:* Ayrıştırması deterministik. Ancak v1.0 katı kök morfolojisini bozma riski taşır.
-3. **Strateji C (Açık Çevresel / İki Fiilli Yapı, örn. `samel`):**
-   - *Tanım:* Sıfır morfolojik müdahale. Durumu ifade eden açık yan eylem kullanma.
-   - *Değerlendirme:* Tamamen kanonik sözcüklerle ifade edilir. Ancak edebi metinlerde sentaktik yük yaratır.
+   - *Değerlendirme:* Ayrıştırması deterministik, çakışma riski sıfır. Ancak v1.0 kök yapısına ekleme gerektirir (Unadopted RFC Adayı).
+3. **Strateji C (Açık Çevresel / İki Fiilli Yapı):**
+   - *Tanım:* Durumu kanonik yardımcı eylemler veya sıfatlarla ifade etme (`fali avelen`).
+   - *Değerlendirme:* %100 kanonikle ifade edilir; sıfır dilbilgisi müdahalesi gerektirir.
 4. **Strateji D (Bağlamsal / Sıfır Morfem Alternasyonu):**
+   - *Tanım:* Cansız öznede geçişli fiilin bağlamdan dönüşlü/orta çatılı yorumlanması.
+   - *Değerlendirme:* Sıfır yeni kural; ancak yüksek belirsizlik riski taşır.
+
+*Hiçbir çatı eki veya parçacığı otomatik benimsenmemiştir; hepsi dil sahibinin onayına sunulmuştur.*
    - *Tanım:* Nesne almayan geçişli fiilin bağlamdan dönüşlü/orta çatılı yorumlanması.
    - *Değerlendirme:* Sıfır yeni kural. Ancak yüksek belirsizlik ve model tereddüdü yaratır.
 

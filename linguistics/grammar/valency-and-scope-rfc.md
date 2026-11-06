@@ -27,30 +27,37 @@ In Alei v1.0, verbs derived from roots with `-en` inherit the root's argument st
 - `Mei da nesalen velan.` -> *I lost the path.* (Transitive: Subject = Agent, Object = Patient)
 - `Vel da nesalen.` -> *The path lost [something]?* OR *The path was lost / disappeared?*
 
-### 2.2 Exhaustive Collision Audit (`se` and `ro`)
-Previous drafts proposed candidate particles for middle voice that produced unacceptable cross-layer collisions:
+### 2.2 Exhaustive Collision Audit (`se`, `ro`, and `samel`)
+Previous drafts proposed candidate mechanisms that produced severe collisions or semantic misunderstandings:
 1. **Collision with Canonical `se` (`functions:1080`):**
    `se` is the certified **instrumental postposition** ("araçla/vasıtayla", e.g., `tüvan se` = with a tool). Using `se` as a pre-verbal middle voice particle creates severe syntactic ambiguity against post-nominal instrumental phrases.
 2. **Collision with Transparent Semantics `ro` (Standard v1.0 §5.4, `data/semantic-roles.json`):**
    `ro` is the established role marker for **`source_from`** (origin/source: `meyar-ro-nasel` = fruit from the forest). Repurposing `ro` in the grammar layer contaminates the transparent semantics parser.
+3. **Rejection of `samel` as Reflexive/Identity Root:**
+   Canonical `roots:471` `Samel` strictly means **"dost, arkadaş" (friend)**. Conflating it with "same" or "self" based on English phonetic resemblance is an impermissible calque. Any reflexive or middle construction depending on `samel` is formally rejected.
+4. **Distinction of Grammatical Voice Categories:**
+   The language architecture must distinguish:
+   - **Middle / Passive:** Patient/Theme promoted to subject, agent demoted or suppressed (`Lüra da falilen` / `Lüra da falen`).
+   - **Reflexive:** Agent acts upon oneself (`Mei miraven mein`).
+   - **Inchoative / Decausative:** Spontaneous state transition without an external initiator (`Lüra da avelen fali`).
 
 ### 2.3 Evaluation of 4 Alternative Voice Strategies
 
 To resolve voice modulation without creating hidden collisions, four distinct strategies are evaluated across six design criteria:
 
-| Evaluation Dimension | Strategy 1: Unallocated Analytic Particle (`vo`) | Strategy 2: Dedicated Voice Infix/Suffix (`-il-` / `-in-`) | Strategy 3: Periphrastic Reflexive (`samel` / `avelen`) | Strategy 4: Contextual Valency Alternation |
+| Evaluation Dimension | Strategy 1: Unallocated Analytic Particle (`vo`) | Strategy 2: Dedicated Voice Infix/Suffix (`-il-` / `-in-`) | Strategy 3: Periphrastic Auxiliary Construction | Strategy 4: Contextual Valency Alternation |
 |---|---|---|---|---|
-| **Mechanism** | Open CV particle preceding verb: `Vel ne va vo nesalen.` | Suffix/infix before verb ending: `Vel ne va nesalilen.` | Canonical reflexive root or auxiliary: `Vel da avelen nesali.` | Inanimate subjects automatically license patient reading without marker. |
+| **Mechanism** | Open CV particle preceding verb: `Vel ne va vo nesalen.` | Suffix/infix before verb ending: `Vel ne va nesalilen.` | Canonical auxiliary or stative predicate: `Vel da avelen fali.` | Inanimate subjects automatically license patient reading without marker. |
 | **Learnability** | High (analytic, isolated word). | Very High (mirrors Turkic `-il-` / Romance passive). | High (uses existing v1.0 vocabulary). | Moderate (requires learning implicit semantic rules). |
 | **Collision Risk** | Low (only if verified against all 270 roots, 63 functions, and 10 roles). `vo` is currently free. | **Zero Collision.** Derivation morphology is fully isolated from function words and semantic roles. | **Zero Collision.** 100% composed of approved canonical roots. | **Zero Collision.** No new morphemes. |
-| **Compositional Transparency** | Medium | High | Very High (`samel` = self/same). | Low (unmarked structural ambiguity). |
+| **Compositional Transparency** | Medium | High | High | Low (unmarked structural ambiguity). |
 | **Backward Compatibility** | Adds new function word to v1.0 grammar. | Adds regular verb infix rule to morphology. | **100% Backward Compatible.** No syntax or morphology change required. | **100% Backward Compatible.** |
 | **Parser Complexity** | Low | Low (regex pattern `r'(\w+)(?:il|in)en'`). | Very Low | High (requires semantic animacy check on subject). |
 
 ### 2.4 Owner Decision Options
-- **Option A (Dedicated Verbal Infix `-il-`):** Regularizes `[Root] + -il- + -en` for middle/passive verbs (`nesalilen` = kaybolmak, `falilen` = açılmak). Eliminates particle collisions permanently.
-- **Option B (Periphrastic `samel`):** Requires no grammar extension; uses existing reflexive root `samel` (`Vel da nesalen samel lo`).
-- **Option C (Analytic Particle `vo`):** If an analytic particle is strictly preferred by the owner, `vo` is phonologically legal and free of collisions across roots, functions, and semantic roles.
+- **Option A (Dedicated Verbal Infix `-il-`):** Regularizes `[Root] + -il- + -en` for middle/passive verbs (`nesalilen` = kaybolmak, `falilen` = açılmak). Eliminates particle collisions permanently. (Unadopted proposal).
+- **Option B (Periphrastic Auxiliary):** Uses existing motion/state verbs and stative predicates (`Vel da avelen fali`). No grammar extension required.
+- **Option C (Analytic Particle `vo`):** If an analytic particle is strictly preferred by the owner, `vo` is phonologically legal and free of collisions across roots, functions, and semantic roles. (Unadopted proposal).
 
 ---
 
@@ -117,7 +124,7 @@ An exhaustive survey of `roots.jsonl`, `lexemes.jsonl`, and `functions.jsonl` co
 - **Alei v1.0/v1.1 has NO root for "star" (yıldız).**
 
 ### 5.2 Resolution Options for Owner Review
-- **Option 1 (Compositional Compound):** `siril-pemar` (sky-brightness / gökyüzü ışığı) or `siril-nüra` (sky celestial body / gök cismi).
+- **Option 1 (Compositional Compound):** `siril-pemar` (sky-light / gök aydınlığı; using canonical `Siril` roots:549 sky + `Pemar` roots:589 light). It is a descriptive compound, not a guaranteed unique identifier for star.
 - **Option 2 (Candidate Root Proposal):** Propose candidate root `Sir` (IPA `/sir/`, CVC, "yıldız / star") in `proposed-lexemes.jsonl` subject to owner adoption.
 - In all standard documents, `Nüra` remains canonically **moon**, never star.
 

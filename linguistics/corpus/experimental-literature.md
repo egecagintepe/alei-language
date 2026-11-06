@@ -45,29 +45,29 @@ Bav lo, lüra da fali. Mei ne da avelen len ta; Mei da nelaren vel ta.
 *Voice: Mythic, measured, chronicling human encounter.*
 
 ```text
-Davi ena da avelen vümar ta. Ena da avelen pol lem fi; davi da avelen samel vel ta.
-Vümar sel lo da pemaren. Elina ne da vesen: "Ne vürelen!"
+Davi samel da avelen vümar ta. Ena da avelen pol lem fi; davi da avelen vel ta.
+Vümar nemi lo da pemaren. Elina ne da vesen: "Ne vürelen!"
 Elina da vesen: "Şe-el Sai vürelen, aremen!"
-Vel ne va se nesalen; davi ena da miraven samelan.
+Vel ne va se nesalen; davi samel da miraven.
 ```
 
 - **Interlinear Gloss:**
-  - `davi ena da avel-en vümar ta .`  
-    `two person PST arrive-VB bridge DAT`
-  - `ena da avel-en pol lem fi ; davi da avel-en samel vel ta .`  
-    `one PST arrive-VB opposite place ABL ; second PST arrive-VB same path DAT`
-  - `vümar sel lo da pemar-en .`  
+  - `davi samel da avel-en vümar ta .`  
+    `two friend PST arrive-VB bridge DAT`
+  - `ena da avel-en pol lem fi ; davi da avel-en vel ta .`  
+    `one PST arrive-VB opposite place ABL ; second PST arrive-VB path DAT`
+  - `vümar nemi lo da pemar-en .`  
     `bridge water LOC PST shine-VB`
   - `elina ne da ves-en : " ne vürel-en ! "`  
     `3PL NEG PST say-VB : " NEG fear-VB ! "`
   - `elina da ves-en : " şe-el sai vürel-en , arem-en ! "`  
     `3PL PST say-VB : " even-if 2SG fear-VB , think-VB ! "`
-  - `vel ne va se nesal-en ; davi ena da mirav-en samel-an .`  
-    `path NEG FUT MID lose-VB ; two person PST help-VB same-ACC`
+  - `vel ne va se nesal-en ; davi samel da mirav-en .`  
+    `path NEG FUT MID lose-VB ; two friend PST help-VB`
 - **Turkish Translation:**
-  Köprüye iki kişi vardı. Biri karşı kıyıdan geldi; diğeri aynı yola yöneldi. Köprü suyun üstünde parıldıyordu. Onlar "Korkma!" demediler. "Korksan bile düşün!" dediler. Yol kaybolmayacak; iki kişi birbirine yardım etti.
+  Köprüye iki dost vardı. Biri karşı kıyıdan geldi; diğeri yola yöneldi. Köprü suyun üstünde parıldıyordu. Onlar "Korkma!" demediler. "Korksan bile düşün!" dediler. Yol kaybolmayacak; iki dost yardımlaştı.
 - **English Translation:**
-  Two people reached the bridge. One came from the opposite bank; the other moved along the same path. The bridge shone above the water. They did not say: "Do not fear!" They said: "Even if you fear, think!" The path will not be lost; the two helped each other.
+  Two friends reached the bridge. One came from the opposite bank; the other moved to the path. The bridge shone above the water. They did not say: "Do not fear!" They said: "Even if you fear, think!" The path will not be lost; the two friends helped.
 - **Linguistic Annotations:**
   - Fully adheres to canonical lexicon: `vürelen` is "korkmak" (fear, `roots:502`), `aremen` is "düşünmek" (think, `roots:434`).
   - Uses canonical ablative postposition `fi` (`pol lem fi`), eliminating invented suffix `-ra`.
@@ -113,7 +113,7 @@ Mora lo pemar da fali.
 Mei ne da belemen,
 Nasel lo nüra da hüvaren.
 
-Pol lem lo sel da avelen,
+Pol lem lo nemi da avelen,
 Vümar ta vel da pürelen.
 Şe-el pemar ne da yelen,
 Süli kan va se miraven.
@@ -124,7 +124,7 @@ Süli kan va se miraven.
   - `mora lo pemar da fal-i .` (night LOC light PST open-ADJ)
   - `mei ne da belem-en ,` (1SG NEG PST count-VB)
   - `nasel lo nüra da hüvar-en .` (forest LOC moon PST search-VB)
-  - `pol lem lo sel da avel-en ,` (opposite place LOC water PST arrive-VB)
+  - `pol lem lo nemi da avel-en ,` (opposite place LOC water PST arrive-VB)
   - `vümar ta vel da pürel-en .` (bridge DAT path PST arrive-VB)
   - `şe-el pemar ne da yel-en ,` (even-if light NEG PST can-VB)
   - `süli kan va se mirav-en .` (good song FUT MID help-VB)

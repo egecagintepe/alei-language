@@ -247,6 +247,32 @@ class TestL5LinguisticAuditRegressions(unittest.TestCase):
         self.assertEqual(nivar['semantic_anchor_en'], 'learning')
         self.assertIn('öğrenme', nivar['gloss_tr'])
 
+        # 9. Miŋ is sound vibration (roots:448), NOT an invented word
+        ming = lookup('Miŋ')[0]
+        self.assertEqual(ming['semantic_anchor_en'], 'sound_vibration')
+        self.assertIn('ses titreşimi', ming['gloss_tr'])
+
+        # 10. Dum/Dumen is closing/to close (roots:517, lexemes:797)
+        dum = lookup('Dum')[0]
+        self.assertEqual(dum['semantic_anchor_en'], 'closing')
+        dumen = lookup('Dumen')[0]
+        self.assertIn('kapatmak', dumen['gloss_tr'])
+
+        # 11. Samel is friend (roots:471), NOT same or self
+        samel = lookup('Samel')[0]
+        self.assertEqual(samel['semantic_anchor_en'], 'friend')
+        self.assertIn('arkadaş', samel['gloss_tr'])
+
+        # 12. Siril is sky (roots:549), NOT star or radiance
+        siril = lookup('Siril')[0]
+        self.assertEqual(siril['semantic_anchor_en'], 'sky')
+        self.assertIn('gökyüzü', siril['gloss_tr'])
+
+        # 13. Nemi is water (roots:438)
+        nemi = lookup('Nemi')[0]
+        self.assertEqual(nemi['semantic_anchor_en'], 'water')
+        self.assertIn('su', nemi['gloss_tr'])
+
     def test_canonical_moon_vs_star_lexical_gap(self):
         # Nüra is moon, NOT star
         nüra = lookup('Nüra')[0]

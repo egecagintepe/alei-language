@@ -26,13 +26,13 @@ A: Alei! Sai süli le?
    "Hello! Are you well?"
    (hello | 2SG good-ADJ Q)
 
-B: Alei! Mei süli. Sai yelen ke miraven Meian le?
-   [aˈlei̯ | mei̯ ˈsy.li || sai̯ ˈje.len ke miˈra.ven ˈmei̯.an le]
+B: Alei! Mei süli. Sai yelen ke miraven mein le?
+   [aˈlei̯ | mei̯ ˈsy.li || sai̯ ˈje.len ke miˈra.ven mei̯n le]
    "Hello! I am well. Can you help me?"
    (hello | 1SG good-ADJ || 2SG can-VB COMP help-VB 1SG-ACC Q)
 
-A: Ei, Mei yelen ke miraven Saian. Süli vel!
-   [ei̯ | mei̯ ˈje.len ke miˈra.ven ˈsai̯.an || ˈsy.li vel]
+A: Ei, Mei yelen ke miraven sain. Süli vel!
+   [ei̯ | mei̯ ˈje.len ke miˈra.ven sai̯n || ˈsy.li vel]
    "Yes, I can help you. Have a good journey!"
    (yes | 1SG can-VB COMP help-VB 2SG-ACC || good-ADJ path)
 ```
