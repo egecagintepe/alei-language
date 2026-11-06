@@ -51,12 +51,12 @@ VERB_VALENCY_FRAMES: Dict[str, Dict[str, Any]] = {
     },
     'avelen': {
         'class': 'intransitive',
-        'roles': ['Agent', 'Destination'],
+        'roles': ['Agent', 'Destination', 'Theme'],
         'obligatory': ['Agent'],
-        'optional': ['Destination'],
+        'optional': ['Destination', 'Theme'],
         'subject_role': 'Agent',
         'gloss_tr': 'gitmek / yönelmek',
-        'semantic_note': 'Motion verb (roots:432, lexemes:755). Destination marked by postposition ta.'
+        'semantic_note': 'Motion verb (roots:432, lexemes:755). Destination marked by postposition ta. Undergoes inchoative periphrasis as auxiliary.'
     },
     'pürelen': {
         'class': 'intransitive',
@@ -239,13 +239,17 @@ def evaluate_valency(verb_lemma: str, overt_roles: Dict[str, str], voice: str = 
     """Check whether provided arguments satisfy the verb's canonical valency frame.
 
     Does not modify canon or guess unexpressed identities.
+    Unregistered verbs never satisfy valency.
     """
     frame = get_valency_frame(verb_lemma)
     if not frame:
         return {
             'status': 'unregistered_verb',
-            'valency_satisfied': True,
-            'notes': [f"Verb lemma '{verb_lemma}' has no registered valency schema in v1.1."]
+            'valency_satisfied': False,
+            'frame_class': 'unregistered',
+            'subject_role': 'Agent',
+            'missing_roles': [],
+            'notes': [f"Verb lemma '{verb_lemma}' has no registered valency schema in v1.1; cannot satisfy valency."]
         }
 
     obligatory = list(frame.get('obligatory', []))
@@ -254,20 +258,34 @@ def evaluate_valency(verb_lemma: str, overt_roles: Dict[str, str], voice: str = 
 
     # Voice modulation logic
     if voice in ('middle', 'passive'):
+        if 'Patient' not in frame.get('roles', []):
+            notes.append(f"Invalid voice derivation: Intransitive verb '{verb_lemma}' lacks a Patient role and cannot undergo passive or middle voice.")
+            return {
+                'status': 'invalid_voice_derivation',
+                'valency_satisfied': False,
+                'frame_class': frame['class'],
+                'subject_role': frame.get('subject_role', 'Agent'),
+                'missing_roles': [],
+                'notes': notes
+            }
         notes.append("Passive/Middle voice: External Agent requirement suppressed; Patient promoted to Subject.")
         if 'Agent' in obligatory:
             obligatory.remove('Agent')
         if 'Patient' not in obligatory and 'Patient' in frame.get('roles', []):
             obligatory.append('Patient')
     elif voice == 'reflexive':
-        notes.append("Reflexive voice: Agent and Patient are co-referential.")
-        # When reflexive, Patient is satisfied by reflexive accusative pronoun
+        notes.append("Reflexive voice: Agent/Experiencer and Patient/Stimulus are co-referential.")
+        # When reflexive, Patient or Stimulus is satisfied by reflexive accusative pronoun
         if 'Patient' in obligatory and 'Patient' in overt_roles:
             pass  # Satisfied
+        if 'Stimulus' in obligatory and 'Stimulus' in overt_roles:
+            pass  # Satisfied
     elif voice == 'inchoative':
-        notes.append("Inchoative voice: Spontaneous state change; external agent requirement absent.")
+        notes.append("Inchoative voice: Spontaneous state change; external agent requirement absent; Theme promoted to Subject.")
         if 'Agent' in obligatory:
             obligatory.remove('Agent')
+        if 'Theme' not in obligatory:
+            obligatory.append('Theme')
 
     missing = [role for role in obligatory if role not in overt_roles]
     extraneous = [role for role in overt_roles if role not in obligatory and role not in optional]

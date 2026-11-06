@@ -190,7 +190,6 @@ def parse_alei(text, version='1.0', mode='standard'):
     mode='standard' enforces canonical rules only.
     mode='experimental' enables RFC-2026-001 candidates (middle voice particle 'se',
     concessive 'şe-el', subjectless imperatives, quotatives).
-    mode='l6' enables RFC-L6 generative grammar architecture and semantic AST engine.
     """
     version = resolve_version(version)
     if not isinstance(text, str) or not text.strip():

@@ -80,6 +80,7 @@ class SentenceAST:
     subject: Optional[str] = None
     predicate: Optional[PredicateFrame] = None
     subordinate_clauses: List[Dict[str, Any]] = field(default_factory=list)
+    coordinate_clauses: List[Dict[str, Any]] = field(default_factory=list)
     comparative: Optional[Dict[str, Any]] = None
     quantifier_scope: Optional[Dict[str, Any]] = None
     discourse_connectives: List[str] = field(default_factory=list)
@@ -111,6 +112,8 @@ class SentenceAST:
             res['predicate'] = self.predicate.to_dict()
         if self.subordinate_clauses:
             res['subordinate_clauses'] = self.subordinate_clauses
+        if self.coordinate_clauses:
+            res['coordinate_clauses'] = self.coordinate_clauses
         if self.comparative:
             res['comparative'] = self.comparative
         if self.quantifier_scope:
