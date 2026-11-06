@@ -1,0 +1,7 @@
+# Independent skill benchmark: pending
+
+The fixture contains 28 prompts for speak, translate, tutor and audit, including dialogue, literary usage, complex clauses, unknown words, translation ambiguity, morphology and semantic decomposition. No independent model output was available for this change. No scores, observations or success rates are claimed. The current agent wrote the fixtures and reviewed the source examples; neither is an independent human evaluator.
+
+Run `python evaluations/run_skill_eval.py` to print prompts and human assessment criteria. Use an independently selected model in a fresh context per case and record the provider, precise model/version, date, decoding settings, source manifest hash, skill files and context actually supplied, prompt, and verbatim output. Have a human linguist separately record whether the response is grammatical, translates faithfully, preserves uncertainty and follows governance; record disagreements and limits rather than turning the deterministic parser into a semantic judge.
+
+Write one JSONL record per case with `id`, `output`, `model`, `settings`, `reviewer_notes`; run `python evaluations/run_skill_eval.py --responses responses.jsonl` for coverage validation. The script invokes no model, does not judge correctness, and computes no score. A separate harness can check programmatic parse structure, but passing it is not a substitute for human review. Keep private or proprietary responses out of the public repository without authorization; state whether the client actually loaded the selected skill.
