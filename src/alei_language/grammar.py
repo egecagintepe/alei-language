@@ -175,6 +175,7 @@ def parse_sentence(text, version='1.0'):
 
 from .ast import SentenceAST, TokenNode, PredicateFrame, ArgumentRole
 from .valency import evaluate_valency, get_valency_frame
+from .semantic_grammar import analyze_l6_sentence
 
 def parse_alei(text, version='1.0', mode='standard'):
     """Principled, typed AST analysis of Alei expressions.
@@ -199,6 +200,9 @@ def parse_alei(text, version='1.0', mode='standard'):
             version=version,
             diagnostics=['Expected non-empty text input.']
         )
+
+    if mode == 'l6':
+        return analyze_l6_sentence(text, version=version)
 
     s = normalize(text).strip()
 
@@ -415,6 +419,12 @@ def parse_alei(text, version='1.0', mode='standard'):
             diagnostics=[raw_res.get('reason', 'Multiple syntactic analyses exist for this surface string.')]
         )
     else:
+        if mode in ('experimental', 'l6'):
+            l6_ast = analyze_l6_sentence(text, version=version)
+            if l6_ast.status == 'supported':
+                l6_ast.warnings.extend(warnings)
+                return l6_ast
+
         return SentenceAST(
             status='unsupported',
             construction='unsupported',

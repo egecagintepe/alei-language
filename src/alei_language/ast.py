@@ -79,6 +79,11 @@ class SentenceAST:
     mood: str = 'indicative'  # 'indicative', 'conditional', 'concessive', 'imperative'
     subject: Optional[str] = None
     predicate: Optional[PredicateFrame] = None
+    subordinate_clauses: List[Dict[str, Any]] = field(default_factory=list)
+    coordinate_clauses: List[Dict[str, Any]] = field(default_factory=list)
+    comparative: Optional[Dict[str, Any]] = None
+    quantifier_scope: Optional[Dict[str, Any]] = None
+    discourse_connectives: List[str] = field(default_factory=list)
     tokens: List[TokenNode] = field(default_factory=list)
     diagnostics: List[str] = field(default_factory=list)
     warnings: List[str] = field(default_factory=list)
@@ -105,6 +110,16 @@ class SentenceAST:
         }
         if self.predicate:
             res['predicate'] = self.predicate.to_dict()
+        if self.subordinate_clauses:
+            res['subordinate_clauses'] = self.subordinate_clauses
+        if self.coordinate_clauses:
+            res['coordinate_clauses'] = self.coordinate_clauses
+        if self.comparative:
+            res['comparative'] = self.comparative
+        if self.quantifier_scope:
+            res['quantifier_scope'] = self.quantifier_scope
+        if self.discourse_connectives:
+            res['discourse_connectives'] = self.discourse_connectives
         if self.ambiguities:
             res['ambiguities'] = self.ambiguities
         return res
