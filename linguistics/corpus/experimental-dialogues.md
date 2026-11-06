@@ -381,3 +381,4 @@
   *(Meyve ister misin? / Do you want fruit?)*
 - **Turn 8 (Pemar):** `Sül ves! Mei naelen meyaran.`  
   *(Teşekkürler! Meyveyi isterim. / Thank you! I would like fruit.)*
+

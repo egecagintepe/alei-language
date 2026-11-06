@@ -181,3 +181,4 @@ Dil sahibinin onayına sunulan, dildeki tıkanıklıkları çözecek 20 öncelik
 | `docs/site/index.html` & `style.css` | Yeni | Bağımsız, hafif, SVG logolu statik dokümantasyon önizlemesi. |
 | `.github/ISSUE_TEMPLATE/grammar-gap.yml` | Yeni | Topluluk için gramer açığı bildirim şablonu. |
 | `docs/audits/L5_ENGINEERING_REPORT.md` | Yeni | İşbu nihai mühendislik raporu. |
+

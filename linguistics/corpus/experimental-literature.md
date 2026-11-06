@@ -272,3 +272,4 @@ These 12 minimal pairs empirically illustrate how changing a single marker or sy
   *Meaning:* Nine doors were open (Unmarked singular noun with numeral).
 - **12B (General Plural Category):** `Lürana da fali.`  
   *Meaning:* The doors in general were open.
+

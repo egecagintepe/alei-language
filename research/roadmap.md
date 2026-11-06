@@ -54,3 +54,4 @@
 1. **No Fabricated Evidence:** Benchmark scores must reflect real, logged evaluations from specific model checkpoints. Unrun evaluations remain explicitly marked `not_run`.
 2. **Deterministic vs. Generative Separation:** Deterministic software unit tests (`test_l5_engineering.py`) test code correctness; they must never be presented as proof of human language fluency or LLM mastery.
 3. **Open Access:** All benchmark fixtures, annotations, and analysis code remain open source under Apache-2.0 and CC BY 4.0.
+

@@ -138,3 +138,4 @@ Alei-Bench evaluates cognitive language models and human learners across six cor
 - **Type III (Decoder Syntactic Misparse):** Decoder fails to parse a valid SVO/SOV clause.
 - **Type IV (Decoder Hallucinatory Resolution):** Decoder invents an argument or chooses one reading with unwarranted 99% certainty.
 - **Type V (Type Violation):** Semantic role assigned to an invalid ontological category.
+

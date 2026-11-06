@@ -144,3 +144,4 @@ If the language owner wishes to adopt this RFC in a future release, the decision
 2. **Decision AD-2026-004 (Stative Derivation):** Adopt regular `-i` quality derivation on action roots (e.g., `fal` -> `fali`).
 3. **Decision AD-2026-005 (Concessives):** Adopt `şe-el` for "even if" concessive conditionals.
 4. **Decision AD-2026-006 (Imperatives & Quotes):** Adopt subjectless imperative syntax and quotative punctuation frames.
+

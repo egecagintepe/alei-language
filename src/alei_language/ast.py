@@ -128,3 +128,4 @@ class SentenceAST:
             lines.append(f"{pad}  (DIAGNOSTICS {'; '.join(self.diagnostics)})")
         lines.append(f"{pad})")
         return "\n".join(lines)
+

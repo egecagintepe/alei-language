@@ -83,3 +83,4 @@ Responses are scored across four independent dimensions (Scale 0–3):
 - **Track 3:** 10 cases (Type safety checks, negative controls, invalid roots/roles)
 - **Track 4:** 10 cases (One-shot definition transfer of proposed roots `Pol`, `Gor`, `Bav`, etc.)
 - **Execution Status:** Ready for external model testing (`not_run` pending live sessions).
+

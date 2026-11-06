@@ -24,3 +24,4 @@ This directory contains the theoretical foundation, academic literature surveys,
 1. **Human-First Ergonomics:** Alei is an expressive literary language designed for human cognition, not a synthetic vector-space dialect.
 2. **Deterministic Verification:** Lexicon lookups, AST parsers, and valency schemas are deterministic software tools. Passing software tests is not conflated with natural human fluency.
 3. **Zero-Fabrication Policy:** All benchmark results must stem from documented, reproducible model sessions. Missing or unrun splits remain marked `not_run`.
+

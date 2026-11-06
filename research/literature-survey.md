@@ -68,3 +68,4 @@ This survey situates Alei within five key areas of contemporary NLP research.
 | **Compositionality** | Artificial grid-world commands (SCAN). | Naturalistic literary, philosophical, and everyday human expressions. |
 | **MT Induction** | Low-resource natural languages with noisy pre-training presence. | Pinned, zero-leakage in-context standard with verified byte hashes. |
 | **Epistemic Calibration** | Confidence scores on multiple-choice QA. | Semantic ambiguity detection and disciplined abstention in linguistic translation. |
+

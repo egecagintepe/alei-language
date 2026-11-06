@@ -130,3 +130,4 @@ To ensure future evaluations meet scientific standards:
 1. **Prompt Isolation:** Evaluator models must receive ONLY the source-language string and pinned standard documentation. Never provide translator notes, glosses, or source reference texts in the same session.
 2. **No Pre-Trained Contamination:** Gold benchmark texts must be novel, unpublished creative writing, not well-known public literature.
 3. **Reproducibility:** Session parameters (temperature, model snapshot, system prompt hash) must be recorded in machine-readable JSONL.
+
