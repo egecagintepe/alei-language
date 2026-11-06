@@ -1,3 +1,5 @@
+> Historical report: statements about the then-open name/help decision describe the time of this report. See [owner decisions](../../governance/decisions/README.md) for the adopted v1.1.0 status.
+
 # Bootstrap audit (before data derivation)
 
 The sole linguistic source is the supplied working standard v1.0, SHA-256 `265fcc0dd0fcaf4bd23a062d631855463201be4ac12e42bf2501f30628ee8504`. The architecture v0.1 is a proposal, not a language authority, SHA-256 `1a00a751e6a0c6d6385df75ed5c77755667bf7ea20f7fd8fdf56dbe7501e053f`. Both originals are retained. Lines refer to the standard, one-based. Alei is a greeting and project working title, not an adopted language name.

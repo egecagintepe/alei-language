@@ -1,0 +1,1 @@
+{"current_language_version":"1.1.0","default_api_language_version":"1.0","status":"release_candidate","note":"Explicit current selects v1.1.0. The implicit API/CLI default remains 1.0 for backwards compatibility; no silent transition."}

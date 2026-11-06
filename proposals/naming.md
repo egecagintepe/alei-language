@@ -2,6 +2,6 @@
 
 Status: proposal; no adoption. Source: language standard v1.0.
 
-Discuss an official language name and criteria; Alei remains only the project working title until the owner decides.
+**Adopted (AD-2026-001, 2026-11-05):** The owner selected Alei as the official human-language name. The earlier open discussion remains historical context.
 
 Acceptance: evidence and alternatives recorded; owner decision documented before any canonical change.
