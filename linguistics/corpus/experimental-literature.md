@@ -21,20 +21,20 @@ Bav lo, lüra da fali. Mei ne da avelen len ta; Mei da nelaren vel ta.
   - `mei da var-en lüra lo .`  
     `1SG PST wait-VB door LOC`
   - `nasel lo şul da avel-en ; pemar nüra ri ne da lir-en .`  
-    `forest LOC silence PST arrive-VB ; light star GEN NEG PST see-VB`
+    `forest LOC silence PST arrive-VB ; light moon GEN NEG PST see-VB`
   - `mei ne da belem-en orai-na-an , lia mei da hüvar-en nüra-an ke da lüfar-en .`  
-    `1SG NEG PST count-VB time-PL-ACC , but 1SG PST search-VB star-ACC COMP PST fall-VB`
+    `1SG NEG PST count-VB time-PL-ACC , but 1SG PST search-VB moon-ACC COMP PST fall-VB`
   - `bav lo , lüra da fal-i .`  
     `dawn LOC , door PST open-ADJ`
   - `mei ne da avel-en len ta ; mei da nelar-en vel ta .`  
     `1SG NEG PST enter-VB dwelling DAT ; 1SG PST return-VB path DAT`
 - **Turkish Translation:**
-  Kapıda bekledim. Ormana sessizlik çöktü; yıldızın ışığı görünmüyordu. Vakitleri saymadım, fakat düşen yıldızı aradım. Şafakta kapı açıktı. Eve girmedim; yola geri döndüm.
+  Kapıda bekledim. Ormana sessizlik çöktü; ayın ışığı görünmüyordu. Vakitleri saymadım, fakat batan/düşen ayı aradım. Şafakta kapı açıktı. Eve girmedim; yola geri döndüm.
 - **English Translation:**
-  I waited at the door. Silence settled over the forest; the light of the star was not visible. I did not count the hours, but I searched for the star that had fallen. At dawn, the door was open. I did not enter the dwelling; I returned to the path.
+  I waited at the door. Silence settled over the forest; the light of the moon was not visible. I did not count the hours, but I searched for the moon that had set. At dawn, the door was open. I did not enter the dwelling; I returned to the path.
 - **Linguistic Annotations:**
   - `da varen`: Canonical waiting verb (`roots:450`, `lexemes:772`).
-  - `nüra`: Canonical star / celestial body (`roots:458`).
+  - `nüra`: Canonical moon / celestial body (`roots:497`, semantic anchor: `moon`).
   - `nelaren`: Canonical returning verb (`roots:656`, `lexemes:812`).
   - `şul`: Proposed root `Şul` (silence).
   - `da fali`: Proposed regular quality derivation `fali` (open) in past stative nominal predicate ("was open").
@@ -104,7 +104,7 @@ Ena pira va liren simanan, lia eli ne va hokaren.
 
 ## 2. Two Original Literary Poems
 
-### Poem 1: *Nüra ri Vel* (The Path of the Star)
+### Poem 1: *Nüra ri Vel* (The Path of the Moon)
 *Structure: 4 stanzas of paired 6-syllable / 8-syllable rhymed cadence.*
 
 ```text
@@ -120,29 +120,29 @@ Süli kan va se miraven.
 ```
 
 - **Interlinear Gloss:**
-  - `nüra da lüfar-en ,` (star PST fall-VB)
+  - `nüra da lüfar-en ,` (moon PST fall-VB)
   - `mora lo pemar da fal-i .` (night LOC light PST open-ADJ)
   - `mei ne da belem-en ,` (1SG NEG PST count-VB)
-  - `nasel lo nüra da hüvar-en .` (forest LOC star PST search-VB)
+  - `nasel lo nüra da hüvar-en .` (forest LOC moon PST search-VB)
   - `pol lem lo sel da avel-en ,` (opposite place LOC water PST arrive-VB)
   - `vümar ta vel da pürel-en .` (bridge DAT path PST arrive-VB)
   - `şe-el pemar ne da yel-en ,` (even-if light NEG PST can-VB)
   - `süli kan va se mirav-en .` (good song FUT MID help-VB)
 - **Turkish Translation:**
-  Yıldız düştü,  
+  Ay battı / alçaldı,  
   Geceleyin ışık açıldı.  
   Saymadım vakitleri,  
-  Ormanda yıldız arandı.  
+  Ormanda ay arandı.  
 
   Karşı kıyıda su aktı,  
   Köprüye yol ulaştı.  
   Işık yetmese bile,  
   Güzel ezgi imdada koşacak.
 - **English Translation:**
-  A star descended,  
+  The moon descended,  
   In the night, light opened wide.  
   I did not count the hours,  
-  Through the forest the star was sought.  
+  Through the forest the moon was sought.  
 
   On the opposite bank water flowed,  
   To the bridge the pathway reached.  
@@ -172,7 +172,7 @@ Alei, süli vel!
   - `bav lo şul da pemar-en ,` (dawn LOC silence PST shine-VB)
   - `yan siman liman lo da nelar-en .` (error mark stone LOC PST return-VB)
   - `nelar-en , şe-el vel da nesal-en !` (return-VB , even-if path PST lose-VB)
-  - `pemar nüra ri ne va lir-en ;` (light star GEN NEG FUT see-VB)
+  - `pemar nüra ri ne va lir-en ;` (light moon GEN NEG FUT see-VB)
   - `lia meina va ves-en :` (but 1PL FUT say-VB :)
   - `alei , süli vel !` (hello , good path !)
 - **Turkish Translation:**
@@ -182,7 +182,7 @@ Alei, süli vel!
   Taştaki yanılgı işareti baki kaldı.  
 
   Geri dön, yol kaybolsa bile!  
-  Yıldızın ışığı görünmeyecek;  
+  Ayın ışığı görünmeyecek;  
   Fakat biz söyleyeceğiz:  
   Alei, yolun açık olsun!
 - **English Translation:**
@@ -192,7 +192,9 @@ Alei, süli vel!
   The mark of error stayed upon the stone.  
 
   Return, even if the path is lost!  
-  The starlight will not show its face;  
+  The moonlight will not show its face;  
+  Yet we shall softly say:  
+  Alei, may good paths guide your way!
   Yet we shall softly say:  
   Alei, may good paths guide your way!
 
@@ -220,9 +222,9 @@ Alei, süli vel!
 
 ### Pair 04: Simple Past Negation vs. Experiential Negation
 - **04A (Simple Past Negative):** `Eli ne da liren nüran.`  
-  *Meaning:* He did not see the star (on that specific occasion).
+  *Meaning:* He did not see the moon (on that specific occasion).
 - **04B (Experiential Negative):** `Eli ne fa liren nüran orai lo.`  
-  *Meaning:* He has never in his lifetime seen the star.
+  *Meaning:* He has never in his lifetime seen the moon.
 
 ### Pair 05: Constituent Focus Scope with Particle `Teli`
 - **05A (NP Focus):** `Teli növi lürana da fali.`  
@@ -256,7 +258,7 @@ Alei, süli vel!
 
 ### Pair 10: Overt Object vs. Ambiguous Ellipsis
 - **10A (Overt Object):** `Mei da hüvaren nüran.`  
-  *Meaning:* I searched for the star (Target entity specified).
+  *Meaning:* I searched for the moon (Target entity specified).
 - **10B (Ambiguous Ellipsis):** `Mei da hüvaren.`  
   *Meaning:* I searched (Target entity unspecified / dropped).
 

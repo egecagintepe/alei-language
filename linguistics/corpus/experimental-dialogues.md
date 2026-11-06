@@ -286,10 +286,10 @@
 - **Turn 2 (Liman):** `Sai da yelaren keli yanan?`  
   *(Hangi hatayı yazdın? / Which mistake did you write?)*
 - **Turn 3 (Tüvan):** `Mei ne da belemen nüra-peman.`  
-  *(Yıldız ışığını saymadım / hesaplamadım. / I did not count the starlight.)*  
-  [Canonical `nüra` = star, `roots:458`]
+  *(Ay ışığını saymadım / hesaplamadım. / I did not count the moonlight.)*  
+  [Canonical `nüra` = moon, `roots:497` + `pemar` = light]
 - **Turn 4 (Liman):** `Nüra samel orai lo da pemaren.`  
-  *(Yıldız aynı vakitte parladı. / The star shone at the same time.)*
+  *(Ay aynı vakitte parladı. / The moon shone at the same time.)*
 - **Turn 5 (Tüvan):** `Liman lo siman da nelaren.`  
   *(Taştaki işaret geri döndü / kaldı. / The mark returned on the stone.)*  
   [Canonical return `nelaren`, `roots:656`]
@@ -327,18 +327,18 @@
   *(Gece gelse bile geri dön! / Return even if night arrives!)*  
   [Canonical return `nelaren` + Proposal `şe-el`]
 
-### Dialogue 6: The Starlight Observation
+### Dialogue 6: The Moon Observation
 *Characters: Deina (Astronomer) and Hüvar (Searcher)*
 
 - **Turn 1 (Deina):** `Nüra ena ne da liren.`  
-  *(Bir yıldız görülmedi. / One star was not seen.)*  
-  [Canonical `nüra` = star, `ena` = one]
+  *(Ay görülmedi. / The moon was not seen.)*  
+  [Canonical `nüra` = moon / celestial body, `roots:497`]
 - **Turn 2 (Hüvar):** `Nüra da lüfaren le?`  
-  *(Yıldız düştü mü? / Did the star fall?)*
+  *(Ay battı mı? / Did the moon set/fall?)*
 - **Turn 3 (Deina):** `Eli da lüfaren; mei ne da belemen.`  
-  *(O düştü; ben sayamadım / hesaplayamadım. / It fell; I did not count.)*
+  *(O battı; ben sayamadım / hesaplayamadım. / It set; I did not count.)*
 - **Turn 4 (Hüvar):** `Mei da hüvaren nüran nasel sam lo.`  
-  *(Yıldızı bütün ormanda aradım. / I searched for the star throughout the forest.)*  
+  *(Ayı bütün ormanda aradım. / I searched for the moon throughout the forest.)*  
   [Canonical `nasel` = forest, `roots:548`]
 - **Turn 5 (Deina):** `Sai da liren elin le?`  
   *(Onu gördün mü? / Did you see it?)*  
@@ -349,7 +349,7 @@
 - **Turn 7 (Deina):** `Nur da miraven meina.`  
   *(Parıltı bize yardım etti. / The radiance helped us.)*
 - **Turn 8 (Hüvar):** `Meina da liren nüra-peman.`  
-  *(Yıldız ışığını gördük. / We saw the starlight.)*
+  *(Ay ışığını gördük. / We saw the moonlight.)*
 
 ### Dialogue 7: Resolving a Disagreement
 *Characters: Nael (Organizer) and Vesen (Speaker)*

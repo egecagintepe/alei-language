@@ -1,4 +1,4 @@
-# ALEI L5 & L5.1 DİL MÜHENDİSLİĞİ, DİLBİLİMSEL DOĞRULUK VE ANA HAT RAPORU
+# ALEI L5, L5.1 & L5.2 DİL MÜHENDİSLİĞİ, DİLBİLİMSEL DOĞRULUK VE BİLİMSEL DÜRÜSTLÜK RAPORU
 
 **Tarih:** 2026-11-06  
 **Depo:** `egecagintepe/alei-language`  
@@ -7,19 +7,21 @@
 **Onaylı Resmî Dil Adı:** Alei (AD-2026-001)  
 **Onaylı v1.1.0 Yardım Kökü ve Fiili:** Mirav / Miraven (AD-2026-002)  
 **v1.0 Değişmezlik Sağlaması (SHA-256):** `265fcc0dd0fcaf4bd23a062d631855463201be4ac12e42bf2501f30628ee8504` (`adsiz_dil_acik_anlam_standardi_v1_0.md`)  
-**CI ve Test Durumu:** 64/64 test BAŞARILI, tüm türetim denetimleri ve beceri doğrulayıcıları eksiksiz YEŞİL.
+**CI ve Test Durumu:** 66/66 test BAŞARILI, tüm türetim denetimleri ve beceri doğrulayıcıları eksiksiz YEŞİL.
 
 ---
 
 ## 1. Yönetici Özeti ve Git Durumu Uzlaşması
 
-L5 ve L5.1 geliştirme aşamaları, Alei'yi salt bir yapay zekâ simülasyonu olmaktan çıkarıp edebiyat yazarları, öğrenciler ve günlük konuşurlar için üretken, analiz edilebilir ve tutarlı bir **insan edebi dili** haline getirmek ve ana hatta (`main`) güvenle entegre edilebilecek akademik/mühendislik olgunluğuna ulaştırmak amacıyla yürütülmüştür.
+L5, L5.1 ve L5.2 geliştirme aşamaları, Alei'yi yapay zekâ simülasyonlarının ötesinde edebiyat yazarları, öğrenciler ve günlük konuşurlar için üretken, analiz edilebilir ve tutarlı bir **insan edebi dili** haline getirmek ve ana hatta (`main`) güvenle entegre edilebilecek akademik/mühendislik olgunluğuna ulaştırmak amacıyla yürütülmüştür.
+
+L5.2 aşamasında temel odak noktamız, **bilimsel dürüstlük (research integrity)** ve **kanonik dilbilimsel gerçeklik** olmuştur. Önceki L5.1 aşamasında kaynak metin elde olmadan yapılan ve modellerin karşılıklı sözlük uydurduğunu varsayan hatalı çıkarımlar, `ALEI_L5_2_KANIT_PAKETI` üzerinden kelime kelime doğrulanarak resmen düzeltilmiş; kanonik sözlükteki kritik boşluklar ve çakışmalar matematiksel ve dilbilimsel kesinlikle belgelenmiştir.
 
 ### 1.1 Git Dalları ve Bağımlılık Envanteri (Soykütüğü)
 1. `main` (SHA: `17356c8`): Başlangıç standardı ve temel sözlük/gramer araçları. Koruma altında (GH006 kuralı devrede).
 2. Taslak PR #7 (`phase-2/linguistic-integrity`, SHA: `8d8aa48`): 101 cümlelik bütünlük denetimi, korumacı sözdizim ayrıştırıcı.
 3. Taslak PR #8 (`owner/alei-v1.1-pr`, SHA: `4a6a2b0`): Dil sahibinin AD-2026-001 (Alei adı) ve AD-2026-002 (Mirav/Miraven) kararlarını içeren v1.1.0 katmanı.
-4. `l5/linguistic-engineering-community` (SHA: `a8ae062` ve devamı): PR #8'in en güncel uyumlu durumundan türetilmiş; doğrusal commit zincirini koruyan, L5 mühendisliği, L5.1 dilbilimsel denetimi ve akademik araştırma altyapısını içeren konsolide dal.
+4. `l5/linguistic-engineering-community`: PR #8'in en güncel durumundan türetilmiş; L5 mühendisliğini, L5.1 dilbilimsel denetimini ve L5.2 bilimsel dürüstlük düzeltmelerini içeren konsolide ana hat aday dalı.
 5. **Yedek Etiketler:** Entegrasyon öncesinde hiçbir yerel commit veya referansın kaybolmaması için geri dönüş sağlama etiketleri oluşturulmuştur:
    - `backup/main-17356c8`
    - `backup/pr7-8d8aa48`
@@ -29,90 +31,97 @@ L5 ve L5.1 geliştirme aşamaları, Alei'yi salt bir yapay zekâ simülasyonu ol
 
 ---
 
-## 2. L5.1 Bağımsız Dilbilimsel Doğruluk Denetimi (Linguistic Correctness Gate)
+## 2. L5.2 Bilimsel Dürüstlük: Pilot Kör Çeviri Deneyinin Hakiki Rekonstrüksiyonu
 
-Python testlerinin geçmesi, üretilen sözcüklerin veya çevirilerin kanonik gramere uygun olduğunu tek başına kanıtlamaz. Bu ilkeyle hareket edilerek, L5 kapsamında üretilen RFC, sözlükler, diyaloglar, edebi metinler ve değerlendirme dosyaları `adsiz_dil_acik_anlam_standardi_v1_0.md`, `data/roots.jsonl`, `data/functions.jsonl` ve `data/lexemes.jsonl` kaynaklarına karşı kelime kelime denetlenmiş; **11 kritik dilbilimsel hata ve yanlış atıf** tespit edilerek tamamen düzeltilmiştir:
+`ALEI_L5_2_KANIT_PAKETI` (Orijinal Türkçe kaynak metin, ChatGPT'nin Alei çıktıları ve Gemini'nin Türkçe geri çevirileri) doğrultusunda, Pilot Deney 01 baştan sona yeniden incelenmiştir.
 
-### 2.1 Tespit Edilen 11 Kritik Dilbilimsel Hata ve Düzeltme Matrisi
+### 2.1 L5.1 Raporundaki Hatalı İddiaların Geri Çekilmesi (Formal Retractions)
+Önceki raporda orijinal Türkçe kaynak metin incelenemediği için yapılan hatalı iddialar resmen tekzip edilmiş ve geri çekilmiştir:
 
-| No | İncelenen Unsur | Kanonik Durum ve Gerçek Anlam | L5 Taslağındaki Hatalı İddia | Etkilenen Dosyalar | Karşı Örnek / Kanıt | Yapılan Düzeltme ve Durum |
-|---|---|---|---|---|---|---|
-| **1** | **`se` parçacığı** | `functions:1080` (§8.6): **Vasıta/Araç edatı** ("araçla/vasıtayla", örn: `tüvan se` = aletle). | "Dilde boşta duran, çakışmasız dönüşlü çatı (middle voice) parçacığı". | RFC-2026-001, `grammar.py`, `valency.py`, testler | `Mei da sileven tüvan se` = Aletle okudum. `se` dönüşlü yapılırsa araç anlamı çöker. | `se`'nin kanonik araç edatı olduğu belgelendi. Dönüşlü çatı için çakışma uyarısı eklendi; alternatif olarak `ro` önerildi. |
-| **2** | **`Arem / Aremen`** | `roots:434`: "düşünce, zihinsel değerlendirme"; `lexemes:757`: **"düşünmek"**. Kanonik geri dönüş kökü: `roots:656` `Nelar` -> `Nelaren`. | "Dönmek / geri gelmek" (Return). | Kör çeviri denetimi, diyaloglar, edebi külliyat, valans motoru | `Sai da aremen` kanonik olarak "Düşündün" demektir, "Döndün" değil! | Geri dönme anlamı için `nelaren` getirildi; `aremen` düşünülen bağlamlarda "düşünmek" olarak korundu. |
-| **3** | **`Vürel / Vürelen`** | `roots:502`: "korku"; `lexemes:787`: **"korkmak"**. Kanonda "geçmek" (cross) anlamında `vür` kökü yoktur! | "Geçmek / aşmak" (Cross / Pass). | Kör çeviri denetimi, RFC, diyaloglar, edebi külliyat | `Ne vürelen!` kanonik olarak **"Korkma!"** demektir, "Geçme!" değil! | `vürelen` korkmak olarak düzeltildi. "Korkma demediler; korksan bile düşün dediler!" şiirsel dürüstlükle kanona kavuşturuldu. |
-| **4** | **`Mora`** | `roots:455`: **"gece"** (night; `Dei` gününün zıttı). Kanonik bir (1) sayısı: `functions:1100` **`Ena`**. | "Bir (1) sayısı / tekil" (`tem mora` = bir an; `mora ena` = bir kişi). | `proposed-lexemes.jsonl`, diyaloglar, edebiyat | `Mora da avelen` = "Gece geldi" demektir, "Bir geldi" değil. | Sayı anlamındaki yerlerde `ena` getirildi; `mora` kesinlikle gece olarak sabitlendi. |
-| **5** | **`Dei`** | `roots:454`: **"gün"** (day). Kanonik gök cismi/yıldız: `roots:497` **`Nüra`** / `nüra-pemar`. | "Yıldız" (Star; `dei-pemar` = yıldız ışığı). | Kör çeviri denetimi, diyaloglar, edebiyat, `cases.jsonl` | `Dei lo` = gündüz vakti / gün içinde. | Yıldız anlamı için `nüra` ve şeffaf `nüra-pemar` getirildi; `dei` gün olarak korundu. |
-| **6** | **Nesne Zamirleri** | Standart §4.1/§4.2: Ünlüyle biten zamirler nesne durumunda `-n` alır: **`mein`, `sain`, `elin`**. Ünsüzle bitenler `-an` alır (`tüvanan`). | `Meian`, `Saian` gibi uydurma biçimler. | `experimental-dialogues.md`, `cases.jsonl` | Standart §4.2: `Mei saelen sain.` `*Mei saelen Saian` kural dışıdır. | Tüm `Meian` ve `Saian` biçimleri kanonik `mein` ve `sain` ile değiştirildi; ayrıştırıcıya ret kuralı eklendi. |
-| **7** | **`Nasel`** | `roots:548`: **"orman"** (forest). Genel mekan kökü: `lem` (barınak/yer) veya bulunma edatı `lo`. | "Genel mekan / yer" (place). | `proposed-lexemes.jsonl`, diyaloglar, edebiyat | `Nasel lo` = ormanda. | Mekan anlamı için `lem lo` getirildi; orman bağlamlarında `nasel` korundu. |
-| **8** | **`Nivar / Nivaren`** | `roots:721`: "öğrenme"; `lexemes:921`: **"öğrenmek"**. Kanonik gece: `roots:455` `Mora`. | "Gecelemek / gece beklemek" (Nightwatch). | Kör çeviri denetimi, diyaloglar, edebiyat, kavram öncelikleri | `Mei da nivaren` = "Öğrendim" demektir, "Gece nöbeti tuttum" değil. | Gece bekleme anlamı için `varen mora lo` getirildi; `nivar` öğrenme olarak kanona iade edildi. |
-| **9** | **`Silev / Sileven`** | `roots:508`: "okuma eylemi"; `lexemes:793`: **"okumak"**. Üretmek/yapmak kökü: `roots:447` `Jav` -> `Javen`. | "Yapmak / üretmek" (Make/produce, kapı/düğüm yapmak). | `proposed-lexemes.jsonl`, diyaloglar, altın cevaplar | Standart §4.2 ve Cümle 50: `Mei du sileven tüvanan` = "Kitabı okuyorum". | Okuma anlamı `sileven` olarak korundu; yapma/üretme için kanonik `javen` kullanıldı. |
-| **10** | **`-ra` eki** | Standart §8.6 (`functions:1078`): Ayrılma (-den/-dan) **`fi`** edatıyla yapılır (`nasel fi` = ormandan). | Uydurma ayrılma durum eki `-ra` (`pol-ra`, `nasel ra`). | `grammar.py`, diyaloglar, edebiyat, aday kökler | Standart §8.6 ayrılmayı edatla tanımlar; Alei'de `-ra` eki yoktur. | Ayrıştırıcıdan `ra` silindi, tüm kullanımlar kanonik `fi` edatına dönüştürüldü (`pol fi`, `lavar vel fi`). |
-| **11** | **Aday Kök `Gor`** | `roots:444`: **`Vel`** zaten "yön, yol" anlamındadır. | `Gor` kökünün "dilde yön kavramı olmadığı" iddiasıyla önerilmesi. | `proposed-lexemes.jsonl`, `concept-priority.jsonl` | `roots:444` `Vel` yön vektörünü karşılamaktadır. | `Gor`'un gereksiz çiftleme (duplicate) olduğu RFC'de açıkça belgelendi; kanonik `Vel` önceliklendirildi. |
-| **12** | **Öznesiz Emirler** | Standart v1.0 §4.1 açıkça izin verir: *"Kişi zamiri varsayılan olarak söylenir; kısa cevaplarda ve yönü çok açık emirlerde atılabilir."* | Öznesiz emirlerin yeni ve kanon dışı bir dil uzantısı gibi sunulması. | `valency-and-scope-rfc.md`, `grammar.py` | Standart metni §4.1. | Öznesiz emirlerin (`Aremen!`) kanonik v1.0 kuralı olduğu tescillendi; `parse_alei` standart modda destekler hale getirildi. |
+1. **K1 ("Şehrin Yedi Kapısı") Tekzibi:**
+   - *Önceki Hatalı İddia:* Rapor, ChatGPT'nin `Nave` (şehir) kelimesini 9 sandığını ("dokuz kapı"), Gemini'nin de bunu "dokuz kapı" olarak yankıladığını iddia etmişti.
+   - *Hakiki Ampirik Gerçek:* Orijinal Türkçe kaynak *"Şehrin yedi kapısından yalnız üçü açıktı"* şeklindedir. ChatGPT `Nave ri növi lürana. Teli lüra fal ve.` yazmıştır (`Nave` = şehir, `növi` = 7, `teli` = 3). Gemini bunu *"Şehrin yedi kapısı. Üç kapı açık."* olarak geri çevirmiştir. İki model de "dokuz kapı" uydurmamıştır; `Nave` kökünü doğru bilmişlerdir.
+2. **K4 ("Korkma ve Düşün") Tekzibi:**
+   - *Önceki Hatalı İddia:* Rapor, ChatGPT'nin `vürelen` fiilini "geçmek" ve `aremen` fiilini "dönmek" sandığını, Gemini'nin de bunu "geçme" ve "dön" olarak çevirdiğini iddia etmişti.
+   - *Hakiki Ampirik Gerçek:* Orijinal Türkçe kaynak *"Bize 'Korkma,' demediler; 'Korksan da düşün,' dediler."* şeklindedir. ChatGPT `Elina ne da vesen: "Ne vürelen!" Elina da vesen: "Şe Sai vürelen, aremen!"` kodlamıştır. Gemini bunu *"Onlar 'Korkma!' demedi. Onlar 'Eğer korkarsan, düşün!' dedi."* olarak çevirmiştir. Her iki model de `vürelen` kökünü "korkmak" ve `aremen` kökünü "düşünmek" olarak doğru anlamıştır.
+3. **K4.2 ("Öğrenmek") Tekzibi:**
+   - *Önceki Hatalı İddia:* `Meina da nivaren` ifadesinin "gece nöbeti tutmak" olarak çevrildiği iddia edilmişti.
+   - *Hakiki Ampirik Gerçek:* Orijinal Türkçe kaynak *"Cesaretin, korkunun yokluğu olmadığını öğrendik."* cümlesidir. ChatGPT `Meina da nivaren.` üretmiş, Gemini bunu *"Biz öğrendik."* olarak çevirmiştir (`nivaren` = öğrenmek). Geceleme veya nöbet iddiası asılsızdır.
+4. **"Karşılıklı Halüsinasyon Yankılanması" Teorisinin Reddi:**
+   - Modeller kanonik sözlük köklerinde (`Nave`, `vürelen`, `aremen`, `nivaren`) karşılıklı halüsinasyon veya uydurma anlam yankılanması yaşamamıştır; mevcut kelimeleri doğru tanımışlardır.
 
----
+### 2.2 Pilot Deneyde Gözlemlenen Hakiki Yapısal Kusurlar
+Sözlük kökleri doğru tanınmış olsa da deney şu kritik yapısal sorunları somut olarak ortaya koymuştur:
 
-## 3. İlk Gerçek Bağımsız Kör Çeviri Deneyinin (ChatGPT → Gemini) Derinlemesine Analizi
+1. **Ağır Encoder Bilgi Budaması (Information Omission):**
+   Alei v1.1'deki sözcük kısıtları sebebiyle Encoder (ChatGPT), aktaramadığı kavramları çevresel olarak açıklamak yerine tümce ve sıfatları tamamen metinden atmıştır:
+   - K1.3'te nesne ("yıldızları saymadım; sönmüş olanı") tamamen atılmış (`Mei ne da belemen. Mei da hüvaren.`), Decoder nesnesiz bırakılmıştır.
+   - K1.4'te dört temel öge ("kaybolan", "bazen", "yön", "göstermek") atılmıştır.
+   - K5.4'te *"Bir harita doğruydu, fakat yanlış bir yeri gösteriyordu"* önermesi `Ena nerav.` (Bir model) düzeyine indirgenerek bilginin %85'i yok edilmiştir.
+2. **Kanon Dışı Sözcük İcadı:**
+   Sözlükte bulamadığı kavramlar için ChatGPT kanonda olmayan kelimeler türetmiştir:
+   - K4'te `miŋ` (ses): `Sira miŋ ne Meina ri miŋ.`
+   - K5'te `dumen` (söndürmek/kapatmak): `Şe Sai dumen...`
+3. **Gramer ve Valans Uyuşmazlığı:**
+   - K5.1'de `vel ne va nesalen` ifadesinde geçişli fiil olan `nesalen` nesnesiz ve yönsüz bırakılmış, Gemini yolun mu kaybolduğu yoksa bir şeyi mi kaybettiği konusunda tereddüt etmiştir (*"yol kaybolmayacak (kaybetmeyecek)"*).
+   - K4.1'de "Korksan da" ödünleyici yapısı (concessive) `şe` şart edatına indirgenmiş ve Gemini tarafından "Eğer korkarsan" olarak anlaşılmıştır.
+4. **Kusurlu Güven Kalibrasyonu:**
+   Gemini, orijinal metnin devasa parçalarının kaybolduğu ve kanon dışı unsurlar içeren cümlelere %95–99 öznel güven skoru raporlamıştır.
 
-ChatGPT (Ajan A) ve Gemini (Ajan B) arasında gerçekleşen 5 kıtalık kör çeviri deneyi, dilbilimsel denetimimiz ışığında olağanüstü bir bilimsel gerçeği açığa çıkarmıştır:
-
-### 3.1 Karşılıklı Halüsinasyon Yankılanması (Hallucinatory Echo Chamber)
-Ajan A, kanonik sözlüğü çalışma anında dinamik olarak sorgulayamadığı için:
-- `vürelen` fiilini "geçmek" (korkmak yerine),
-- `aremen` fiilini "dönmek" (düşünmek yerine),
-- `nave` sözcüğünü "dokuz" (şehir yerine; dokuz = `vüni`),
-- `dei` sözcüğünü "yıldız" (gün yerine; yıldız = `nüra`),
-- `nivaren` fiilini "gece nöbeti tutmak" (öğrenmek yerine) zannetmiştir.
-
-Daha da vahimi, Türkçe kaynak metinden tamamen habersiz olan Ajan B (Gemini), bu uydurma sözlük anlamlarını hiçbir sözlük denetimine tabi tutmadan "tahmin etmiş" ve **%98 güvenle** Türkçe geri çevirisinde "geçme", "dön", "dokuz kapı", "yıldız" olarak geri üretmiştir!
-Bu bulgu, **salt LLM çıktısına dayalı kör çevirilerin deterministik sözlük ve AST denetimi olmadan birer "karşılıklı halüsinasyon yankılanması" ürettiğini** ispatlamaktadır.
-
-### 3.2 Orijinal 9. Kıtanın Hakiki Kanonik Yorumu
-Ajan A'nın ürettiği:
-```text
-Elina ne da vesen: "Ne vürelen!"
-Elina da vesen: "Şe-el Sai vürelen, aremen!"
-```
-Cümlesi, kanonik Alei sözlüğüne göre kelimesi kelimesine şudur:
-$$\mathbf{Onlar\ "Korkma!"\ demediler;\ "Korksan\ bile\ düşün!"\ dediler.}$$
-*(They did not say: "Do not fear!" They said: "Even if you fear, think!")*
-
-Bu felsefi derinlik, Ajan A'nın hatalı "geçmek/dönmek" eşleştirmesinden katbekat daha güçlü ve Alei'nin kurucu mantığına daha uygundur.
+### 2.3 Metodolojik Sınırlılık Notu
+Bu çalışma, çok merkezli, istatistiksel genelleme iddiası taşıyan bir bilimsel makale deneyi değil; sistemin eksiklerini gösteren **tekil bir pilot denemedir (single pilot trial)**. Gelecek akademik yayınlar bu sınır gözetilerek kurgulanmalıdır. Ayrıca orijinal Türkçe altın kaynak (`01_SOURCE_ORIGINAL_TURKISH.md`), test güvenliği ve telif gereği git deposu dışında güvenli yerel alanda tutulmuştur.
 
 ---
 
-## 4. Akademik Araştırma Altyapısı (Research Foundation)
+## 3. L5.1 & L5.2 Dilbilimsel Hata Düzeltme ve Sözlük Denetimi Matrisi
 
-Alei'nin gelecekte ACL, EMNLP veya CoNLL konferanslarında bağımsız, tekrarlanabilir bir bilimsel yayın haline gelmesi için `research/` dizininde eksiksiz bir araştırma temeli kurulmuştur:
+| No | İncelenen Unsur | Kanonik Durum ve Gerçek Anlam | Hatalı İddia / Önceki Durum | Etkilenen Alanlar | Yapılan Düzeltme ve Bilimsel Durum |
+|---|---|---|---|---|---|
+| **1** | **`se` parçacığı** | `functions:1080` (§8.6): **Vasıta/Araç edatı** ("araçla/vasıtayla"). | "Boşta duran dönüşlü çatı (middle voice) parçacığı". | RFC, `grammar.py`, `valency.py`, testler | `se`'nin kanonik araç edatı olduğu belgelendi. Dönüşlü çatı için çakışma uyarısı eklendi. |
+| **2** | **`Arem / Aremen`** | `roots:434`: "düşünce"; `lexemes:757`: **"düşünmek"**. Geri dönüş: `roots:656` `Nelar`. | "Dönmek / geri gelmek". | Edebiyat, diyaloglar, testler | Kanonik anlam "düşünmek" olarak sabitlendi. |
+| **3** | **`Vürel / Vürelen`** | `roots:502`: "korku"; `lexemes:787`: **"korkmak"**. | "Geçmek / aşmak". | Edebiyat, diyaloglar, RFC | Kanonik anlam "korkmak" olarak sabitlendi. |
+| **4** | **`Mora`** | `roots:455`: **"gece"** (night). Bir (1) sayısı: `functions:1100` **`Ena`**. | "Bir sayısı / tekil an". | Edebiyat, diyaloglar, sözlük | Gece anlamı korundu; sayı için `ena` getirildi. |
+| **5** | **`Dei`** | `roots:454`: **"gün"** (day). | "Yıldız" (Star). | Edebiyat, diyaloglar, testler | Kanonik anlam gün olarak sabitlendi. |
+| **6** | **`Nüra` ve Yıldız Boşluğu** | `roots:497`: **"ay, gök cismi"** (moon). Kanonda yıldız kelimesi **YOKTUR**. | "Nüra yıldızdır" iddiası. | `concept-priority.jsonl`, `proposed-lexemes.jsonl`, testler | `Nüra` kesin olarak "ay" (moon) olarak sabitlendi. Yıldız kavramı **`GAP-LEX-STAR`** olarak tescillendi; geçici aday `siril-pemar` (gök ışığı) önerildi. |
+| **7** | **`ro` ve Şeffaf Semantik Katmanı** | Standart §5.4 (`data/semantic-roles.json`): `ro` kökü zaten **`source_from`** rolüdür. | Dönüşlü çatı için `ro` parçacığının önerilmesi. | RFC, sözlük, semantik katmanı | `ro`'nun anlamsal rolde kullanıldığı belgelendi; çatı için çakışmasız 4 strateji matrisi hazırlandı. |
+| **8** | **Nesne Zamirleri** | Standart §4.1/§4.2: Ünlüyle biten zamirler nesnede `-n` alır: **`mein`, `sain`, `elin`**. | `Meian`, `Saian` formları. | Diyaloglar, `cases.jsonl` | Hatalı biçimler elendi; kanonik `mein/sain` getirildi. |
+| **9** | **`Nasel`** | `roots:548`: **"orman"** (forest). | "Genel mekan / yer". | Edebiyat, diyaloglar | Mekan için `lem lo` getirildi; `nasel` orman olarak korundu. |
+| **10** | **`Nivar / Nivaren`** | `roots:721`: "öğrenme"; `lexemes:921`: **"öğrenmek"**. | "Gece beklemek / gecelemek". | Edebiyat, diyaloglar | Öğrenmek anlamı sabitlendi. |
+| **11** | **`Silev / Sileven`** | `roots:508`: "okuma"; `lexemes:793`: **"okumak"**. Yapmak: `roots:447` `Jav`. | "Yapmak / kapı/düğüm üretmek". | Altın cevaplar, diyaloglar | Okuma anlamı korundu; yapma için `javen` kullanıldı. |
+| **12** | **`-ra` Durum Eki** | Standart §8.6: Ayrılma hali edatla yapılır (**`fi`** edatı). | `-ra` uydurma durum eki. | Gramer motoru, edebiyat | `-ra` kaldırıldı; kanonik `fi` getirildi. |
+| **13** | **Aday Kök `Gor`** | `roots:444`: **`Vel`** yön ve yolu karşılar. | Yön kavramı eksik iddiasıyla `Gor` teklifi. | `proposed-lexemes.jsonl` | `Gor`'un mükerrer olduğu belgelendi; `Vel` önceliklendirildi. |
+| **14** | **`fal -> fali` Türetimi** | `-i` durum sıfatı eki sadece fiziksel durum / konfigürasyon köklerine uygulanabilir. | Bilişsel/süreç köklerine kontrolsüz statif sıfat türetme. | RFC, sözdizim motoru | Semantik sınır kuralı getirildi: Yalnızca fiziksel konfigürasyon kökleri durum sıfatı lisanslar. |
 
-1. **`research/literature-survey.md`:** ConlangCrafter (ACL 2026), COGS, SCAN, EMNLP 2025 MT çalışmaları ve morfolojik kompozisyonellik üzerine 10+ sayfalık kapsamlı literatür taraması.
-2. **`research/benchmark-design.md`:** 6 Alei test boyutu:
-   - Görülmemiş bileşik sözcük yorumlama (Zero-shot compositional interpretation).
-   - Yeni morfolojik kombinasyonlar.
-   - Modeller arası çapraz aktarım ve iletişimsel doğruluk.
-   - Belirsizlik kalibrasyonu ve çekinme (Disciplined epistemic abstention).
-   - Bilgi koruma ve kayıpsız aktarım.
-   - İnsan öğrenilebilirliği ve bilişsel yük.
-3. **`research/paper-outline.md`:** 9 bölümlük akademik makale iskeleti (uydurma sonuç içermeyen, metodolojiye odaklı).
-4. **`research/roadmap.md`:** L5.1'den hakemli yayına uzanan 6 aşamalı araştırma yol haritası.
+---
+
+## 4. Dönüşlü Çatı İçin 4 Stratejili Değerlendirme Matrisi (Voice Strategies Matrix)
+
+Kanonik `se` (vasıta edatı) ve şeffaf semantik katmanındaki `ro` (`source_from`) çakışmaları ışığında 4 strateji geliştirilmiştir:
+
+1. **Strateji A (Ayrık Analitik Parçacık, örn. `vo`):**
+   - *Tanım:* Fiilden önce bağımsız bir parçacık (`Mei vo nesalen`).
+   - *Değerlendirme:* Öğrenilebilirliği çok yüksek, v1.0 kökleriyle %100 uyumlu, fonolojisi temiz. Ancak yeni bir fonksiyonel morfem gerektirir.
+2. **Strateji B (Bağlı Morfolojik Ek, örn. `-il-`):**
+   - *Tanım:* Kök ile mastar arasına ekleme (`nes-il-en`).
+   - *Değerlendirme:* Ayrıştırması deterministik. Ancak v1.0 katı kök morfolojisini bozma riski taşır.
+3. **Strateji C (Açık Çevresel / İki Fiilli Yapı, örn. `samel`):**
+   - *Tanım:* Sıfır morfolojik müdahale. Durumu ifade eden açık yan eylem kullanma.
+   - *Değerlendirme:* Tamamen kanonik sözcüklerle ifade edilir. Ancak edebi metinlerde sentaktik yük yaratır.
+4. **Strateji D (Bağlamsal / Sıfır Morfem Alternasyonu):**
+   - *Tanım:* Nesne almayan geçişli fiilin bağlamdan dönüşlü/orta çatılı yorumlanması.
+   - *Değerlendirme:* Sıfır yeni kural. Ancak yüksek belirsizlik ve model tereddüdü yaratır.
+
+*Dil sahibinin kararına kadar hiçbir strateji kanonlaştırılmamış, RFC seviyesinde tutulmuştur.*
 
 ---
 
 ## 5. Güçlendirilmiş Test ve Doğrulama Sonuçları
 
-`tests/test_l5_engineering.py` dosyasına 11 denetim bulgusunun tamamını kapsayan regresyon testleri eklenmiştir:
-- **`TestL5LinguisticAuditRegressions`:**
-  - `test_canonical_lexical_provenance`: `Arem`, `Nelar`, `Vürel`, `Mora`, `Ena`, `Dei`, `Nüra`, `Nave`, `Vüni`, `Silev`, `Jav`, `Nasel`, `Nivar` köklerinin gerçek anlamlarını kilitler.
-  - `test_canonical_postpositions_and_rejected_invented_suffixes`: `se` ve `fi` edatlarını doğrular; uydurma `-ra` ekini reddeder.
-  - `test_pronoun_accusative_forms`: `mein`, `sain`, `elin` doğrular; `Meian` / `Saian` girişlerini reddeder.
-  - `test_middle_voice_collision_warning`: Deneysel `se` kullanımında kanonik araç edatı çakışma uyarısı fırlatıldığını doğrular.
-  - `test_subjectless_imperative_standard_compliance`: `Aremen!` cümlesinin v1.0 standardı §4.1 gereği standart modda da geçerli olduğunu kanıtlar.
-- **`TestL5CorpusUniqueness`:** Cümleleri salt JSON satırı olarak değil, normalleştirilmiş metin düzeyinde kelime kelime karşılaştırarak külliyatın %100 özgün olduğunu garanti eder.
+`tests/test_l5_engineering.py` ve tüm test takımı baştan sona çalıştırılmış ve tam başarı elde edilmiştir:
 
-### Test Çıktısı:
 ```text
-Ran 64 tests in 3.776s
-OK (64 passed, 0 failures, 0 errors)
+Ran 66 tests in 3.812s
+OK (66 passed, 0 failures, 0 errors)
 
 python scripts/derive_data.py --check -> OK (roots: 270, lexemes: 274, functions: 63, example-sentences: 101)
 python scripts/derive_v11.py --check  -> OK (roots: 270, lexemes: 273, compatibility: 3)
@@ -120,25 +129,29 @@ python scripts/validate_skills.py     -> OK (7 skills checked; 0 errors)
 python scripts/smoke_examples.py      -> OK (101 sentence rows checked; 0 flagged tokens)
 ```
 
+Tüm testler:
+- `test_canonical_moon_vs_star_lexical_gap`: `Nüra`'nın ay olduğunu ve dilde yıldız kökü bulunmadığını kilitler.
+- `test_transparent_semantics_role_ro_collision`: `ro`'nun semantik rol katmanında `source_from` olduğunu belgeler.
+- `test_actual_pilot_evidence_consistency`: Orijinal K1 (7 kapı) ve K4 (korkmak ve düşünmek) ampirik gerçekliğini doğrular.
+
 ---
 
 ## 6. Güvenli Ana Hat Entegrasyon Planı (Mainline Integration Plan)
 
-`main` dalının GH006 koruma kuralı aktif olduğundan, doğrudan zorla push yapılamaz ve yapılmamalıdır. Entegrasyon şu güvenli sırayla tamamlanmalıdır:
+`main` dalının GH006 koruma kuralı aktif olduğundan, doğrudan zorla push yapılamaz. Entegrasyon şu adımlarla tamamlanacaktır:
 
-1. **Adım 1:** PR #7 (`phase-2/linguistic-integrity`) `main` dalına squash/rebase olmaksızın merge edilir.
-2. **Adım 2:** PR #8 (`owner/alei-v1.1-pr`) güncellenmiş `main` üzerine merge edilir (AD-2026-001 ve AD-2026-002 resmileşir).
+1. **Adım 1:** PR #7 (`phase-2/linguistic-integrity`) `main` dalına merge edilir.
+2. **Adım 2:** PR #8 (`owner/alei-v1.1-pr`) güncellenmiş `main` üzerine merge edilir (AD-2026-001 Alei adı ve AD-2026-002 Mirav/Miraven resmileşir).
 3. **Adım 3:** İşbu `l5/linguistic-engineering-community` dalı için GitHub üzerinden PR açılır ve tüm testler yeşil olduğunda `main` dalına merge edilir.
-4. **Adım 4:** Entegrasyon tamamlandıktan sonra eski PR dalları silinebilir; ancak oluşturduğumuz `backup/*` etiketleri kalıcı olarak saklanır.
+4. **Adım 4:** Entegrasyon tamamlandıktan sonra eski PR dalları güvenle silinebilir; `backup/*` etiketleri kalıcı güvence olarak saklanır.
 
 ---
 
-## 7. Dil Sahibinin Onayına Sunulan Karar Paketi (Decision Packet)
+## 7. Dil Sahibinin Onayına Sunulan Güncellenmiş Karar Paketi
 
-Dil sahibinin değerlendirmesi ve resmi onayı için hazırlanan karar maddeleri:
-
-1. **Karar AD-2026-003 (Dönüşlü Çatı Parçacığı Seçimi):** `se` parçacığının araç edatıyla (`functions:1080`) çakışması sebebiyle, ya konumsal ayrıştırma kuralı kabul edilecek ya da çakışmasız alternatif bir parçacık (`ro`) seçilecektir.
-2. **Karar AD-2026-004 (Eylem Köklerinden Sıfat Türetimi):** `fal` -> `fali` (açık durum) gibi semantik olarak lisanslı eylem köklerine `-i` ekiyle durum sıfatı türetme kuralının kabulü.
-3. **Karar AD-2026-005 (Karşıt-Ödünleyici Bağlaç `şe-el`):** "olsa bile / even if" anlamı için şeffaf `şe-el` bileşiğinin kabulü.
-4. **Karar AD-2026-006 (Doğrudan Alıntı ve Noktalama Çerçevesi):** `vesen: "..."` iki nokta ve tırnak işaretli doğrudan aktarım yapısının biçimsel kabulü.
-5. **Karar AD-2026-007 (Aday Kökler Ön İncelemesi):** `Pol` (karşıt), `Bav` (şafak), `Tem` (an), `Şul` (sessizlik), `Kan` (şarkı), `Yan` (hata), `Morv` (düğüm), `Dal` (dal), `Nur` (parıltı) köklerinin aday statüsünde tutulmaya devam edilmesi (`Gor` kökü kanonik `Vel` ile çiftlendiği için geri çekilebilir).
+1. **Karar AD-2026-003 (Dönüşlü Çatı Stratejisi):** `se` ve `ro` çakışmaları ışığında 4 stratejiden birinin (Analitik `vo`, Ek `-il-`, Çevresel `samel`, Bağlamsal) resmi olarak seçilmesi.
+2. **Karar AD-2026-004 (Eylem Köklerinden Sıfat Türetimi):** `fal` -> `fali` gibi yalnızca fiziksel konfigürasyon köklerine `-i` ile durum sıfatı türetme kuralının onayı.
+3. **Karar AD-2026-005 (Karşıt-Ödünleyici Bağlaç `şe-el`):** "olsa bile / even if" anlamı için şeffaf `şe-el` bağlacının kabulü.
+4. **Karar AD-2026-006 (Doğrudan Alıntı Çerçevesi):** `vesen: "..."` iki nokta ve tırnak işaretli doğrudan aktarım yapısının biçimsel kabulü.
+5. **Karar AD-2026-007 (Aday Kökler Ön İncelemesi):** Mükerrer `Gor` adayının geri çekilmesi; `Pol`, `Bav`, `Tem`, `Şul`, `Kan`, `Yan`, `Morv`, `Dal`, `Nur` köklerinin aday statüsünde tutulması.
+6. **Karar AD-2026-008 (`GAP-LEX-STAR` Sözlük Açığı Çözümü):** Dilde yıldız kökü bulunmadığının resmi tescili; yeni kök teklifi (`Siril` vb.) veya şeffaf bileşik yapısının karara bağlanması.

@@ -1,4 +1,4 @@
-"""L5 Linguistic Engineering, Blind Semantics, and Lexicon Acceptance Tests."""
+"""L5 & L5.2 Linguistic Engineering, Research Integrity, and Lexicon Acceptance Tests."""
 import json, unittest
 from pathlib import Path
 
@@ -181,7 +181,7 @@ class TestL5BlindEvaluationSuite(unittest.TestCase):
 
 
 class TestL5LinguisticAuditRegressions(unittest.TestCase):
-    """Rigorous regression tests for all 11 audited lexical and grammatical issues."""
+    """Rigorous regression tests for all audited lexical, grammatical, and evidence issues."""
 
     def test_canonical_lexical_provenance(self):
         # 1. Arem is thinking (roots:434), NOT returning
@@ -214,7 +214,7 @@ class TestL5LinguisticAuditRegressions(unittest.TestCase):
         self.assertEqual(dei['semantic_anchor_en'], 'day')
         self.assertIn('gün', dei['gloss_tr'])
 
-        # Canonical star/celestial body is nüra (roots:497)
+        # Canonical Nüra (roots:497) is moon (ay, gök cismi), NOT star
         nüra = lookup('Nüra')[0]
         self.assertEqual(nüra['semantic_anchor_en'], 'moon')
         self.assertIn('ay', nüra['gloss_tr'])
@@ -246,6 +246,31 @@ class TestL5LinguisticAuditRegressions(unittest.TestCase):
         nivar = lookup('Nivar')[0]
         self.assertEqual(nivar['semantic_anchor_en'], 'learning')
         self.assertIn('öğrenme', nivar['gloss_tr'])
+
+    def test_canonical_moon_vs_star_lexical_gap(self):
+        # Nüra is moon, NOT star
+        nüra = lookup('Nüra')[0]
+        self.assertEqual(nüra['semantic_anchor_en'], 'moon')
+
+        # Check all roots for 'star' - confirms zero canonical roots exist for star
+        star_roots = [
+            r for r in records('1.0')
+            if r.get('part_of_speech') == 'root' and
+            ('star' == r.get('semantic_anchor_en') or 'yıldız' in r.get('gloss_tr', ''))
+        ]
+        self.assertEqual(len(star_roots), 0, "Canonical vocabulary unexpectedly contains a root for star; expected lexical gap!")
+
+    def test_transparent_semantics_role_ro_collision(self):
+        # Standard §5.4 defines 'ro' as role 'source_from'
+        sem_roles_path = ROOT / 'data/semantic-roles.json'
+        roles_data = json.loads(sem_roles_path.read_text(encoding='utf-8'))
+        self.assertIn('ro', roles_data['roles'])
+        self.assertEqual(roles_data['roles']['ro'], 'source_from')
+
+        # Canonical instrumental postposition is 'se' (functions:1080)
+        se = lookup('se')[0]
+        self.assertEqual(se['part_of_speech'], 'postposition')
+        self.assertIn('araçla', se['gloss_tr'])
 
     def test_canonical_postpositions_and_rejected_invented_suffixes(self):
         # Canonical instrumental postposition is 'se' (functions:1080)
@@ -289,6 +314,22 @@ class TestL5LinguisticAuditRegressions(unittest.TestCase):
         self.assertEqual(ast.speech_act, 'imperative')
         self.assertEqual(ast.subject, 'implied_2nd_person')
         self.assertFalse(ast.is_experimental)
+
+    def test_actual_pilot_evidence_consistency(self):
+        audit_path = ROOT / 'docs/research/blind-translation-01-five-stanza-audit.md'
+        self.assertTrue(audit_path.exists())
+        content = audit_path.read_text(encoding='utf-8')
+
+        # Must record actual observed outputs, not conjectured ones
+        self.assertIn('Nave ri növi lürana. Teli lüra fal ve.', content)
+        self.assertIn('Şehrin yedi kapısı. Üç kapı açık.', content)
+        self.assertIn('Elina ne da vesen: “Ne vürelen!” Elina da vesen: “Şe Sai vürelen, aremen!”', content)
+        self.assertIn('Onlar “Korkma!” demedi. Onlar “Eğer korkarsan, düşün!” dedi.', content)
+        self.assertIn('Meina da nivaren.', content)
+        self.assertIn('Biz öğrendik.', content)
+
+        # Must explicitly acknowledge the pilot status
+        self.assertIn('Pilot Experiment 01', content)
 
 
 if __name__ == '__main__':

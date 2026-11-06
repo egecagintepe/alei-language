@@ -21,7 +21,7 @@
 {"concept_id": "CON-021", "domain": "physical_states_materials", "concept": "opening_action", "category": "A", "alei_expression": "fal", "notes": "Canonical root fal (açılma)", "status": "official_canonical"}
 {"concept_id": "CON-022", "domain": "physical_states_materials", "concept": "open_state", "category": "B", "alei_expression": "fali", "notes": "Derived quality: fal + -i (açık)", "status": "proposed_compound"}
 {"concept_id": "CON-023", "domain": "physical_states_materials", "concept": "stone_rock", "category": "A", "alei_expression": "liman", "notes": "Canonical root liman", "status": "official_canonical"}
-{"concept_id": "CON-024", "domain": "physical_states_materials", "concept": "star", "category": "A", "alei_expression": "nüra", "notes": "Canonical root nüra (roots:458; dei is day roots:454)", "status": "official_canonical"}
+{"concept_id": "CON-024", "domain": "physical_states_materials", "concept": "star", "category": "D", "alei_expression": "GAP-LEX-STAR", "notes": "Lexical gap: No canonical root for star; Nüra (roots:497) is moon. Compound proposal: siril-pemar", "status": "unresolved_gap"}
 {"concept_id": "CON-025", "domain": "physical_states_materials", "concept": "light_brightness", "category": "A", "alei_expression": "pemar", "notes": "Canonical root pemar", "status": "official_canonical"}
 {"concept_id": "CON-026", "domain": "physical_states_materials", "concept": "tool_instrument", "category": "A", "alei_expression": "tüvan", "notes": "Canonical root tüvan", "status": "official_canonical"}
 {"concept_id": "CON-027", "domain": "physical_states_materials", "concept": "water_liquid", "category": "A", "alei_expression": "sel", "notes": "Canonical root sel", "status": "official_canonical"}
@@ -95,6 +95,6 @@
 {"concept_id": "CON-095", "domain": "narrative_poetic", "concept": "shadow", "category": "B", "alei_expression": "ne-pemar", "notes": "Compound: absence of light / shadow", "status": "proposed_compound"}
 {"concept_id": "CON-096", "domain": "narrative_poetic", "concept": "reflection_mirror", "category": "B", "alei_expression": "sel-lir", "notes": "Compound: water-seeing / mirror reflection", "status": "proposed_compound"}
 {"concept_id": "CON-097", "domain": "narrative_poetic", "concept": "destiny_path", "category": "B", "alei_expression": "sira-vel", "notes": "Compound: cause-path / destiny", "status": "proposed_compound"}
-{"concept_id": "CON-098", "domain": "narrative_poetic", "concept": "starlight", "category": "B", "alei_expression": "nüra-pemar", "notes": "Compound: star light (dei-pemar is daylight)", "status": "proposed_compound"}
+{"concept_id": "CON-098", "domain": "narrative_poetic", "concept": "starlight", "category": "B", "alei_expression": "siril-pemar", "notes": "Compound: sky-light (Nüra is moon, so nüra-pemar is moonlight)", "status": "proposed_compound"}
 {"concept_id": "CON-099", "domain": "narrative_poetic", "concept": "counterfactual_would", "category": "D", "alei_expression": "GAP-NAR-01", "notes": "Explicitly unresolved: counterfactual past mood particle", "status": "unresolved_gap"}
 {"concept_id": "CON-100", "domain": "narrative_poetic", "concept": "vocative_poetic_oh", "category": "D", "alei_expression": "GAP-NAR-02", "notes": "Explicitly unresolved: formal vocative particle", "status": "unresolved_gap"}
