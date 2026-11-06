@@ -90,3 +90,31 @@ def compose(head, relations):
     text=normalize('-'.join(pieces))
     parse(text)
     return text
+
+def analyze_semantics(text, version='1.0'):
+    """Safe, non-raising semantic analyzer returning structured status."""
+    try:
+        result = parse(text)
+        return {
+            'status': 'supported',
+            'head': result['head'],
+            'relations': result['relations'],
+            'exact_identity_known': False,
+            'warnings': result['warnings'],
+            'notes': [result['warning']]
+        }
+    except ValueError as e:
+        msg = str(e)
+        if 'Unknown or unregistered' in msg:
+            status = 'unknown_lexeme'
+        elif 'mismatch' in msg or 'disabled role' in msg:
+            status = 'contradictory'
+        else:
+            status = 'unsupported'
+        return {
+            'status': status,
+            'reason': msg,
+            'exact_identity_known': False,
+            'notes': ['Semantic combination rejected by transparent typing schema.']
+        }
+
