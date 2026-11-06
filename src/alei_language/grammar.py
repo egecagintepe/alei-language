@@ -207,7 +207,7 @@ def parse_alei(text, version='1.0', mode='standard'):
     recognized_particles = {
         'mei','sai','eli','meina','saina','elina','elar','elarna',
         'keli','vena','miva','orai','vela','hiva','vera','mivan','veran',
-        'le','ke','ve','lo','ta','ra','şe','el','lia','da','va','ne','du','fa','su','se','şe-el','teli'
+        'le','ke','ve','lo','ta','fi','se','ri','şe','el','lia','da','va','ne','du','fa','su','şe-el','teli'
     }
     unknowns = []
     for w in words_clean:
@@ -277,8 +277,8 @@ def parse_alei(text, version='1.0', mode='standard'):
                 diagnostics=["Concessive conditional compound 'şe-el' ('even if / olsa bile')."]
             )
 
-    # Step 4: Experimental Imperative / Hortative
-    if mode == 'experimental' and (text.strip().endswith('!') or text.strip().endswith('.')):
+    # Step 4: Imperative / Hortative (Standard §4.1 permits omitted pronouns in clear commands)
+    if text.strip().endswith('!') or (mode == 'experimental' and text.strip().endswith('.')):
         s_clean = s.rstrip('.! ')
         w = s_clean.split()
         neg = False
@@ -297,7 +297,7 @@ def parse_alei(text, version='1.0', mode='standard'):
                 subject='implied_2nd_person',
                 raw_text=text,
                 version=version,
-                is_experimental=True,
+                is_experimental=False,
                 predicate=PredicateFrame(
                     verb_lemma=verb,
                     voice='active',
@@ -305,10 +305,10 @@ def parse_alei(text, version='1.0', mode='standard'):
                     arguments=[ArgumentRole(role='Agent', value='implied_2nd_person', is_overt=False, is_implied=True)],
                     valency_satisfied=True
                 ),
-                diagnostics=["Subjectless imperative speech act; addressee implied (2nd person)."]
+                diagnostics=["Standard §4.1 subjectless imperative; addressee implied (2nd person)."]
             )
 
-    # Step 5: Experimental Middle Voice (se)
+    # Step 5: Experimental Middle Voice (se) - Caution: 'se' is canonically instrumental postposition (functions:1080)
     if mode == 'experimental' and ' se ' in (' ' + s + ' '):
         raw_mod = re.sub(r'\bse\b', '', s)
         raw_mod = re.sub(r'\s+', ' ', raw_mod).strip()
@@ -333,6 +333,7 @@ def parse_alei(text, version='1.0', mode='standard'):
                     raw_text=text,
                     version=version,
                     is_experimental=True,
+                    warnings=["'se' collides with canonical instrumental postposition (functions:1080)."],
                     predicate=PredicateFrame(
                         verb_lemma=verb,
                         voice='middle',
@@ -341,7 +342,10 @@ def parse_alei(text, version='1.0', mode='standard'):
                         valency_satisfied=val['valency_satisfied'],
                         valency_notes=val['notes']
                     ),
-                    diagnostics=["Experimental middle voice particle 'se' promoting Patient to subject position."] + val['notes']
+                    diagnostics=[
+                        "Experimental middle voice particle 'se' promoting Patient to subject position.",
+                        "COLLISION WARNING: 'se' is canonically the instrumental postposition (functions:1080, e.g. 'tüvan se'). Middle voice usage is an unadopted RFC proposal."
+                    ] + val['notes']
                 )
 
     # Step 6: Standard sentence parsing

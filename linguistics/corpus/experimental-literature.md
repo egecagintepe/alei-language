@@ -1,8 +1,8 @@
-# Alei Experimental Literary Corpus & Minimal Pairs
+# Alei Experimental Literary Corpus & Minimal Pairs (Audited L5.1 Edition)
 
 **Language Version:** Alei v1.1.0 with Pinned RFC-2026-001 Experimental Proposals  
-**Author:** Alei Language Engineering Team (Autonomous Phase L5)  
-**Corpus Quality Standard:** Zero recycling of archived standard lines. Evaluated for voice variety, poetic resonance, syntactic precision, and discourse continuity.
+**Author:** Alei Language Engineering Team (Autonomous Phase L5 / L5.1 Audit)  
+**Corpus Quality Standard:** Zero recycling of archived standard lines. Evaluated for voice variety, poetic resonance, syntactic precision, and canonical lexical fidelity.
 
 ---
 
@@ -12,30 +12,31 @@
 *Voice: Introspective, observational, solitary watchman.*
 
 ```text
-Mei da nivaren lüra lo. Nasel lo şul da avelen; pemar dei ri ne da liren.
-Mei ne da belemen orainan, lia Mei da hüvaren deiran ke da lüfaren.
-Bav lo, lüra da fali. Mei ne da avelen len ta; Mei da aremen vel ta.
+Mei da varen lüra lo. Nasel lo şul da avelen; pemar nüra ri ne da liren.
+Mei ne da belemen orainan, lia Mei da hüvaren nüran ke da lüfaren.
+Bav lo, lüra da fali. Mei ne da avelen len ta; Mei da nelaren vel ta.
 ```
 
 - **Interlinear Gloss:**
-  - `mei da nivar-en lüra lo .`  
-    `1SG PST nightwatch-VB door LOC`
-  - `nasel lo şul da avel-en ; pemar dei ri ne da lir-en .`  
-    `place LOC silence PST arrive-VB ; light star GEN NEG PST see-VB`
-  - `mei ne da belem-en orai-na-an , lia mei da hüvar-en dei-an ke da lüfar-en .`  
+  - `mei da var-en lüra lo .`  
+    `1SG PST wait-VB door LOC`
+  - `nasel lo şul da avel-en ; pemar nüra ri ne da lir-en .`  
+    `forest LOC silence PST arrive-VB ; light star GEN NEG PST see-VB`
+  - `mei ne da belem-en orai-na-an , lia mei da hüvar-en nüra-an ke da lüfar-en .`  
     `1SG NEG PST count-VB time-PL-ACC , but 1SG PST search-VB star-ACC COMP PST fall-VB`
   - `bav lo , lüra da fal-i .`  
     `dawn LOC , door PST open-ADJ`
-  - `mei ne da avel-en len ta ; mei da arem-en vel ta .`  
+  - `mei ne da avel-en len ta ; mei da nelar-en vel ta .`  
     `1SG NEG PST enter-VB dwelling DAT ; 1SG PST return-VB path DAT`
 - **Turkish Translation:**
-  Kapıda gece nöbeti tuttum. Mekana sessizlik çöktü; yıldızın ışığı görünmüyordu. Vakitleri saymadım, fakat düşen yıldızı aradım. Şafakta kapı açıktı. Eve girmedim; yola geri döndüm.
+  Kapıda bekledim. Ormana sessizlik çöktü; yıldızın ışığı görünmüyordu. Vakitleri saymadım, fakat düşen yıldızı aradım. Şafakta kapı açıktı. Eve girmedim; yola geri döndüm.
 - **English Translation:**
-  I kept watch at the door through the night. Silence settled over the place; the light of the star was not visible. I did not count the hours, but I searched for the star that had fallen. At dawn, the door was open. I did not enter the dwelling; I returned to the path.
+  I waited at the door. Silence settled over the forest; the light of the star was not visible. I did not count the hours, but I searched for the star that had fallen. At dawn, the door was open. I did not enter the dwelling; I returned to the path.
 - **Linguistic Annotations:**
-  - `da nivaren`: Canonical v1.0 duration verb.
+  - `da varen`: Canonical waiting verb (`roots:450`, `lexemes:772`).
+  - `nüra`: Canonical star / celestial body (`roots:458`).
+  - `nelaren`: Canonical returning verb (`roots:656`, `lexemes:812`).
   - `şul`: Proposed root `Şul` (silence).
-  - `ke da lüfaren`: Canonical relative clause modifying `deian` (falling star), avoiding illegitimate prenominal verb syntax.
   - `da fali`: Proposed regular quality derivation `fali` (open) in past stative nominal predicate ("was open").
 
 ---
@@ -44,7 +45,7 @@ Bav lo, lüra da fali. Mei ne da avelen len ta; Mei da aremen vel ta.
 *Voice: Mythic, measured, chronicling human encounter.*
 
 ```text
-Davi ena da avelen vümar ta. Mora ena da avelen pol nasel ra; davi ena da avelen samel gor ta.
+Davi ena da avelen vümar ta. Ena da avelen pol lem fi; davi da avelen samel vel ta.
 Vümar sel lo da pemaren. Elina ne da vesen: "Ne vürelen!"
 Elina da vesen: "Şe-el Sai vürelen, aremen!"
 Vel ne va se nesalen; davi ena da miraven samelan.
@@ -53,22 +54,24 @@ Vel ne va se nesalen; davi ena da miraven samelan.
 - **Interlinear Gloss:**
   - `davi ena da avel-en vümar ta .`  
     `two person PST arrive-VB bridge DAT`
-  - `mora ena da avel-en pol nasel ra ; davi ena da avel-en samel gor ta .`  
-    `one person PST arrive-VB opposite place ABL ; second person PST arrive-VB same direction DAT`
+  - `ena da avel-en pol lem fi ; davi da avel-en samel vel ta .`  
+    `one PST arrive-VB opposite place ABL ; second PST arrive-VB same path DAT`
   - `vümar sel lo da pemar-en .`  
     `bridge water LOC PST shine-VB`
   - `elina ne da ves-en : " ne vürel-en ! "`  
-    `3PL NEG PST say-VB : " NEG cross-VB ! "`
+    `3PL NEG PST say-VB : " NEG fear-VB ! "`
   - `elina da ves-en : " şe-el sai vürel-en , arem-en ! "`  
-    `3PL PST say-VB : " even-if 2SG cross-VB , return-VB ! "`
+    `3PL PST say-VB : " even-if 2SG fear-VB , think-VB ! "`
   - `vel ne va se nesal-en ; davi ena da mirav-en samel-an .`  
     `path NEG FUT MID lose-VB ; two person PST help-VB same-ACC`
 - **Turkish Translation:**
-  Köprüye iki kişi vardı. Biri karşıt kıyıdan geldi; diğeri aynı yöne yöneldi. Köprü suyun üstünde parıldıyordu. Onlar "Geçme!" demediler. "Geçsen bile dön!" dediler. Yol kaybolmayacak; iki kişi birbirine yardım etti.
+  Köprüye iki kişi vardı. Biri karşı kıyıdan geldi; diğeri aynı yola yöneldi. Köprü suyun üstünde parıldıyordu. Onlar "Korkma!" demediler. "Korksan bile düşün!" dediler. Yol kaybolmayacak; iki kişi birbirine yardım etti.
 - **English Translation:**
-  Two people reached the bridge. One came from the opposite shore; the other moved in the same direction. The bridge shone above the water. They did not say: "Do not cross!" They said: "Even if you cross, return!" The path will not be lost; the two helped each other.
+  Two people reached the bridge. One came from the opposite bank; the other moved along the same path. The bridge shone above the water. They did not say: "Do not fear!" They said: "Even if you fear, think!" The path will not be lost; the two helped each other.
 - **Linguistic Annotations:**
-  - Directly resolves Evidence Cases C08 (arrival from opposite ends via `pol nasel ra`), C09 (concessive `şe-el` and imperative `Aremen!`), and C02 (middle voice `se nesalen`).
+  - Fully adheres to canonical lexicon: `vürelen` is "korkmak" (fear, `roots:502`), `aremen` is "düşünmek" (think, `roots:434`).
+  - Uses canonical ablative postposition `fi` (`pol lem fi`), eliminating invented suffix `-ra`.
+  - Concessive conditional `şe-el` and middle voice candidate `se nesalen` demonstrated in context.
 
 ---
 
@@ -96,34 +99,32 @@ Ena pira va liren simanan, lia eli ne va hokaren.
   İşareti taşa yazdım. Şaşkınlık sözünü yazmadım; yanılgıyı yazdım. Taşın üstünde hata kaybolmayacak. Işık ara sıra gelecek, fakat taş sessiz kaldı. Küçük çocuk işareti görecek, ama kederlenmeyecek.
 - **English Translation:**
   I inscribed the mark upon the stone. I did not write words of astonishment; I wrote the mistake. Upon the stone, the error will not disappear. Light will occasionally come, but the stone remained quiet. The young child will see the mark, but will not grieve.
-- **Linguistic Annotations:**
-  - Resolves Case C07: explicit contrast between writing the error (`yanan`) versus writing on the stone surface (`liman lo`).
 
 ---
 
 ## 2. Two Original Literary Poems
 
-### Poem 1: *Dei ri Gor* (The Vector of the Star)
+### Poem 1: *Nüra ri Vel* (The Path of the Star)
 *Structure: 4 stanzas of paired 6-syllable / 8-syllable rhymed cadence.*
 
 ```text
-Dei da lüfaren,
-Nivar lo pemar da fali.
+Nüra da lüfaren,
+Mora lo pemar da fali.
 Mei ne da belemen,
-Nasel lo dei da hüvaren.
+Nasel lo nüra da hüvaren.
 
-Pol nasel lo sel da avelen,
+Pol lem lo sel da avelen,
 Vümar ta vel da pürelen.
 Şe-el pemar ne da yelen,
 Süli kan va se miraven.
 ```
 
 - **Interlinear Gloss:**
-  - `dei da lüfar-en ,` (star PST fall-VB)
-  - `nivar lo pemar da fal-i .` (night LOC light PST open-ADJ)
+  - `nüra da lüfar-en ,` (star PST fall-VB)
+  - `mora lo pemar da fal-i .` (night LOC light PST open-ADJ)
   - `mei ne da belem-en ,` (1SG NEG PST count-VB)
-  - `nasel lo dei da hüvar-en .` (place LOC star PST search-VB)
-  - `pol nasel lo sel da avel-en ,` (opposite place LOC water PST arrive-VB)
+  - `nasel lo nüra da hüvar-en .` (forest LOC star PST search-VB)
+  - `pol lem lo sel da avel-en ,` (opposite place LOC water PST arrive-VB)
   - `vümar ta vel da pürel-en .` (bridge DAT path PST arrive-VB)
   - `şe-el pemar ne da yel-en ,` (even-if light NEG PST can-VB)
   - `süli kan va se mirav-en .` (good song FUT MID help-VB)
@@ -131,9 +132,9 @@ Süli kan va se miraven.
   Yıldız düştü,  
   Geceleyin ışık açıldı.  
   Saymadım vakitleri,  
-  Mekanda yıldız arandı.  
+  Ormanda yıldız arandı.  
 
-  Karşı kıyıda su çağladı,  
+  Karşı kıyıda su aktı,  
   Köprüye yol ulaştı.  
   Işık yetmese bile,  
   Güzel ezgi imdada koşacak.
@@ -141,9 +142,9 @@ Süli kan va se miraven.
   A star descended,  
   In the night, light opened wide.  
   I did not count the hours,  
-  Through the land the star was sought.  
+  Through the forest the star was sought.  
 
-  On the opposite shore the water flowed,  
+  On the opposite bank water flowed,  
   To the bridge the pathway reached.  
   Even if the light cannot suffice,  
   A gentle song will lend its aid.
@@ -157,10 +158,10 @@ Süli kan va se miraven.
 Lüra da fali,
 Ena ne da avelen.
 Bav lo şul da pemaren,
-Yan siman liman lo da aremen.
+Yan siman liman lo da nelaren.
 
-Aremen, şe-el vel da nesalen!
-Pemar dei ri ne va liren;
+Nelaren, şe-el vel da nesalen!
+Pemar nüra ri ne va liren;
 Lia meina va vesen:
 Alei, süli vel!
 ```
@@ -169,9 +170,9 @@ Alei, süli vel!
   - `lüra da fal-i ,` (door PST open-ADJ)
   - `ena ne da avel-en .` (person NEG PST enter-VB)
   - `bav lo şul da pemar-en ,` (dawn LOC silence PST shine-VB)
-  - `yan siman liman lo da arem-en .` (error mark stone LOC PST return-VB)
-  - `arem-en , şe-el vel da nesal-en !` (return-VB , even-if path PST lose-VB)
-  - `pemar dei ri ne va lir-en ;` (light star GEN NEG FUT see-VB)
+  - `yan siman liman lo da nelar-en .` (error mark stone LOC PST return-VB)
+  - `nelar-en , şe-el vel da nesal-en !` (return-VB , even-if path PST lose-VB)
+  - `pemar nüra ri ne va lir-en ;` (light star GEN NEG FUT see-VB)
   - `lia meina va ves-en :` (but 1PL FUT say-VB :)
   - `alei , süli vel !` (hello , good path !)
 - **Turkish Translation:**
@@ -199,13 +200,11 @@ Alei, süli vel!
 
 ## 3. Twelve Rigorous Minimal-Pair Passages
 
-These 12 minimal pairs empirically illustrate how changing a single marker or syntactic position fundamentally alters truth-conditional meaning in Alei.
-
 ### Pair 01: Transitive Active vs. Inchoative Middle Voice
 - **01A (Transitive Active):** `Mei va nesalen velan.`  
   *Meaning:* I will lose the path (Subject = Agent, Object = Path).
 - **01B (Middle Voice):** `Vel ne va se nesalen.`  
-  *Meaning:* The path will not be lost / will not disappear (Subject = Patient, Agent suppressed).
+  *Meaning:* The path will not be lost / will not disappear (Subject = Patient, Agent suppressed; RFC collision warning).
 
 ### Pair 02: Dynamic Event vs. Stative Nominal Predicate
 - **02A (Dynamic Eventive):** `Lüra da falen.`  
@@ -215,20 +214,20 @@ These 12 minimal pairs empirically illustrate how changing a single marker or sy
 
 ### Pair 03: Pure Conditional vs. Concessive Conditional
 - **03A (Pure Conditional):** `Şe Sai vürelen, aremen.`  
-  *Meaning:* If you cross (which you might not do), return.
+  *Meaning:* If you fear, think. (Eğer korkarsan, düşün).
 - **03B (Concessive Conditional):** `Şe-el Sai vürelen, aremen!`  
-  *Meaning:* Even if you cross (granting that you may cross), you must still return!
+  *Meaning:* Even if you fear, think! (Korksan bile düşün!).
 
 ### Pair 04: Simple Past Negation vs. Experiential Negation
-- **04A (Simple Past Negative):** `Eli ne da liren deiran.`  
+- **04A (Simple Past Negative):** `Eli ne da liren nüran.`  
   *Meaning:* He did not see the star (on that specific occasion).
-- **04B (Experiential Negative):** `Eli ne fa liren deiran orai lo.`  
+- **04B (Experiential Negative):** `Eli ne fa liren nüran orai lo.`  
   *Meaning:* He has never in his lifetime seen the star.
 
 ### Pair 05: Constituent Focus Scope with Particle `Teli`
-- **05A (NP Focus):** `Teli nave lürana da fali.`  
+- **05A (NP Focus):** `Teli növi lürana da fali.`  
   *Meaning:* Only seven doors were open (other doors were closed).
-- **05B (Predicate Focus):** `Nave lürana da teli fali.`  
+- **05B (Predicate Focus):** `Növi lürana da teli fali.`  
   *Meaning:* Seven doors were only open (not unlocked, damaged, or altered).
 
 ### Pair 06: Progressive Aspect `du` vs. Habitual Aspect `su`
@@ -238,38 +237,37 @@ These 12 minimal pairs empirically illustrate how changing a single marker or sy
   *Meaning:* I habitually/customarily write upon stone.
 
 ### Pair 07: Spatial Postposition `lo` (Containment) vs. `ta` (Destination)
-- **07A (Locative Containment):** `Meina da nivaren lem lo.`  
-  *Meaning:* We spent the night inside the dwelling.
+- **07A (Locative Containment):** `Meina da varen mora lo lem lo.`  
+  *Meaning:* We waited through the night inside the dwelling.
 - **07B (Directional Destination):** `Meina da avelen lem ta.`  
   *Meaning:* We arrived at/toward the dwelling.
 
 ### Pair 08: Collinear Arrival vs. Opposing Vector Arrival
 - **08A (Collinear Arrival):** `Davi ena da pürelen vümar ta.`  
   *Meaning:* Two people arrived at the bridge (same or unspecified direction).
-- **08B (Opposing Arrival):** `Davi ena da pürelen pol-ra vümar ta.`  
-  *Meaning:* Two people arrived at the bridge from opposing ends/shores.
+- **08B (Opposing Arrival):** `Davi ena da pürelen pol fi vümar ta.`  
+  *Meaning:* Two people arrived at the bridge from opposing sides (using canonical postposition `fi`).
 
 ### Pair 09: Declarative Assertion vs. Imperative Speech Act
-- **09A (Declarative):** `Sai aremen lem ta.`  
+- **09A (Declarative):** `Sai nelaren lem ta.`  
   *Meaning:* You return to the dwelling (Factual statement).
-- **09B (Imperative):** `Aremen lem ta!`  
-  *Meaning:* Return to the dwelling! (Urgent directive / command).
+- **09B (Imperative):** `Nelaren lem ta!`  
+  *Meaning:* Return to the dwelling! (Urgent directive / command; canonical v1.0 §4.1).
 
 ### Pair 10: Overt Object vs. Ambiguous Ellipsis
-- **10A (Overt Object):** `Mei da hüvaren deiran.`  
+- **10A (Overt Object):** `Mei da hüvaren nüran.`  
   *Meaning:* I searched for the star (Target entity specified).
 - **10B (Ambiguous Ellipsis):** `Mei da hüvaren.`  
   *Meaning:* I searched (Target entity unspecified / dropped).
 
 ### Pair 11: Direct Speech vs. Indirect Embedded Proposition
 - **11A (Direct Quotation):** `Elina da vesen: "Ne vürelen!"`  
-  *Meaning:* They spoke the verbatim words: "Do not cross!"
+  *Meaning:* They spoke the verbatim words: "Do not fear!"
 - **11B (Indirect Complement):** `Elina da vesen ke ne vürelen.`  
-  *Meaning:* They reported that one should not cross.
+  *Meaning:* They reported that one should not fear.
 
 ### Pair 12: Cardinal Quantification vs. Plural Generalization
 - **12A (Exact Cardinal Count):** `Növi lüra da fali.`  
-  *Meaning:* Nine doors were open (Unmarked singular noun with numeral).
+  *Meaning:* Seven doors were open (Unmarked singular noun with numeral).
 - **12B (General Plural Category):** `Lürana da fali.`  
   *Meaning:* The doors in general were open.
-

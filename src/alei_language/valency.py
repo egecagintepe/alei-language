@@ -14,7 +14,7 @@ VERB_VALENCY_FRAMES: Dict[str, Dict[str, Any]] = {
         'obligatory': ['Agent', 'Patient'],
         'subject_role': 'Agent',
         'gloss_tr': 'kaybetmek',
-        'semantic_note': 'Strictly transitive in canon. Does not inherently encode inchoative disappear (kaybolmak).'
+        'semantic_note': 'Strictly transitive in canon (roots:525). Does not inherently encode inchoative disappear (kaybolmak).'
     },
     'liren': {
         'class': 'transitive',
@@ -22,15 +22,15 @@ VERB_VALENCY_FRAMES: Dict[str, Dict[str, Any]] = {
         'obligatory': ['Experiencer', 'Stimulus'],
         'subject_role': 'Experiencer',
         'gloss_tr': 'görmek',
-        'semantic_note': 'Perceptual transitive verb.'
+        'semantic_note': 'Perceptual transitive verb (roots:514).'
     },
     'sileven': {
         'class': 'transitive',
         'roles': ['Agent', 'Patient'],
         'obligatory': ['Agent', 'Patient'],
         'subject_role': 'Agent',
-        'gloss_tr': 'yapmak / üretmek',
-        'semantic_note': 'Causative/productive transitive verb.'
+        'gloss_tr': 'okumak',
+        'semantic_note': 'Canonical reading verb (roots:508, lexemes:793). §4.2: Sai da sileven tüvanan = Kitabı okudun.'
     },
     'belemen': {
         'class': 'transitive',
@@ -39,15 +39,15 @@ VERB_VALENCY_FRAMES: Dict[str, Dict[str, Any]] = {
         'optional': ['Patient'],
         'subject_role': 'Agent',
         'gloss_tr': 'saymak / hesaplamak',
-        'semantic_note': 'Agent computing or counting; patient may be unexpressed count-domain.'
+        'semantic_note': 'Agent computing or counting (roots:446); patient may be unexpressed count-domain.'
     },
     'hüvaren': {
         'class': 'transitive',
         'roles': ['Agent', 'Patient'],
         'obligatory': ['Agent', 'Patient'],
         'subject_role': 'Agent',
-        'gloss_tr': 'aramak',
-        'semantic_note': 'Search verb. Omitting the patient leaves target entity unexpressed.'
+        'gloss_tr': 'aramak / araştırmak',
+        'semantic_note': 'Search verb (roots:524). Omitting the patient leaves target entity unexpressed.'
     },
     'avelen': {
         'class': 'intransitive',
@@ -55,43 +55,53 @@ VERB_VALENCY_FRAMES: Dict[str, Dict[str, Any]] = {
         'obligatory': ['Agent'],
         'optional': ['Destination'],
         'subject_role': 'Agent',
-        'gloss_tr': 'gelmek / girmek',
-        'semantic_note': 'Motion verb with optional destination marked by postposition ta.'
+        'gloss_tr': 'gitmek / yönelmek',
+        'semantic_note': 'Motion verb (roots:432, lexemes:755). Destination marked by postposition ta.'
     },
-    'vürelen': {
-        'class': 'intransitive',
-        'roles': ['Agent', 'Path'],
-        'obligatory': ['Agent'],
-        'optional': ['Path'],
-        'subject_role': 'Agent',
-        'gloss_tr': 'geçmek / aşmak',
-        'semantic_note': 'Motion across a barrier or bridge.'
-    },
-    'aremen': {
+    'pürelen': {
         'class': 'intransitive',
         'roles': ['Agent', 'Destination'],
         'obligatory': ['Agent'],
         'optional': ['Destination'],
         'subject_role': 'Agent',
-        'gloss_tr': 'dönmek / geri gelmek',
-        'semantic_note': 'Return motion verb.'
+        'gloss_tr': 'gelmek / ulaşmak',
+        'semantic_note': 'Arrival motion verb (roots:431, lexemes:754). Destination marked by ta.'
     },
-    'pürelen': {
+    'nelaren': {
         'class': 'intransitive',
         'roles': ['Agent', 'Destination'],
-        'obligatory': ['Agent', 'Destination'],
+        'obligatory': ['Agent'],
+        'optional': ['Destination'],
         'subject_role': 'Agent',
-        'gloss_tr': 'ulaşmak / varmak',
-        'semantic_note': 'Arrival verb requiring destination marked with ta.'
+        'gloss_tr': 'geri dönmek',
+        'semantic_note': 'Canonical return verb (roots:433 Nelar, lexemes:756 Nelaren).'
+    },
+    'aremen': {
+        'class': 'cognitive',
+        'roles': ['Experiencer', 'Proposition'],
+        'obligatory': ['Experiencer'],
+        'optional': ['Proposition'],
+        'subject_role': 'Experiencer',
+        'gloss_tr': 'düşünmek',
+        'semantic_note': 'Canonical thinking verb (roots:434 Arem, lexemes:757 Aremen). Not returning.'
+    },
+    'vürelen': {
+        'class': 'experiential',
+        'roles': ['Experiencer', 'Stimulus'],
+        'obligatory': ['Experiencer'],
+        'optional': ['Stimulus'],
+        'subject_role': 'Experiencer',
+        'gloss_tr': 'korkmak',
+        'semantic_note': 'Canonical fearing verb (roots:502 Vürel, lexemes:787 Vürelen). Not crossing.'
     },
     'nivaren': {
-        'class': 'intransitive',
-        'roles': ['Agent', 'Duration'],
+        'class': 'cognitive',
+        'roles': ['Agent', 'Patient'],
         'obligatory': ['Agent'],
-        'optional': ['Duration'],
+        'optional': ['Patient'],
         'subject_role': 'Agent',
-        'gloss_tr': 'gecelemek / gece beklemek',
-        'semantic_note': 'Temporal duration verb.'
+        'gloss_tr': 'öğrenmek',
+        'semantic_note': 'Canonical learning verb (roots:721 Nivar, lexemes:921 Nivaren). Not nightwatching.'
     },
     'vesen': {
         'class': 'communicative',
@@ -99,8 +109,8 @@ VERB_VALENCY_FRAMES: Dict[str, Dict[str, Any]] = {
         'obligatory': ['Agent'],
         'optional': ['Recipient', 'Message'],
         'subject_role': 'Agent',
-        'gloss_tr': 'söylemek / demek',
-        'semantic_note': 'Speech act verb; can govern direct quote or ke embedded clause.'
+        'gloss_tr': 'söylemek / konuşmak',
+        'semantic_note': 'Canonical speech verb (roots:448 Ves, lexemes:770 Vesen).'
     },
     'miraven': {
         'class': 'transitive_benefactive',
@@ -109,7 +119,7 @@ VERB_VALENCY_FRAMES: Dict[str, Dict[str, Any]] = {
         'optional': ['Beneficiary'],
         'subject_role': 'Agent',
         'gloss_tr': 'yardım etmek',
-        'semantic_note': 'Approved v1.1.0 preferred help verb.'
+        'semantic_note': 'Approved v1.1.0 preferred help verb (AD-2026-002).'
     },
     'mivaven': {
         'class': 'transitive_benefactive',
@@ -128,6 +138,14 @@ VERB_VALENCY_FRAMES: Dict[str, Dict[str, Any]] = {
         'subject_role': 'Agent',
         'gloss_tr': 'yazmak',
         'semantic_note': 'Inscribing verb; Patient = inscription/text, Surface = lo substrate.'
+    },
+    'saelen': {
+        'class': 'transitive',
+        'roles': ['Experiencer', 'Patient'],
+        'obligatory': ['Experiencer', 'Patient'],
+        'subject_role': 'Experiencer',
+        'gloss_tr': 'sevmek',
+        'semantic_note': 'Canonical affection verb (roots:430 Sael, lexemes:753 Saelen). §4.2: Mei saelen sain.'
     },
     'naelen': {
         'class': 'modal_transitive',
@@ -176,16 +194,14 @@ def evaluate_valency(verb_lemma: str, overt_roles: Dict[str, str], voice: str = 
     optional = list(frame.get('optional', []))
     notes = []
 
-    # Voice adjustment in experimental mode
+    # Note on voice modulation: In canon, 'se' is the instrumental postposition (functions:1080).
+    # Middle voice remains an experimental proposal outside canonical grammar.
     if voice == 'middle':
-        # Middle voice suppresses external agent and promotes patient to subject
+        notes.append("Experimental middle voice (RFC proposal): external Agent requirement suppressed.")
         if 'Agent' in obligatory:
             obligatory.remove('Agent')
-        # Patient is the obligatory promoted subject role
         if 'Patient' not in obligatory and 'Patient' in frame.get('roles', []):
             obligatory.append('Patient')
-        notes.append("Middle voice suppresses canonical external Agent requirement and promotes Patient to subject.")
-
 
     missing = [role for role in obligatory if role not in overt_roles]
     extraneous = [role for role in overt_roles if role not in obligatory and role not in optional]

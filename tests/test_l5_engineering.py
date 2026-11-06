@@ -8,6 +8,7 @@ from alei_language.valency import evaluate_valency, get_valency_frame
 from alei_language.grammar import parse_sentence, parse_clause, parse_alei
 from alei_language.transparent_semantics import parse, analyze_semantics
 from alei_language.orthography import validate
+from alei_language.morphology import object_form
 
 class TestL5ValencyAndAST(unittest.TestCase):
     def test_valency_active_transitive(self):
@@ -48,6 +49,7 @@ class TestL5ValencyAndAST(unittest.TestCase):
         self.assertEqual(ast.predicate.voice, 'middle')
         self.assertEqual(ast.polarity, False)
         self.assertEqual(ast.tense, 'future')
+        self.assertTrue(any('collides with canonical instrumental postposition' in w for w in ast.warnings))
 
     def test_experimental_subjectless_imperative(self):
         ast = parse_alei('Aremen!', version='1.1.0', mode='experimental')
@@ -55,6 +57,15 @@ class TestL5ValencyAndAST(unittest.TestCase):
         self.assertEqual(ast.construction, 'imperative')
         self.assertEqual(ast.speech_act, 'imperative')
         self.assertEqual(ast.subject, 'implied_2nd_person')
+
+    def test_standard_subjectless_imperative(self):
+        # Canonical under v1.0 standard §4.1: clear commands permit omitted pronouns
+        ast = parse_alei('Aremen!', version='1.1.0', mode='standard')
+        self.assertEqual(ast.status, 'supported')
+        self.assertEqual(ast.construction, 'imperative')
+        self.assertEqual(ast.speech_act, 'imperative')
+        self.assertEqual(ast.subject, 'implied_2nd_person')
+        self.assertFalse(ast.is_experimental)
 
     def test_experimental_negative_imperative(self):
         ast = parse_alei('Ne vürelen!', version='1.1.0', mode='experimental')
@@ -128,7 +139,7 @@ class TestL5LexicalGovernance(unittest.TestCase):
 
 class TestL5CorpusUniqueness(unittest.TestCase):
     def test_experimental_literature_no_verbatim_duplication(self):
-        canonical_examples = set((ROOT / 'data/example-sentences.jsonl').read_text(encoding='utf-8').splitlines())
+        canonical_examples = [json.loads(line) for line in (ROOT / 'data/example-sentences.jsonl').read_text(encoding='utf-8').splitlines()]
         self.assertEqual(len(canonical_examples), 101)
 
         lit_path = ROOT / 'linguistics/corpus/experimental-literature.md'
@@ -136,13 +147,18 @@ class TestL5CorpusUniqueness(unittest.TestCase):
         self.assertTrue(lit_path.exists())
         self.assertTrue(dial_path.exists())
 
-        # Verify neither file contains identical whole JSON lines from canonical examples
-        lit_content = lit_path.read_text(encoding='utf-8')
+        lit_content = normalize(lit_path.read_text(encoding='utf-8'))
+        dial_content = normalize(dial_path.read_text(encoding='utf-8'))
         for ex in canonical_examples:
-            row = json.loads(ex)
-            sent = row['canonical_spelling']
-            # The exact full sentence in the canonical test set should not be recycled as a literary poem/prose line
-            self.assertNotIn(f"*{sent}*", lit_content)
+            sent = normalize(ex['canonical_spelling']).strip().rstrip('.!?')
+            for line in lit_content.splitlines():
+                clean = line.strip().strip('*`_').strip().rstrip('.!?')
+                if clean:
+                    self.assertNotEqual(clean, sent, f"Canonical sentence '{sent}' duplicated in literature!")
+            for line in dial_content.splitlines():
+                clean = line.strip().strip('*`_').strip().rstrip('.!?')
+                if clean:
+                    self.assertNotEqual(clean, sent, f"Canonical sentence '{sent}' duplicated in dialogues!")
 
 
 class TestL5BlindEvaluationSuite(unittest.TestCase):
@@ -162,6 +178,118 @@ class TestL5BlindEvaluationSuite(unittest.TestCase):
             self.assertEqual(c['case_id'], g['case_id'])
             if 'gold_translation_en' in g:
                 self.assertNotIn(g['gold_translation_en'], c['blinded_prompt'])
+
+
+class TestL5LinguisticAuditRegressions(unittest.TestCase):
+    """Rigorous regression tests for all 11 audited lexical and grammatical issues."""
+
+    def test_canonical_lexical_provenance(self):
+        # 1. Arem is thinking (roots:434), NOT returning
+        arem = lookup('Arem')[0]
+        self.assertEqual(arem['semantic_anchor_en'], 'thinking')
+        self.assertIn('düşünce', arem['gloss_tr'])
+
+        # Canonical returning is Nelar (roots:656)
+        nelar = lookup('Nelar')[0]
+        self.assertEqual(nelar['semantic_anchor_en'], 'returning')
+        self.assertIn('dönüş', nelar['gloss_tr'])
+
+        # 2. Vürel is fear (roots:502), NOT crossing
+        vürel = lookup('Vürel')[0]
+        self.assertEqual(vürel['semantic_anchor_en'], 'fear')
+        self.assertIn('korku', vürel['gloss_tr'])
+
+        # 3. Mora is night (roots:455), NOT one
+        mora = lookup('Mora')[0]
+        self.assertEqual(mora['semantic_anchor_en'], 'night')
+        self.assertIn('gece', mora['gloss_tr'])
+
+        # Canonical one is numeral Ena (functions:1100)
+        ena = lookup('Ena')[0]
+        self.assertEqual(ena['part_of_speech'], 'numeral')
+        self.assertEqual(ena['gloss_tr'], 'bir')
+
+        # 4. Dei is day (roots:454), NOT star
+        dei = lookup('Dei')[0]
+        self.assertEqual(dei['semantic_anchor_en'], 'day')
+        self.assertIn('gün', dei['gloss_tr'])
+
+        # Canonical star/celestial body is nüra (roots:497)
+        nüra = lookup('Nüra')[0]
+        self.assertEqual(nüra['semantic_anchor_en'], 'moon')
+        self.assertIn('ay', nüra['gloss_tr'])
+
+        # 5. Nave is city (roots:476), NOT nine
+        nave = lookup('Nave')[0]
+        self.assertEqual(nave['semantic_anchor_en'], 'city')
+        self.assertIn('şehir', nave['gloss_tr'])
+
+        # Canonical nine is numeral Vüni (functions:1108)
+        vüni = lookup('Vüni')[0]
+        self.assertEqual(vüni['gloss_tr'], 'dokuz')
+
+        # 6. Silev is reading (roots:508), NOT making
+        silev = lookup('Silev')[0]
+        self.assertEqual(silev['semantic_anchor_en'], 'reading')
+        self.assertIn('okuma', silev['gloss_tr'])
+
+        # Canonical making/producing is Jav (roots:447)
+        jav = lookup('Jav')[0]
+        self.assertIn('yapma', jav['gloss_tr'])
+
+        # 7. Nasel is forest (roots:548), NOT generic place
+        nasel = lookup('Nasel')[0]
+        self.assertEqual(nasel['semantic_anchor_en'], 'forest')
+        self.assertIn('orman', nasel['gloss_tr'])
+
+        # 8. Nivar is learning (roots:721), NOT nightwatch
+        nivar = lookup('Nivar')[0]
+        self.assertEqual(nivar['semantic_anchor_en'], 'learning')
+        self.assertIn('öğrenme', nivar['gloss_tr'])
+
+    def test_canonical_postpositions_and_rejected_invented_suffixes(self):
+        # Canonical instrumental postposition is 'se' (functions:1080)
+        se = lookup('se')[0]
+        self.assertEqual(se['part_of_speech'], 'postposition')
+        self.assertIn('araçla', se['gloss_tr'])
+
+        # Canonical ablative postposition is 'fi' (functions:1078)
+        fi = lookup('fi')[0]
+        self.assertEqual(fi['part_of_speech'], 'postposition')
+        self.assertIn('-den/-dan', fi['gloss_tr'])
+
+        # Suffix/particle '-ra' is uncanonical and must not be in registry
+        self.assertEqual(lookup('ra'), [])
+
+    def test_pronoun_accusative_forms(self):
+        # Standard §4.1/§4.2: vowel-ending stems take -n
+        self.assertEqual(object_form('mei'), 'mein')
+        self.assertEqual(object_form('sai'), 'sain')
+        self.assertEqual(object_form('eli'), 'elin')
+
+        # Erroneous 'Meian' and 'Saian' must fail lookup and fail standard parsing
+        self.assertEqual(lookup('Meian'), [])
+        self.assertEqual(lookup('Saian'), [])
+
+        ast = parse_alei('Mei naelen ke miraven Saian.', version='1.1.0')
+        self.assertEqual(ast.status, 'unknown_lexeme')
+
+    def test_middle_voice_collision_warning(self):
+        # Parsing middle voice with 'se' in experimental mode must emit a collision warning
+        ast = parse_alei('Vel ne va se nesalen.', version='1.1.0', mode='experimental')
+        self.assertEqual(ast.status, 'supported')
+        self.assertTrue(any('instrumental postposition' in d.lower() for d in ast.diagnostics))
+        self.assertTrue(any('collides with canonical instrumental postposition' in w for w in ast.warnings))
+
+    def test_subjectless_imperative_standard_compliance(self):
+        # Standard v1.0 §4.1 explicitly authorizes omitting pronoun in clear imperatives
+        ast = parse_alei('Aremen!', version='1.1.0', mode='standard')
+        self.assertEqual(ast.status, 'supported')
+        self.assertEqual(ast.construction, 'imperative')
+        self.assertEqual(ast.speech_act, 'imperative')
+        self.assertEqual(ast.subject, 'implied_2nd_person')
+        self.assertFalse(ast.is_experimental)
+
 
 if __name__ == '__main__':
     unittest.main()
